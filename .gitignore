@@ -1,0 +1,5 @@
+#TeX compile files
+*.log
+*.aux
+*.dvi
+*.gz
