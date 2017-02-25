@@ -1,5 +1,47 @@
 \documentclass[a4paper,cs4size,UTF8,winfonts,boldfont,slantfont]{ctexart}
-\includeonly{Pack&Settings/Settings.tex}
+	
+	%应用文档设置
+	\include{Pack&Settings/Geometry}
+	\include{Pack&Settings/Font}
+	\include{Pack&Settings/Header&Footer}
+	\include{Pack&Settings/Paragraph&Section}
+	\include{Pack&Settings/Table&Figure}
+	\include{Pack&Settings/Abstract}
+	
+	%进行个人信息设置
+	\title{论文题目} %论文题目
+	\author{作者姓名} %作者姓名
+	\date{\today} %日期，默认当日
+	\def \defSchool {院系名称} %院系名称
+	\def \defClass {专业班级} %专业班级
+	\def \defNum {U201300000} %学号
+	\def \defInstructor {指导教师姓名} %指导教师姓名
+	
 \begin{document}
-	\LaTeX
+	
+	\pagenumbering{Roman}
+	
+	\begin{cnabstract}{关键词1；关键词2；关键词3}
+		摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+		
+		摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
+	\end{cnabstract}
+	
+	\begin{enabstract}{Key1; Key2; Key3}
+		This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
+	\end{enabstract}
+	
+	\tableofcontents
+	\addcontentsline{toc}{section}{目录}
+	\pagenumbering{arabic}
+	
+	\section{第一节 The first Section}
+	\subsection{第一小节}
+	\subsubsection{第一小小节}
+	字号参照
+	
+	再来一段
+	\paragraph{段落}段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此
+	\subparagraph{小段落}段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此
+	\section{第二节}
 \end{document}

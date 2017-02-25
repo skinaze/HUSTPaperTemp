@@ -1,0 +1,13 @@
+%本文设置图标样式
+
+%设置图标标题的计数方式
+\makeatletter
+\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection-\fi \@arabic\c@figure}
+\renewcommand{\thetable}{\ifnum \c@section>\z@ \thesection-\fi \@arabic\c@table}
+\makeatother
+
+%t添加复杂的表格需求库
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{diagbox}
+\usepackage{booktabs}

@@ -1,0 +1,13 @@
+%本文设置段落样式
+
+%设置1.5倍行距
+\renewcommand{\baselinestretch}{1.62}
+
+%设置各个标题样式
+%不需要使用part和chapter层级
+
+\CTEXsetup[format={\clearpage \centering \heiti \bfseries \zihao{-2}}]{section} %节
+\CTEXsetup[format={\raggedright \heiti \bfseries \zihao{4}}]{subsection} %小节
+\CTEXsetup[format={\raggedright \heiti \bfseries \zihao{-4}}]{subsubsection} %小小节
+\CTEXsetup[beforeskip={0em}]{paragraph}
+\CTEXsetup[beforeskip={0em}]{subparagraph}
