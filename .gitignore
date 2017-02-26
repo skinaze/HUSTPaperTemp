@@ -3,3 +3,9 @@
 *.aux
 *.dvi
 *.gz
+*.out
+
+#TOC files
+*.toc
+*.lof
+*.lot

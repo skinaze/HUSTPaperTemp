@@ -5,9 +5,44 @@
 
 %设置各个标题样式
 %不需要使用part和chapter层级
-
 \CTEXsetup[format={\clearpage \centering \heiti \bfseries \zihao{-2}}]{section} %节
 \CTEXsetup[format={\raggedright \heiti \bfseries \zihao{4}}]{subsection} %小节
 \CTEXsetup[format={\raggedright \heiti \bfseries \zihao{-4}}]{subsubsection} %小小节
 \CTEXsetup[beforeskip={0em}]{paragraph}
 \CTEXsetup[beforeskip={0em}]{subparagraph}
+
+%重新设置目录
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\clearpage \hfill \heiti \zihao{-2} \bfseries}
+\renewcommand{\contentsname}{目\hspace{2em}录}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftbeforeloftitleskip}{0.5em}
+\renewcommand{\cftafterloftitleskip}{0.5em}
+\renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
+\renewcommand{\cftbeforesecskip}{0em} %设置段间距
+\renewcommand{\cftsecfont}{\songti \bfseries}%设置Section字体
+
+%设置新的标题层级subsubsubsection
+\usepackage{titlesec}
+\usepackage{hyperref}
+\titleclass{\subsubsubsection}{straight}[\subsection]
+%设置编号
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+%设置标题样式
+\titleformat{\subsubsubsection}
+{\raggedright \heiti \bfseries \zihao{-4}}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+%重新设置段落等级
+\makeatletter
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+%设置目录深度
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
