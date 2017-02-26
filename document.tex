@@ -7,34 +7,52 @@
 	\include{Pack&Settings/Paragraph&Section}
 	\include{Pack&Settings/Table&Figure}
 	\include{Pack&Settings/Abstract}
+	%应用默认页面
+	\include{Pages/Titlepage}
+	\include{pages/Statementpage}
 	
 	%进行个人信息设置
 	\title{论文题目} %论文题目
 	\author{作者姓名} %作者姓名
 	\date{\today} %日期，默认当日
-	\def \defSchool {院系名称} %院系名称
-	\def \defClass {专业班级} %专业班级
-	\def \defNum {U201300000} %学号
-	\def \defInstructor {指导教师姓名} %指导教师姓名
+	\school{院系名称} %院系名称
+	\classnum{专业班级} %专业班级
+	\stunum {U201300000} %学号
+	\instructor{指导教师姓名} %指导教师姓名
 	
 \begin{document}
+	%生成标题页
+	%如果要改变填写横杠长度，请这样使用：\maketitle[15em]
+	\maketitle
 	
+	%生成声明与授权书页
+	%使用方法：\makestatement[保密年数]{empty/true/false}
+	%其中：empty为不填；true为保密，请填写保密年数；false为不保密
+	\makestatement{empty}
+	
+	%摘要页码为大写罗马数字
 	\pagenumbering{Roman}
-	
+	%填写中文摘要内容和关键字
 	\begin{cnabstract}{关键词1；关键词2；关键词3}
+		在正文中添加空行可以实现换行功能
+		
 		摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
 		
 		摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
 	\end{cnabstract}
-	
+	%填写英文摘要内容和关键字
 	\begin{enabstract}{Key1; Key2; Key3}
+		This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
+		
 		This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
 	\end{enabstract}
 	
+	%生成目录
 	\tableofcontents
 	\addcontentsline{toc}{section}{目录}
-	\pagenumbering{arabic}
+	\pagenumbering{arabic}%正文页码为阿拉伯数字
 	
+	%正文内容从这里开始
 	\section{第一节 The first Section}
 	\subsection{第一小节}
 	\subsubsection{第一小小节}

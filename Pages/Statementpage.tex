@@ -1,0 +1,63 @@
+%本文新加命令makestatement生成声明部分
+
+%使用条件语句
+\usepackage{xstring}
+%使用特殊符号
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%定义三个条件语句
+\newcommand{\encryption}[1]{
+	\IfStrEqCase{#1}{{empty}{$\square$}
+		{true}{$\text{\rlap{\checkmark}}\square$ }
+		{false}{$\square$}}
+	[$\square$]
+}
+\newcommand{\nonencryption}[1]{
+	\IfStrEqCase{#1}{{empty}{$\square$}
+		{true}{$\square$}
+		{false}{$\text{\rlap{\checkmark}}\square$}}
+	[$\square$]
+}
+\newcommand{\encryptionyear}[2]{
+	\IfStrEqCase{#1}{{empty}{}
+		{true}{#2}
+		{false}{}}
+}
+
+%设置命令
+\newcommand{\makestatement}[2][0]{
+	\clearpage
+	\thispagestyle{empty}
+	\vspace*{1em}
+	\begin{center}
+		\heiti \zihao{-2} \bfseries
+		学位论文原创性声明
+	\end{center}
+	
+	本人郑重声明：所呈交的论文是本人在导师的指导下独立进行研究所取得的研究成果。除了文中特别加以标注引用的内容外，本论文不包括任何其他个人或集体已经发表或撰写的成果作品。本人完全意识到本声明的法律后果由本人承担。
+	\\\\
+	\rightline{作者签名：\hspace{4em} 年 \hspace{2em} 月 \hspace{2em} 日}
+	\vspace{4em}
+	
+	\begin{center}
+		\heiti \zihao{-2} \bfseries
+		学位论文版权使用授权书
+	\end{center}
+
+	本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
+	
+	\begin{tabbing}
+		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\encryption{#2}
+		，在\makebox[2em][c]{\encryptionyear{#2}{#1}}年解密后适用本授权书。\\
+		\>2、不保密\>\nonencryption{#2}
+		。\\
+		\>（请在以上相应方框内打“$\checkmark$”）
+	\end{tabbing}
+	
+	\rightline{作者签名：\hspace{4em} 年 \hspace{2em} 月 \hspace{2em} 日}
+	
+	\rightline{导师签名：\hspace{4em} 年 \hspace{2em} 月 \hspace{2em} 日}
+	
+	\newpage
+}

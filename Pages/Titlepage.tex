@@ -1,0 +1,45 @@
+%本文重置maketitle
+
+%添加几个新的文档属性
+\def \defschool {}
+\def \defclassnum {}
+\def \defstunum {}
+\def \definstructor {}
+\newcommand{\school}[1]{\def \defschool {#1}}
+\newcommand{\classnum}[1]{\def \defclassnum {#1}}
+\newcommand{\stunum}[1]{\def \defstunum {#1}}
+\newcommand{\instructor}[1]{\def \definstructor {#1}}
+
+%重置命令maketitle
+\makeatletter
+\renewcommand{\maketitle}[1][12em]{
+	\begin{titlepage}
+		\begin{center}
+			\vspace*{4em}
+			\includegraphics[height=1.61cm]{HUST.png}\\
+			\bigskip
+			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计[论文]}\\
+			\vspace{4em}
+			
+			{\zihao{2} \heiti \bfseries \@title}\\
+			\vspace{4em}
+			{\zihao{3} \huawenzhongsong 
+				\renewcommand\arraystretch{1.5}
+				\begin{tabular}{lc}
+					\makebox[4em][s]{院系} &
+					\underline{\makebox[#1]{\defschool}} \\
+					\makebox[4em][s]{专业班级} &
+					\underline{\makebox[#1]{\defclassnum}} \\
+					\makebox[4em][s]{姓名} &
+					\underline{\makebox[#1]{\@author}} \\
+					\makebox[4em][s]{学号} &
+					\underline{\makebox[#1]{\defstunum}} \\
+					\makebox[4em][s]{指导教师} &
+					\underline{\makebox[#1]{\definstructor}} \\
+			\end{tabular}}\\
+			\vspace{4em}
+			{\zihao{3} \huawenzhongsong \@date}\\
+		\end{center}
+	\end{titlepage}
+}
+\makeatother
