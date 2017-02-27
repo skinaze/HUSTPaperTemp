@@ -5,13 +5,13 @@
 	\include{Pack&Settings/Geometry}
 	\include{Pack&Settings/Font}
 	\include{Pack&Settings/Header&Footer}
-	\include{Pack&Settings/Tableofcontents}
 	\include{Pack&Settings/Paragraph&Section}
 	\include{Pack&Settings/Table&Figure}
 	\include{Pack&Settings/Abstract}
 	%应用默认页面
 	\include{Pages/Titlepage}
 	\include{Pages/Statementpage}
+	\include{Pages/Tableofcontents}
 	
 	%进行个人信息设置
 	\title{论文题目} %论文题目
@@ -32,8 +32,9 @@
 	%其中：empty为不填；true为保密，请填写保密年数；false为不保密
 	\makestatement{empty}
 	
-	%摘要页码为大写罗马数字
-	\pagenumbering{Roman}
+	\clearpage %结束上一页
+	\pagenumbering{Roman} %摘要页码为大写罗马数字
+	
 	%填写中文摘要内容和关键字
 	\begin{cnabstract}{关键词1；关键词2；关键词3}
 		在正文中添加空行可以实现换行功能
@@ -49,13 +50,15 @@
 		This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
 	\end{enabstract}
 	
-	%生成目录
-	\clearpage
+	%生成目录（自定义的命令）
+	%使用方法：\maketoc{nopagenum/pagenum/pagenumtoc}
+	%其中：nopagenum指目录没有页码（默认值）；pagenum指目录有页码；
+	%pagenumtoc指目录有页码，且目录两字出现在目录中
+	%请注意在合适的位置放置\pagenumbering{numstyle}使用新的页码
+	\maketoc
+	
+	\clearpage%结束上一页
 	\pagenumbering{arabic} %正文页码为阿拉伯数字
-	\thispagestyle{fancy}
-	\phantomsection
-	\addcontentsline{toc}{section}{目录}
-	\tableofcontents
 	
 	%正文内容从这里开始
 	\section{第一节 The first Section}

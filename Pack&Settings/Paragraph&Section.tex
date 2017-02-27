@@ -21,20 +21,6 @@
 \usepackage[title,titletoc]{appendix}
 \renewcommand{\appendixname}{附录}
 
-%重新设置目录
-\usepackage{tocloft}
-\usepackage{hyperref}
-\hypersetup{hidelinks} %去掉目录红框
-\renewcommand{\cfttoctitlefont}{\clearpage \hfill \heiti \zihao{-2} \bfseries}
-\renewcommand{\contentsname}{目\hspace{2em}录}
-\renewcommand{\cftaftertoctitle}{\hfill}
-\renewcommand{\cftbeforeloftitleskip}{0.5em}
-\renewcommand{\cftafterloftitleskip}{0.5em}
-\renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
-\renewcommand{\cftbeforesecskip}{0em} %设置段间距
-\renewcommand{\cftpartfont}{\songti \bfseries}%设置Part字体
-\renewcommand{\cftsecfont}{\songti \bfseries}%设置Section字体
-
 %首行缩进存在问题，暂不使用
 \iffalse
 %设置新的标题层级subsubsubsection

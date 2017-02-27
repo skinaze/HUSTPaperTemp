@@ -1,0 +1,48 @@
+%重新设置目录
+\usepackage{tocloft}
+\usepackage{hyperref}
+\hypersetup{hidelinks} %去掉目录红框
+\renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} \bfseries}
+\renewcommand{\contentsname}{目\hspace{2em}录}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftbeforeloftitleskip}{0.5em}
+\renewcommand{\cftafterloftitleskip}{0.5em}
+\renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
+\renewcommand{\cftbeforesecskip}{0em} %设置段间距
+\renewcommand{\cftpartfont}{\songti \bfseries}%设置Part字体
+\renewcommand{\cftsecfont}{\songti \bfseries}%设置Section字体
+
+%使用条件语句
+\usepackage{xstring}
+
+%定义两个新语句
+%第一个语句更改fancyhdr样式
+\newcommand{\plainfooterstyle}[1]{
+	\IfStrEqCase{#1}{{nopagenum}{}
+		{pagenum}{\footstyle}
+		{pagenumtoc}{\footstyle}}
+}
+%第二个语句在目录中添加目录标签
+\newcommand{\addtoctotoc}[1]{
+	\IfStrEqCase{#1}{{nopagenum}{}
+		{pagenum}{}
+		{pagenumtoc}{\phantomsection
+			\addcontentsline{toc}{section}{目录}}}
+}
+
+%设置新的生成目录命令
+\newcommand{\maketoc}[1][nopagenum]{
+	%修改hdr原plain格式
+	\fancypagestyle{plain}{%
+		\fancyhf{} %清空原有样式
+		\headstyle
+		\plainfooterstyle{#1}
+	}
+	%设置目录hdr和页码选项
+	\clearpage
+	\pagestyle{plain}
+	\addtoctotoc{#1}
+	\tableofcontents
+	\clearpage
+	\pagestyle{main}
+}

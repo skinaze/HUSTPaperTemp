@@ -5,22 +5,22 @@
 
 %使用fancyhdr库
 \usepackage{fancyhdr}
+%设置页眉样式
+\newcommand{\headstyle}{
+	\fancyhead[C]{\huawenzhongsong \zihao{5} 华 \space 中 \space 科 \space 技 \space 大 \space 学 \space 毕 \space 业 \space 设 \space 计（论  \space 文）}
+}
+%设置页脚样式
+\newcommand{\footstyle}{\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}
+	\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(6.7cm,1pt);}}
+	\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-6.7cm,1pt);}}}
 \pagestyle{fancy}
 \fancyhf{} %清空原有样式
-%设置页眉样式
-\fancyhead[C]{\huawenzhongsong \zihao{5} 华 \space 中 \space 科 \space 技 \space 大 \space 学 \space 毕 \space 业 \space 设 \space 计（论  \space 文）}
-%设置页脚样式
-\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}
-\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(6.7cm,1pt);}}
-\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-6.7cm,1pt);}}
+\headstyle
+\footstyle
 
-%修改原plain格式
-\fancypagestyle{plain}{%
+%定义一种新的格式叫做main
+\fancypagestyle{main}{%
 	\fancyhf{} %清空原有样式
-	%设置页眉样式
-	\fancyhead[C]{\huawenzhongsong \zihao{5} 华 \space 中 \space 科 \space 技 \space 大 \space 学 \space 毕 \space 业 \space 设 \space 计（论  \space 文）}
-	%设置页脚样式
-	\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}
-	\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(6.7cm,1pt);}}
-	\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-6.7cm,1pt);}}
+	\headstyle
+	\footstyle
 }
