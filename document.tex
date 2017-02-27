@@ -1,15 +1,17 @@
+%请使用XeLaTeX进行编译
 \documentclass[a4paper,cs4size,UTF8,winfonts,boldfont,slantfont]{ctexart}
 	
 	%应用文档设置
 	\include{Pack&Settings/Geometry}
 	\include{Pack&Settings/Font}
 	\include{Pack&Settings/Header&Footer}
+	\include{Pack&Settings/Tableofcontents}
 	\include{Pack&Settings/Paragraph&Section}
 	\include{Pack&Settings/Table&Figure}
 	\include{Pack&Settings/Abstract}
 	%应用默认页面
 	\include{Pages/Titlepage}
-	\include{pages/Statementpage}
+	\include{Pages/Statementpage}
 	
 	%进行个人信息设置
 	\title{论文题目} %论文题目
@@ -48,19 +50,70 @@
 	\end{enabstract}
 	
 	%生成目录
-	\tableofcontents
+	\clearpage
+	\pagenumbering{arabic} %正文页码为阿拉伯数字
+	\thispagestyle{fancy}
+	\phantomsection
 	\addcontentsline{toc}{section}{目录}
-	\pagenumbering{arabic}%正文页码为阿拉伯数字
+	\tableofcontents
 	
 	%正文内容从这里开始
 	\section{第一节 The first Section}
+	这是小四号的正文字体，段间距1.5倍
+	
+	通过空一行实现段落换行，仅仅是回车并不会产生新的段落
 	\subsection{第一小节}
 	\subsubsection{第一小小节}
-	\subsubsubsection{第一小小小节}
-	字号参照
-	
-	再来一段
+	\subsubsection{第二小小节}
 	\paragraph{段落}段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此
 	\subparagraph{小段落}段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此段落具体文章在此
+	\subsection{第二小节}
+	这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字
 	\section{第二节}
+		新的大节会自动出现在新的一页上
+		
+		请注意目录和参考文献的编译过程
+	\section{第三节}
+	这是一个引用的范例\cite{Stone_1998}
+	
+	这样可以添加一个不标注的引用\nocite{9787508342894}
+	
+	这样可以添加所有bib文件中的参考文献\nocite{*}
+	
+	\section{测试多页目录的效果}
+	wtf
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	abc
+	\section{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	\subsection{测试多页目录的效果}
+	whatever
+	
+	%生成参考文献
+	%添加到目录
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{参考文献}
+	%使用方法：\bibliography{参考文件1文件名, 参考文献2文件名, ...}
+	\bibliography{Bibs/mybib}
+	
+	\begin{appendices}
+		\section{这是第一个附录}
+		这里是附录环境，其中的section、subsection、subsubsection已经变为附录的样式，并且会以这种样式加入目录中
+		\subsection{附录可以有小节}
+		\subsubsection{附录中也可以有小小节}
+	\end{appendices}
+	
 \end{document}

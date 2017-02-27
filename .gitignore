@@ -9,3 +9,7 @@
 *.toc
 *.lof
 *.lot
+
+#BIB files
+*.bbl
+*.blg
