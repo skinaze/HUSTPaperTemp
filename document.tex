@@ -7,12 +7,16 @@
 	\include{Pack&Settings/Header&Footer}
 	\include{Pack&Settings/Paragraph&Section}
 	\include{Pack&Settings/Table&Figure}
-	\include{Pack&Settings/Abstract}
 	\include{Pack&Settings/Equation}
 	%应用默认页面
 	\include{Pages/Titlepage}
 	\include{Pages/Statementpage}
 	\include{Pages/Tableofcontents}
+	\include{Pages/Abstract}
+	\include{Pages/Thanks}
+	
+	%添加自己要用的其他宏包
+	\usepackage{xltxtra}
 	
 	%进行个人信息设置
 	\title{论文题目} %论文题目
@@ -88,7 +92,7 @@
 	\begin{equation}
 	sin^2{\theta}+cos^2{\theta}=1 \label{eq:pingfanghe}
 	\end{equation}
-	还可以通过添加标签在正文中引用公式，如公式~\eqref{eq:pingfanghe}。我们还可以轻松打出一个矩阵
+	还可以通过添加标签在正文中引用公式，如等式~\eqref{eq:pingfanghe}或者\autoref{eq:pingfanghe}。我们还可以轻松打出一个矩阵
 	\begin{equation}
 	\bm{A}=\begin{bmatrix}
 	1&2&3&4\\
@@ -107,6 +111,41 @@
 	f_2(x)=sqrt[3]{x^3+3x}
 	\end{eqnarray}
 	以上
+	
+	\section{用图和表的示例}
+	\subsection{图的使用}
+	\XeLaTeX 环境下可以使用EPS、PDF、PNG、JPEG、BMP格式的图片，当然也可以用绘图包直接在\LaTeX 中绘制图形，推荐使用宏包tikz。图的环境是figure但figure环境使用复杂，因此本模板定义了一个通用版本的figure，该环境会将figure内的图片居中并设置标签与引用名，同时会让图片位置设置为所有可行位置（htbp，即此处、页顶、页底、独立一页）。
+	
+	其使用方法如下：
+	
+	\begin{generalfig}{大数据信息处理框架}{fig:data}
+		\includegraphics[width=\textwidth]{Figures/data.png}
+	\end{generalfig}
+		
+	同时也可以引用该图片例如：\autoref{fig:data}。请注意generalfig第一个参数是标题，第二个参数是引用。
+	
+	\newpage
+	
+	\subsection{表的使用}
+	建议使用三线表
+	定义了新的做中有
+	使用tabularx方便做表
+	\begin{generaltab}{某校学生升高体重样本}{tab:heightweight}
+		\begin{tabularx}{\textwidth}{lCCC}
+			\toprule
+			序号&年龄&身高&体重\\
+			\midrule
+			1&14&156&42\\
+			2&16&158&45\\
+			3&14&162&48\\
+			4&15&163&50\\
+			\cmidrule{2-4}
+			平均&15&159.75&46.25\\
+			\bottomrule
+		\end{tabularx}
+	\end{generaltab}
+	
+	啦啦啦
 	
 	
 	\section{测试多页目录的效果}
@@ -129,6 +168,12 @@
 	\subsection{测试多页目录的效果}
 	\subsection{测试多页目录的效果}
 	whatever
+	
+	\begin{thankpage}
+		感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师
+		
+		感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师感谢老师
+	\end{thankpage}
 	
 	%生成参考文献
 	%添加到目录

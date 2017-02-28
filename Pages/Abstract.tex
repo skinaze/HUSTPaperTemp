@@ -2,24 +2,28 @@
 
 %中文摘要环境
 \newenvironment{cnabstract}[1]{
-	\newcommand{\cnkeyword}{#1}
+	\def \cnkeyword {#1}
 	\clearpage 
+	\phantomsection
 	\addcontentsline{toc}{section}{摘要}
 	\begin{center} \heiti \bfseries \zihao{-2} 摘 \hspace{2em} 要 \end{center}
 	
 }{
 	\vspace{1em}
 	\paragraph{\heiti \bfseries 关键词：} \cnkeyword
+	\clearpage
 }
 
 %英文摘要环境
 \newenvironment{enabstract}[1]{
-	\newcommand{\enkeyword}{#1}
+	\def \enkeyword {#1}
 	\clearpage 
+	\phantomsection
 	\addcontentsline{toc}{section}{Abstract}
 	\begin{center} \bfseries \zihao{-2} Abstract \end{center}
 	
 }{
 	\vspace{1em}
 	\paragraph{\bfseries Key Words: } \enkeyword
+	\clearpage
 }

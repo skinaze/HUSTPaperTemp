@@ -1,0 +1,10 @@
+%本文添加一个新的叫致谢的环境
+
+\newenvironment{thankpage}{
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{致谢}
+	\section*{致谢}
+}{
+	\clearpage
+}
