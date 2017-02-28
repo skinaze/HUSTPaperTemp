@@ -1,0 +1,16 @@
+%本文包含对于公式的设定
+
+%使用ams的数学库
+\usepackage{amsmath}
+\usepackage{bm}
+
+%设置公式间距为零
+\AtBeginDocument{
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt} 
+}
+
+%公式编号带章节
+\numberwithin{equation}{section}

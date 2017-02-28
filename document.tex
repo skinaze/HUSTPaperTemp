@@ -8,6 +8,7 @@
 	\include{Pack&Settings/Paragraph&Section}
 	\include{Pack&Settings/Table&Figure}
 	\include{Pack&Settings/Abstract}
+	\include{Pack&Settings/Equation}
 	%应用默认页面
 	\include{Pages/Titlepage}
 	\include{Pages/Statementpage}
@@ -51,7 +52,7 @@
 	\end{enabstract}
 	
 	%生成目录（自定义的命令）
-	%使用方法：\maketoc{nopagenum/pagenum/pagenumtoc}
+	%使用方法：\maketoc[nopagenum/pagenum/pagenumtoc]
 	%其中：nopagenum指目录没有页码（默认值）；pagenum指目录有页码；
 	%pagenumtoc指目录有页码，且目录两字出现在目录中
 	%请注意在合适的位置放置\pagenumbering{numstyle}使用新的页码
@@ -82,6 +83,31 @@
 	这样可以添加一个不标注的引用\nocite{9787508342894}
 	
 	这样可以添加所有bib文件中的参考文献\nocite{*}
+	
+	在文中引用公式可以这么写：$a^2+b^2=c^2$这是勾股定理，他还可以表示为$c=\sqrt{a^2+b^2}$，还可以让公式单独一段并且加上编号
+	\begin{equation}
+	sin^2{\theta}+cos^2{\theta}=1 \label{eq:pingfanghe}
+	\end{equation}
+	还可以通过添加标签在正文中引用公式，如公式~\eqref{eq:pingfanghe}。我们还可以轻松打出一个矩阵
+	\begin{equation}
+	\bm{A}=\begin{bmatrix}
+	1&2&3&4\\
+	11&22&33&44\\
+	\end{bmatrix}
+	\times\begin{bmatrix}
+	22&24\\
+	32&34\\
+	42&44\\
+	52&54\\
+	\end{bmatrix}
+	\end{equation}
+	或者多个带编号的公式
+	\begin{eqnarray}
+	f_1(x)=12x^2+36x+sinx\\
+	f_2(x)=sqrt[3]{x^3+3x}
+	\end{eqnarray}
+	以上
+	
 	
 	\section{测试多页目录的效果}
 	wtf
