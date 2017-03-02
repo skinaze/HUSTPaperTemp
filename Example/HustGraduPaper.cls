@@ -52,7 +52,7 @@
 %用于设置非常用字体
 \RequirePackage{fontspec}
 %论文封面使用华文中宋
-\setCJKfamilyfont{hwzs}{STZhongsong}
+\setCJKfamilyfont{hwzs}{STZHONGS.TTF}
 \newcommand{\huawenzhongsong}{\CJKfamily{hwzs}}
 
 
