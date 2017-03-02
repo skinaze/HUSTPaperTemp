@@ -217,6 +217,13 @@
 
 
 %
+%	---	定义列表项的样式
+%
+\usepackage{enumitem}
+\setlist{noitemsep}
+
+
+%
 %	---	定义新的标题页面
 %
 %添加几个新的文档属性

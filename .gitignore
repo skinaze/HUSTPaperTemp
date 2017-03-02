@@ -13,3 +13,6 @@
 #BIB files
 *.bbl
 *.blg
+
+#My test files
+Test/*
