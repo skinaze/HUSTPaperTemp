@@ -99,10 +99,6 @@
 \ctexset{paragraph={beforeskip={0em}}}
 \ctexset{subparagraph={beforeskip={0em}}}
 
-%设置参考文献
-\bibliographystyle{plain}
-\ctexset{bibname={参考文献}}
-
 %设置附录
 \RequirePackage[title,titletoc]{appendix}
 \renewcommand{\appendixname}{附录}
@@ -425,5 +421,23 @@
 	\section*{致谢}
 }{
 	\clearpage
+}
+
+
+%
+%	---	重新定义参考文献页
+%
+%设置参考文献
+\bibliographystyle{plain}
+\ctexset{bibname={参考文献}}
+
+%设置新的附录命令
+\let \oldbibliography \bibliography
+\renewcommand{\bibliography}[1]{
+	%添加到目录
+	\clearpage
+	\phantomsection
+	\addcontentsline{toc}{section}{参考文献}
+	\oldbibliography{#1}
 }
 
