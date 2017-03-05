@@ -52,7 +52,7 @@
 %用于设置非常用字体
 \RequirePackage{fontspec}
 %论文封面使用华文中宋
-\setCJKfamilyfont{hwzs}{STZHONGS.TTF}
+\setCJKfamilyfont{hwzs}{STZhongsong}
 \newcommand{\huawenzhongsong}{\CJKfamily{hwzs}}
 
 
@@ -150,7 +150,7 @@
 \newcommand{\figureautorefname}{图}
 \newcommand{\tableautorefname}{表}
 
-%使用tabular库并定义新的左右中格式
+%使用tabularx库并定义新的左右中格式
 \RequirePackage{tabularx}
 \RequirePackage{makecell}
 \newcolumntype{L}{X}
@@ -218,7 +218,7 @@
 %
 %	---	定义列表项的样式
 %
-\usepackage{enumitem}
+\RequirePackage{enumitem}
 \setlist{noitemsep}
 
 
@@ -369,7 +369,10 @@
 %
 \RequirePackage{tocloft}
 \RequirePackage{hyperref}
-\hypersetup{hidelinks} %去掉目录红框
+\hypersetup{
+	colorlinks = true,
+	linkcolor  = black
+} %去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} \bfseries}
 \renewcommand{\contentsname}{目\hspace{2em}录}
 \renewcommand{\cftaftertoctitle}{\hfill}
