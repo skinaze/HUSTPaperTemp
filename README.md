@@ -7,6 +7,7 @@
 正文样例可以参照[PDF样例文档](Example/example.pdf)
 
 ##使用方法
+* 下载本模板[最新Release版本](https://github.com/skinaze/HUSTPaperTemp/releases)
 * 下载并安装最新版本的MiKTeX （推荐）或者TeX Live
 * 打开TeX works，并设置默认编译工具(Edit->Preference->Typesetting->Processing Tools->Default)为XeLaTeX+MakeIndex+BibTeX
 * 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
