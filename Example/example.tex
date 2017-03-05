@@ -97,11 +97,11 @@
 	
 	\section{用图和表的示例}
 	\subsection{图的使用}
-	\XeLaTeX 环境下可以使用EPS、PDF、PNG、JPEG、BMP格式的图片，当然也可以用绘图包直接在\LaTeX 中绘制图形，推荐使用宏包tikz。图的环境是figure但figure环境使用复杂，因此本模板定义了一个通用版本的figure，该环境会将figure内的图片居中并设置标签与引用名，同时会让图片位置设置为所有可行位置（htbp，即此处、页顶、页底、独立一页）。
+	\XeLaTeX 环境下可以使用EPS、PDF、PNG、JPEG、BMP格式的图片，当然也可以用绘图包直接在\LaTeX 中绘制图形，推荐使用宏包tikz。图的环境是figure但figure环境使用复杂，因此本模板定义了一个通用版本的figure，该环境会将figure内的图片居中并设置标签与引用名，同时会让图片位置设置为所有可行位置（htbp，即此处、页顶、页底、独立一页），此选项可以作为可选参数设置。
 	
 	其使用方法如下：
 	
-	\begin{generalfig}{大数据信息处理框架}{fig:data}
+	\begin{generalfig}[htb]{大数据信息处理框架}{fig:data}
 		\includegraphics[width=\textwidth]{Figures/data.png}
 	\end{generalfig}
 	

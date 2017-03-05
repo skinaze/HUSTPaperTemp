@@ -172,20 +172,19 @@
 \RequirePackage{graphicx}
 
 %重新定义图和表的浮动环境，使其方便使用
-\newenvironment{generalfig}[2]{
-	\def \figcaption {#1}
-	\def \figlabel {#2}
-	\begin{figure}[htbp]
+\newenvironment{generalfig}[3][htbp]{
+	\def \figcaption {#2}
+	\def \figlabel {#3}
+	\begin{figure}[#1]
 		\centering
 	}{
-		\vspace{-2em} %缩减莫名其妙的空行，暂不明问题缘由
 		\caption{\figcaption} \label{\figlabel}
 	\end{figure}
 }
-\newenvironment{generaltab}[2]{
-	\def \tabcaption {#1}
-	\def \tablabel {#2}
-	\begin{table}[htbp]
+\newenvironment{generaltab}[3][htbp]{
+	\def \tabcaption {#2}
+	\def \tablabel {#3}
+	\begin{table}[#1]
 		\caption{\tabcaption} \label{\tablabel}
 		\zihao{5}
 		\centering
@@ -203,8 +202,8 @@
 
 %设置公式间距为零
 \AtBeginDocument{
-	\setlength{\abovedisplayskip}{0pt}
-	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayskip}{6pt}
+	\setlength{\belowdisplayskip}{6pt}
 	\setlength{\abovedisplayshortskip}{0pt}
 	\setlength{\belowdisplayshortskip}{0pt} 
 }
