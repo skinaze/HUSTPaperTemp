@@ -186,7 +186,16 @@
 	官方模板未对目录页码做以说明，本模板默认设置目录没有页码，也没有页脚，如需更改该选项，请参考本文中的~\nameref{subsec:toc}章节。如果上面说的不够直观，您也可以参考下文的~\nameref{sec:example}。
 	
 	\subsection{字体问题}
-	根据学校官方模板，标题页中会使用到华文中宋（STZhongsong）字体，考虑到该字体是微软\textsuperscript{\textregistered}公司出品的Office产品中的字体\footnote{该字体实为中国常州华文印刷新技术有限公司\textsuperscript{\texttrademark}开发}，为了避免版权纠纷，本模板未包含该字体。鉴于本人未在互联网上找到该字体的正版购买渠道，因此{\bfseries 如果需要使用本模板请安装Office软件。因下载使用盗版字体造成的版权纠纷与本人无关。}
+	本模板采用\XeLaTeX 进行编译，所以字体设置遵循xeCJK的默认设置，具体如下：
+	\begin{description}
+		\item[Mac OS X] 华文字库
+		\item[Windows（Vista 及以后）]中易字库+ 微软雅黑
+		\item[Windows （XP 及以前）] 中易字库
+		\item[其他] Fandol字库\footnote{由马起园、苏杰、黄晨成等人开发的开源中文字体，参见：\url{https://www.ctan.org/pkg/fandol}。}
+	\end{description}\cite[\S 4.3]{ctexdoc}
+	考虑到学校官方模板并未对宋体、黑体的具体字体做以要求，本模板采用xeCJK的默认字体。
+	
+	但问题在于，学校官方模板标题页中会使用到华文中宋（STZhongsong）字体，该字体是微软\textsuperscript{\textregistered}公司出品的Office产品中的字体\footnote{该字体实为中国常州华文印刷新技术有限公司\textsuperscript{\texttrademark}开发。}，为了避免版权纠纷，本模板未包含该字体。鉴于本人未在互联网上找到该字体的正版购买渠道，因此{\bfseries 如果需要使用本模板请安装Office软件。因下载安装使用盗版字体造成的版权纠纷与本人无关。}
 	
 	\section{一个小例子}\label{sec:example}
 	为了方便使用，在这里提供一个简单的使用范例，范例中只有少量注释，请参考前文查看。本模板还包含了一个相对详细的例子，在“Example”文件夹下，如果需要也可参考该样例。
@@ -245,7 +254,6 @@
 	
 	本文如有描述不周的地方欢迎通过\href{mailto:me@stringblog.com}{邮件方式}联系我。或者访问本人的个人博客\url{https://stringblog.com/}。
 	
-	\clearpage
 	\phantomsection
 	\addcontentsline{toc}{section}{参考文献}
 	\bibliographystyle{plain}
