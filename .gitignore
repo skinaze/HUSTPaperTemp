@@ -13,6 +13,8 @@
 #BIB files
 *.bbl
 *.blg
+*.bib.bak
+*.bib.sav
 
 #My test files
 Test/*
