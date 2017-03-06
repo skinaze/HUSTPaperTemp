@@ -13,11 +13,11 @@
 * 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
 * 在新的tex文档中使用\documentclass{HustGraduPaper}使用模板定义的样式
 
+##详细说明
+详细说明请参考[使用说明](Instruction/使用说明.pdf)，或者查看[Example文件夹](Example)下的例子。
+
 ##问题反馈
 如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](http://stringblog.com/)。
-
-##详细说明
-详细说明请参考[使用说明](Instruction/使用说明.pdf)，或者查看Example文件夹下的例子。
 
 ##未发布的更新内容
 无
