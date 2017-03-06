@@ -438,7 +438,7 @@
 %	---	重新定义参考文献页
 %
 %设置参考文献
-%\RequirePackage{natbib}
+%\RequirePackage[numbers]{natbib}
 \bibliographystyle{gbt7714-2005}
 \ctexset{bibname={参考文献}}
 

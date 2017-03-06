@@ -370,8 +370,9 @@
 \RequirePackage{tocloft}
 \RequirePackage{hyperref}
 \hypersetup{
-	colorlinks = true,
-	linkcolor  = black
+	%colorlinks = true,
+	%linkcolor  = black,
+	pdfborder = 000
 } %去掉目录红框
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} \bfseries}
 \renewcommand{\contentsname}{目\hspace{2em}录}
@@ -437,7 +438,8 @@
 %	---	重新定义参考文献页
 %
 %设置参考文献
-\bibliographystyle{plain}
+%\RequirePackage[numbers]{natbib}
+\bibliographystyle{gbt7714-2005}
 \ctexset{bibname={参考文献}}
 
 %设置新的附录命令

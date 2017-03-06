@@ -1,4 +1,4 @@
-\documentclass[UTF8]{ctexart}
+\documentclass[UTF8,sub3section]{ctexart}
 
 \title{\bfseries \zihao{2} 华中科技大学\\本科生毕业论文模板\\使用说明}
 \author{Skinaze}
@@ -7,7 +7,7 @@
 \usepackage{xltxtra}
 \usepackage{doc}
 \usepackage{enumitem}
-%\setlist{noitemsep}
+\setlist{noitemsep}
 \RequirePackage{hyperref}
 \hypersetup{colorlinks=true} 
 
@@ -23,6 +23,18 @@
 		\item 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下\\
 		\item 在新的tex文档中使用\verb|\documentclass{HustGraduPaper}|使用模板定义的样式
 	\end{enumerate}
+	
+	\section{样式选项}
+	本样式目前包括下面几个选项
+	\begin{description}
+		\item[GreenLogo] （默认选项）在标题页使用绿色的“华中科技大学”；
+		\item[BlackLogo] 在标题页使用黑色的“华中科技大学”；
+	\end{description}
+	
+	选项使用方法：
+	\begin{verbatim}
+		\documentclass[选项1，选项2]{HustGraduPaper}
+	\end{verbatim}
 	
 	\section{页面与章节}
 	本模板针对论文内容设定了如下几个新的/重写的页面：
@@ -47,7 +59,7 @@
 	
 	使用方法：在正文中使用命令
 	\begin{verbatim}
-		verb|\makestatement[保密年数]{empty/true/false}|
+		\makestatement[保密年数]{empty/true/false}
 	\end{verbatim}
 	生成声明与授权页面。该命令包含一个可选参数和一个必填参数，用于设置勾选保密或不保密。其中：empty为不勾选；true为保密，如选此项请填写保密年数；false为不保密。
 	
@@ -89,9 +101,11 @@
 	\end{verbatim}
 	
 	\subsection{参考文献}
-	本模板参考文献采用\BibTeX 生成，因此需要制作独立的Bib文件。“*.bib”是一种数据库文件，其中包含了参考文献的基本信息，如此即可直接通过编译生成参考文件文字。
+	本模板参考文献采用\BibTeX 生成，因此需要制作独立的Bib文件。“*.bib”是一种数据库文件，其中包含了参考文献的基本信息，如此即可直接通过编译生成参考文件文字，避免了手打参考文献的繁琐过程。
 	
-	文献数据库可以手工逐条录入，也可以从互联网上直接下载现成的文献数据库，很多电子期刊数据库网站会提供相应的\BibTeX 数据库文件或者\BibTeX 条目导出，Google\textsuperscript{\textregistered}  Scholar也免费提供此服务。\cite[\S 3.3]{9787121202087}
+	本模板为了使用了南京大学胡海星的《符合国家标准《GB/T 7714-2005 文后参考文献著录规则》的BibTeX样式文件》，虽然官方模板给出的样式与国标并不完全一致，但两者样式基本相同，故采用该样式，其bib文件具体标签说明请参照他写的\href{https://raw.github.com/Haixing-Hu/nju-thesis/master/manual/njuthesis-manual.pdf}{使用手册}\cite{nanda}，考虑其内容较多，不在此列举。
+	
+	文献数据库可以手工逐条录入，也可以从互联网上直接下载现成的文献数据库，很多电子期刊数据库网站会提供相应的\BibTeX 数据库文件或者\BibTeX 条目导出，Google\textsuperscript{\textregistered}  Scholar也免费提供此服务。\cite[\S 3.3]{9787121202087}这对于英文文献十分有效，部分中文期刊也有这样的服务。
 	
 	如果希望手工录入，推荐安装JabRef管理参考文献，该系统可以直接搜索论文的DOI编号、书目的ISBN编号，甚至论文的名称，从而直接获得其相关信息，极大地方便了参考文献的录入。
 	
