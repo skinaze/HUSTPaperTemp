@@ -34,7 +34,7 @@
 \LoadClass[a4paper]{article}
 %页面基本设置
 \RequirePackage[boldfont,slantfont]{xeCJK}
-\RequirePackage[cs4size,UTF8,winfonts,heading=true]{ctex}
+\RequirePackage[cs4size,UTF8,heading=true]{ctex}
 
 %
 %	---	定义页边距
