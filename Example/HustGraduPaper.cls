@@ -10,7 +10,11 @@
 
 
 %	---	定义的新的类
-\ProvidesClass{HustGraduPaper}[2017/03/01 v1.0.0 Adapt HUST style to article]
+\def\HGP@name{HustGraduPaper}
+\def\HGP@date{2017/03/01}
+\def\HGP@version{v1.3.0}
+\def\HGP@introduction{Adapt HUST style to article}
+\ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -225,6 +229,10 @@
 %
 %	---	定义新的标题页面
 %
+%使用条件语句
+\RequirePackage{xstring}
+%用于解析参数
+\RequirePackage{kvsetkeys}
 %添加几个新的文档属性
 \def \defschool {}
 \def \defclassnum {}
@@ -235,12 +243,34 @@
 \newcommand{\stunum}[1]{\def \defstunum {#1}}
 \newcommand{\instructor}[1]{\def \definstructor {#1}}
 
+%设置maketitle的参数解析
+\newcommand{\arg@maketitle}[2]{
+	\IfStrEqCase{#1}{
+		{logo color}{
+			\IfStrEqCase{#2}{
+				{green}{\def\HGP@titlecolor{HUSTGreen.png}}
+				{black}{\def\HGP@titlecolor{HUSTBlack.png}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (maketitle)}]
+		}
+		{line length}{\def\HGP@titlelength{#2}}
+	}[\ClassWarning{\HGP@name}{There's no such argument for maketitle}]
+}
+\newcommand{\maketitlearg}[1]{
+	\IfSubStr{#1}{=}{
+		\kv@parse{#1}{\arg@maketitle}
+	}{
+		\def\HGP@titlelength{#1}
+	}
+}
 %重置命令maketitle
 \renewcommand{\maketitle}[1][12em]{
+	\def\HGP@titlecolor{HUSTGreen.png}
+	\def\HGP@titlelength{12em}
+	\maketitlearg{#1}
 	\begin{titlepage}
 		\begin{center}
 			\vspace*{4em}
-			\includegraphics[height=1.61cm]{\logopic}\\
+			\includegraphics[height=1.61cm]{\HGP@titlecolor}\\
 			\vspace*{2em}
 			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计[论文]}\\
 			\vspace{6em}
@@ -250,15 +280,15 @@
 				\renewcommand\arraystretch{1.5}
 				\begin{tabular}{lc}
 					\makebox[4em][s]{院 \hfill 系} &
-					\underline{\makebox[#1]{\defschool}} \\
+					\underline{\makebox[\HGP@titlelength]{\defschool}} \\
 					\makebox[4em][s]{专业班级} &
-					\underline{\makebox[#1]{\defclassnum}} \\
+					\underline{\makebox[\HGP@titlelength]{\defclassnum}} \\
 					\makebox[4em][s]{姓 \hfill 名} &
-					\underline{\makebox[#1]{\@author}} \\
+					\underline{\makebox[\HGP@titlelength]{\@author}} \\
 					\makebox[4em][s]{学 \hfill 号} &
-					\underline{\makebox[#1]{\defstunum}} \\
+					\underline{\makebox[\HGP@titlelength]{\defstunum}} \\
 					\makebox[4em][s]{指导教师} &
-					\underline{\makebox[#1]{\definstructor}} \\
+					\underline{\makebox[\HGP@titlelength]{\definstructor}} \\
 			\end{tabular}}\\
 			\vspace{4em}
 			{\zihao{3} \huawenzhongsong \@date}\\
@@ -270,8 +300,6 @@
 %
 %	---	定义新的声明页面
 %
-%使用条件语句
-\RequirePackage{xstring}
 %使用特殊符号
 \RequirePackage{amssymb}
 
@@ -451,4 +479,14 @@
 	\addcontentsline{toc}{section}{参考文献}
 	\oldbibliography{#1}
 }
+
+
+%Test kvsetkeys
+%\RequirePackage{kvsetkeys}
+%\newcommand{\testtodo}[2]{#1~is~#2;~}
+%\newcommand{\test}[1][]{
+%	\kv@parse{#1}{\testtodo}
+%}
+
+
 
