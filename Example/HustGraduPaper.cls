@@ -234,14 +234,14 @@
 %用于解析参数
 \RequirePackage{kvsetkeys}
 %添加几个新的文档属性
-\def \defschool {}
-\def \defclassnum {}
-\def \defstunum {}
-\def \definstructor {}
-\newcommand{\school}[1]{\def \defschool {#1}}
-\newcommand{\classnum}[1]{\def \defclassnum {#1}}
-\newcommand{\stunum}[1]{\def \defstunum {#1}}
-\newcommand{\instructor}[1]{\def \definstructor {#1}}
+\def \@school {}
+\def \@classnum {}
+\def \@stunum {}
+\def \@instructor {}
+\newcommand{\school}[1]{\def \@school {#1}}
+\newcommand{\classnum}[1]{\def \@classnum {#1}}
+\newcommand{\stunum}[1]{\def \@stunum {#1}}
+\newcommand{\instructor}[1]{\def \@instructor {#1}}
 
 %设置maketitle的参数解析
 \newcommand{\arg@maketitle}[2]{
@@ -280,15 +280,15 @@
 				\renewcommand\arraystretch{1.5}
 				\begin{tabular}{lc}
 					\makebox[4em][s]{院 \hfill 系} &
-					\underline{\makebox[\HGP@titlelength]{\defschool}} \\
+					\underline{\makebox[\HGP@titlelength]{\@school}} \\
 					\makebox[4em][s]{专业班级} &
-					\underline{\makebox[\HGP@titlelength]{\defclassnum}} \\
+					\underline{\makebox[\HGP@titlelength]{\@classnum}} \\
 					\makebox[4em][s]{姓 \hfill 名} &
 					\underline{\makebox[\HGP@titlelength]{\@author}} \\
 					\makebox[4em][s]{学 \hfill 号} &
-					\underline{\makebox[\HGP@titlelength]{\defstunum}} \\
+					\underline{\makebox[\HGP@titlelength]{\@stunum}} \\
 					\makebox[4em][s]{指导教师} &
-					\underline{\makebox[\HGP@titlelength]{\definstructor}} \\
+					\underline{\makebox[\HGP@titlelength]{\@instructor}} \\
 			\end{tabular}}\\
 			\vspace{4em}
 			{\zihao{3} \huawenzhongsong \@date}\\
@@ -322,8 +322,44 @@
 		{false}{}}
 }
 
+%设置statement的参数解析
+\def\HGP@checkedbox{$\text{\rlap{\checkmark}}\square$}
+\def\HGP@box{$\square$}
+\newcommand{\arg@statement}[2]{
+	\IfStrEqCase{#1}{
+		{encryption}{
+			\IfStrEqCase{#2}{
+				{yes}{
+					\def\HGP@encrypted{\HGP@checkedbox}
+					\def\HGP@unencrypted{\HGP@box}
+				}
+				{true}{
+					\def\HGP@encrypted{\HGP@checkedbox}
+					\def\HGP@unencrypted{\HGP@box}
+				}
+				{no}{
+					\def\HGP@encrypted{\HGP@box}
+					\def\HGP@unencrypted{\HGP@checkedbox}
+				}
+				{false}{
+					\def\HGP@encrypted{\HGP@box}
+					\def\HGP@unencrypted{\HGP@checkedbox}
+				}
+				{empty}{
+					\def\HGP@encrypted{\HGP@box}
+					\def\HGP@unencrypted{\HGP@box}
+				}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (statement)}]
+		}
+		{year}{\def\HGP@yearofencryption{#2}}
+	}[\ClassWarning{\HGP@name}{There's no such argument for statement}]
+}
 %设置命令
-\newcommand{\makestatement}[2][0]{
+\newcommand{\statement}[1][encryption=empty]{
+	\def\HGP@encrypted{\HGP@box}
+	\def\HGP@unencrypted{\HGP@checkedbox}
+	\def\HGP@yearofencryption{}
+	\kv@parse{#1}{\arg@statement}
 	\clearpage
 	\thispagestyle{empty}
 	\vspace*{1em}
@@ -345,9 +381,9 @@
 	本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
 	
 	\begin{tabbing}
-		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\encryption{#2}
-		，在\makebox[2em][c]{\encryptionyear{#2}{#1}}年解密后适用本授权书。\\
-		\>2、不保密\>\nonencryption{#2}
+		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\HGP@encrypted
+		，在\makebox[2em][c]{\HGP@yearofencryption}年解密后适用本授权书。\\
+		\>2、不保密\>\HGP@unencrypted
 		。\\
 		\>（请在以上相应方框内打“$\checkmark$”）
 	\end{tabbing}
@@ -358,6 +394,8 @@
 	
 	\clearpage
 }
+%旧的命令
+\newcommand{\makestatement}[2][]{\statement[encryption=#2,year=#1]}
 
 
 %

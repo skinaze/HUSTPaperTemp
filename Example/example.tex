@@ -12,14 +12,17 @@
 \usepackage{xltxtra}
 
 \begin{document}
-	%生成标题页
-	%如果要改变填写横杠长度，请这样使用：\maketitle[15em]
+	%生成标题页 \maketitle[可选参数]
+	%可选参数：
+	%logo color=green/black 华中科技大学字样的颜色，绿色或者黑色，默认绿色
+	%line lenght=12em 填写信息处横线的长度，默认12em
 	\maketitle
 	
-	%生成声明与授权书页
-	%使用方法：\makestatement[保密年数]{empty/true/false}
-	%其中：empty为不填；true为保密，请填写保密年数；false为不保密
-	\makestatement{empty}
+	%生成声明与授权书页 \statement[可选参数]
+	%可选参数：
+	%encryption=yes/no/true/false/empty 是否保密，yes/true为保密；no/false为不保密，empty为不填，默认为empty
+	%year=5 保密年数，默认为空
+	\statement
 	
 	\clearpage %结束上一页
 	\pagenumbering{Roman} %摘要页码为大写罗马数字
