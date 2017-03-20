@@ -456,7 +456,29 @@
 				{false}{\def\HGP@addtoctotoc{}}
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
 		}
-	}[\ClassWarning{\HGP@name}{There's no such argument for maketitle}]
+		{section indent}{\renewcommand{\cftsecindent}{#2}}
+		{subsection indent}{\renewcommand{\cftsubsecindent}{#2}}
+		{subsubsection indent}{\renewcommand{\cftsubsubsecindent}{#2}}
+		{indent}{
+			\IfStrEqCase{#2}{
+				{normal}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{1.5em}
+					\renewcommand{\cftsubsubsecindent}{3.8em}
+				}
+				{noindent}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{0em}
+					\renewcommand{\cftsubsubsecindent}{0em}
+				}
+				{sameforsubandsubsub}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{1.5em}
+					\renewcommand{\cftsubsubsecindent}{1.5em}
+				}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+	}[\ClassWarning{\HGP@name}{There's no such argument for tableofcontents}]
 }
 \AtBeginDocument{
 	%设置新的生成目录命令
