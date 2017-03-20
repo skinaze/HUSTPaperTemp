@@ -44,12 +44,12 @@
 		This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
 	\end{enabstract}
 	
-	%生成目录（自定义的命令）
-	%使用方法：\maketoc[nopagenum/pagenum/pagenumtoc]
-	%其中：nopagenum指目录没有页码（默认值）；pagenum指目录有页码；
-	%pagenumtoc指目录有页码，且目录两字出现在目录中
+	%生成目录 \tableofcontents[可选参数]
+	%可选参数：
+	%pagenum=yes/no/true/false 目录是否显示页码，默认为false
+	%toc in toc=yes/no/true/false 目录中是否有目录及其页码，默认为false
 	%请注意在合适的位置放置\pagenumbering{numstyle}使用新的页码
-	\maketoc
+	\tableofcontents
 	
 	\clearpage%结束上一页
 	\pagenumbering{arabic} %正文页码为阿拉伯数字

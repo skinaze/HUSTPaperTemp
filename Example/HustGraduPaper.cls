@@ -303,25 +303,6 @@
 %使用特殊符号
 \RequirePackage{amssymb}
 
-%定义三个条件语句
-\newcommand{\encryption}[1]{
-	\IfStrEqCase{#1}{{empty}{$\square$}
-		{true}{$\text{\rlap{\checkmark}}\square$ }
-		{false}{$\square$}}
-	[$\square$]
-}
-\newcommand{\nonencryption}[1]{
-	\IfStrEqCase{#1}{{empty}{$\square$}
-		{true}{$\square$}
-		{false}{$\text{\rlap{\checkmark}}\square$}}
-	[$\square$]
-}
-\newcommand{\encryptionyear}[2]{
-	\IfStrEqCase{#1}{{empty}{}
-		{true}{#2}
-		{false}{}}
-}
-
 %设置statement的参数解析
 \def\HGP@checkedbox{$\text{\rlap{\checkmark}}\square$}
 \def\HGP@box{$\square$}
@@ -447,45 +428,65 @@
 \renewcommand{\cftafterloftitleskip}{0.5em}
 \renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
 \renewcommand{\cftbeforesecskip}{0em} %设置段间距
-\renewcommand{\cftpartfont}{\songti \bfseries}%设置Part字体
-\renewcommand{\cftsecfont}{\songti \bfseries}%设置Section字体
+\renewcommand{\cftpartfont}{\songti \bfseries} %设置Part字体
+\renewcommand{\cftsecfont}{\songti \bfseries} %设置Section字体
 
-%使用条件语句
-\RequirePackage{xstring}
-
-%定义两个新语句
-%第一个语句更改fancyhdr样式
-\newcommand{\plainfooterstyle}[1]{
-	\IfStrEqCase{#1}{{nopagenum}{}
-		{pagenum}{\footstyle}
-		{pagenumtoc}{\footstyle}}
+%设置tableofcontents参数解析
+\newcommand{\arg@tableofcontents}[2]{
+	\IfStrEqCase{#1}{
+		{pagenum}{
+			\IfStrEqCase{#2}{
+				{yes}{\def\HGP@plainfooterstyle{\footstyle}}
+				{true}{\def\HGP@plainfooterstyle{\footstyle}}
+				{no}{\def\HGP@plainfooterstyle{}}
+				{false}{\def\HGP@plainfooterstyle{}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+		{toc in toc}{
+			\IfStrEqCase{#2}{
+				{yes}{\def\HGP@addtoctotoc{
+					\phantomsection
+					\addcontentsline{toc}{section}{目录}
+				}}
+				{true}{\def\HGP@addtoctotoc{
+					\phantomsection
+					\addcontentsline{toc}{section}{目录}
+				}}
+				{no}{\def\HGP@addtoctotoc{}}
+				{false}{\def\HGP@addtoctotoc{}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+	}[\ClassWarning{\HGP@name}{There's no such argument for maketitle}]
 }
-%第二个语句在目录中添加目录标签
-\newcommand{\addtoctotoc}[1]{
-	\IfStrEqCase{#1}{{nopagenum}{}
-		{pagenum}{}
-		{pagenumtoc}{\phantomsection
-			\addcontentsline{toc}{section}{目录}}}
-}
-
-%设置新的生成目录命令
-\let \oldtableofcontens \tableofcontents
-\newcommand{\maketoc}[1][nopagenum]{
-	%修改hdr原plain格式
-	\fancypagestyle{plain}{%
-		\fancyhf{} %清空原有样式
-		\headstyle
-		\plainfooterstyle{#1}
+\AtBeginDocument{
+	%设置新的生成目录命令
+	\let \oldtableofcontents \tableofcontents
+	\renewcommand{\tableofcontents}[1][pagenum=false,toc in toc=false]{
+		\def\HGP@plainfooterstyle{}
+		\def\HGP@addtoctotoc{}
+		\kv@parse{#1}{\arg@tableofcontents}
+		%修改hdr原plain格式
+		\fancypagestyle{plain}{%
+			\fancyhf{} %清空原有样式
+			\headstyle
+			\HGP@plainfooterstyle
+		}
+		%设置目录hdr和页码选项
+		\clearpage
+		\pagestyle{plain}
+		\HGP@addtoctotoc
+		\oldtableofcontents
+		\clearpage
+		\pagestyle{main}
 	}
-	%设置目录hdr和页码选项
-	\clearpage
-	\pagestyle{plain}
-	\addtoctotoc{#1}
-	\tableofcontents
-	\clearpage
-	\pagestyle{main}
+	%旧的命令
+	\newcommand{\maketoc}[1][nopagenum]{
+		\IfStrEqCase{#1}{{nopagenum}{\tableofcontents[pagenum=false,toc in toc=false]}
+			{pagenum}{\tableofcontents[pagenum=true,toc in toc=false]}
+			{pagenumtoc}{\tableofcontents[pagenum=true,toc in toc=true]}
+		}
+	}
 }
-
 
 %
 %	---	定义新的致谢环境
@@ -517,14 +518,6 @@
 	\addcontentsline{toc}{section}{参考文献}
 	\oldbibliography{#1}
 }
-
-
-%Test kvsetkeys
-%\RequirePackage{kvsetkeys}
-%\newcommand{\testtodo}[2]{#1~is~#2;~}
-%\newcommand{\test}[1][]{
-%	\kv@parse{#1}{\testtodo}
-%}
 
 
 
