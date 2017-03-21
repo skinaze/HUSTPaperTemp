@@ -329,38 +329,38 @@
 \def\HGP@box{$\square$}
 \newcommand{\arg@statement}[2]{
 	\IfStrEqCase{#1}{
-		{encryption}{
+		{confidentiality}{
 			\IfStrEqCase{#2}{
 				{yes}{
-					\def\HGP@encrypted{\HGP@checkedbox}
-					\def\HGP@unencrypted{\HGP@box}
+					\def\HGP@confidential{\HGP@checkedbox}
+					\def\HGP@notconfidential{\HGP@box}
 				}
 				{true}{
-					\def\HGP@encrypted{\HGP@checkedbox}
-					\def\HGP@unencrypted{\HGP@box}
+					\def\HGP@confidential{\HGP@checkedbox}
+					\def\HGP@notconfidential{\HGP@box}
 				}
 				{no}{
-					\def\HGP@encrypted{\HGP@box}
-					\def\HGP@unencrypted{\HGP@checkedbox}
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@checkedbox}
 				}
 				{false}{
-					\def\HGP@encrypted{\HGP@box}
-					\def\HGP@unencrypted{\HGP@checkedbox}
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@checkedbox}
 				}
 				{empty}{
-					\def\HGP@encrypted{\HGP@box}
-					\def\HGP@unencrypted{\HGP@box}
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@box}
 				}
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (statement)}]
 		}
-		{year}{\def\HGP@yearofencryption{#2}}
+		{year}{\def\HGP@yearofconfidentiality{#2}}
 	}[\ClassWarning{\HGP@name}{There's no such argument for statement}]
 }
 %设置命令
-\newcommand{\statement}[1][encryption=empty]{
-	\def\HGP@encrypted{\HGP@box}
-	\def\HGP@unencrypted{\HGP@checkedbox}
-	\def\HGP@yearofencryption{}
+\newcommand{\statement}[1][confidentiality=empty]{
+	\def\HGP@confidential{\HGP@box}
+	\def\HGP@notconfidential{\HGP@checkedbox}
+	\def\HGP@yearofconfidentiality{}
 	\kv@parse{#1}{\arg@statement}
 	\clearpage
 	\thispagestyle{empty}
@@ -383,9 +383,9 @@
 	本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
 	
 	\begin{tabbing}
-		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\HGP@encrypted
-		，在\makebox[2em][c]{\HGP@yearofencryption}年解密后适用本授权书。\\
-		\>2、不保密\>\HGP@unencrypted
+		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\HGP@confidential
+		，在\makebox[2em][c]{\HGP@yearofconfidentiality}年解密后适用本授权书。\\
+		\>2、不保密\>\HGP@notconfidential
 		。\\
 		\>（请在以上相应方框内打“$\checkmark$”）
 	\end{tabbing}
@@ -397,7 +397,7 @@
 	\clearpage
 }
 %旧的命令
-\newcommand{\makestatement}[2][]{\statement[encryption=#2,year=#1]}
+\newcommand{\makestatement}[2][]{\statement[confidentiality=#2,year=#1]}
 
 
 %

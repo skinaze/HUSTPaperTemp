@@ -1,0 +1,274 @@
+\ProvidesFile{HGP.dtx}
+% \title{\bfseries \zihao{2} 华中科技大学\\本科生毕业论文模板\\使用说明}
+% \author{Skinaze}
+% \date{\today}
+% \maketitle
+% 
+% \begin{abstract}
+% \par 这是华中科技大学的{\bfseries 非官方}本科生毕业论文模板的说明，在该模板中我重新定义各个环境、页眉页脚、参考文献等等，因此可以基本上使用原来\LaTeX 自带的命令就能完美制作出华中科技大学的毕业论文。
+% \par 在本文中我将首先讲述模板基本使用方法，然后讲解重新定义和新定义个各个命令与环境的使用方法，并且我将提供一个简单的使用例子以供参考，最后我会给出我本人在各个系统下测试结果。
+% \end{abstract}
+% 
+% \tableofcontents
+% 
+% \section{快速开始}
+% \par 请注意，本模板需要使用xeCJK宏包，因此只能在\XeLaTeX 下进行编译。
+% \subsection{在Windows系统中}
+% \begin{enumerate}[itemsep=0pt,parsep=0pt]
+% 	\item 下载并安装最新版本的MiK\TeX （推荐）或者\TeX\space Live；
+% 	\item 打开\TeX works，并设置默认编译工具(Edit->Preference->Typesetting->Processing Tools->Default)为\XeLaTeX+MakeIndex+\BibTeX ；
+% 	\item 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
+% 	\item 在新的tex文档中使用|\documentclass{HustGraduPaper}|使用模板定义的样式；
+% \end{enumerate}
+% 
+% \subsection{在Mac OS X系统中}
+% \begin{enumerate}[itemsep=0pt,parsep=0pt]
+% 	\item 下载并安装最新版本的Mac\TeX ；
+% 	\item 打开\TeX shop，新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下；
+% 	\item 在新的tex文档中使用|\documentclass{HustGraduPaper}|使用模板定义的样式；
+% 	\item 编写完成论文后，使用\XeLaTeX ->MakeIndex->\BibTeX ->\XeLaTeX 的顺序进行编译；
+% \end{enumerate}
+% 
+% \subsection{在Ubuntu系统中}
+% \begin{enumerate}[itemsep=0pt,parsep=0pt]
+% 	\item 使用命令|apt-get install texlive|安装最新版\TeX~Live；
+% 	\item 新建一个.tex文件并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下；
+% 	\item 在新的tex文档中使用|\documentclass[ubuntufont]{HustGraduPaper}|使用模板定义的样式，并设置使用Ubuntu自带的文泉驿和文鼎字体；
+% 	\item 编写完成论文后，使用\XeLaTeX ->MakeIndex->\BibTeX ->\XeLaTeX 的顺序进行编译；
+% \footnote{如果您是使用的Ubuntu系统，我相信您比我更了解怎么在这个系统下编译\LaTeX}
+% \end{enumerate}
+% 
+% \section{样式选项}
+% \par 和一般的样式一样，本样式需要使用指令|\documentclass|来引入样式，
+% |\documentclass|的使用如下
+\begin{verbatim}
+\documentclass[样式选项]{HustGraduPaper}
+\end{verbatim}
+% 其中样式选项可以包含如下下内容：
+% 
+% \subsection{字体组设置}\label{subsec:setupfont}
+% \par 本样式基于CTEX宏包，因此可以在Windows系统下和Mac OS X系统下自动识别并使用中易字体和华文字体，关于字体问题更多请见“~\nameref{subsec:font}”，如果需要在其他系统下或者希望选用其他字体请只用这个样式选项.
+% \par\noindent\DescribeMacro{adobefont} 使用Adobe公司的四款中文字体。
+% \cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{fancdolfont} 使用Fandol中文字体。\cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{founderfont} 使用方正公司中文字体。\cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{macfont} 使用Mac OS X下的华文字体。\cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{ubuntufont} 使用Ubuntu 系统下的文泉驿和文鼎字体。
+% \cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{winfont} 使用简体中文Windows系统下的中文字体，自动判断Windows系统版本，采用winnewfont或winoldfont 的设置。\cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{winnewfont}使用简体中文Windows Vista或之后系统下的中易字体和微软雅黑字体。
+% \par\noindent\DescribeMacro{winoldfont}使用简体中文Windows XP或之前系统下的中易字体。\cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{nofont}不配置中文字体，需要用户自己配置|\songti|和|\heiti|命令。\cite[\S 4.3]{ctexdoc}
+% 
+% \section{页面与章节}
+% \par 本模板针对论文内容设定了如下几个新的/重写的页面：
+% 
+% \subsection{标题页}
+% \par 标题页面包括校名、论文题目和其他个人信息。使用方法：首先，需要在引言中插入进行个
+% 人信息设置如下：
+\begin{verbatim}
+\title{论文题目} %论文题目
+\author{作者姓名} %作者姓名
+\date{\today} %日期
+\school{院系名称} %院系名称
+\classnum{专业班级} %专业班级
+\stunum {U201300000} %学号
+\instructor{指导教师姓名} %指导教师姓名
+\end{verbatim}
+% \par\noindent\DescribeMacro{\title} 存储论文题目，与\LaTeX 系统本身定义相同。
+% \par\noindent\DescribeMacro{\author} 存储论文作者姓名，与\LaTeX 系统本身定义相同。
+% \par\noindent\DescribeMacro{\date} 存储论文日期，与\LaTeX 系统本身定义相同。
+% \par\noindent\DescribeMacro{\school} 存储论文作者院系。
+% \par\noindent\DescribeMacro{\classnum} 存储论文作者专业班级。
+% \par\noindent\DescribeMacro{\stunum} 存储论文作者学号。
+% \par\noindent\DescribeMacro{\instructor} 存储论文作者导师姓名。
+% \\\par\DescribeMacro{\maketitle} 之后，在正文中使用命令|\maketitle[可选参数]|生成标题页面。 标题页面可以添加两个可选参数，可选参数间使用英文逗号分割，可选参数分别是：
+% \DescribeMacro{logo color} |logo color=green/black|表示的是华中科技大学字样的颜色，默认是绿色；
+% \DescribeMacro{line length} |line length=12em|表示的是填写信息位置（即填写姓名、班级、学号等的位置）的横线长度，默认是12em。
+% \par 在之前的版本中，本模板还使用了另一个版本的|\maketitle[12em]|命令。该命令包含一个可选参数，用于设置填写信息位置（即填写姓名、班级、学号等的位置）的横线长度，默认是12em。该命令仍然被支持
+% 
+% \subsection{声明与授权页}
+% 该页面包含学术声明内容和授权使用选项，本页主要内容无需手动更改。使用方法：在正文中使用命令\DescribeMacro{\statement}|\statement[可选参数]|生成授权页面。声明页面包含两个可选参数，可选参数之间使用英文逗号分割，可选参数分别是:
+% \DescribeMacro{confidentiality} |confidentiality=yes/no/true/false/empty|表示该文章是否保密，其中yes/true表示保密；no/false表示不保密；empty表示不填写，默认为empty。
+% \DescribeMacro{year} |year=5|表示该文章保密年数，默认为空白。
+% \par 在之前版本中，还使用了\DescribeMacro{\makestatement}|\makestatement[保密年数]{empty/true/false}|命令，该命令包含一个可选参数和一个必填参数，用于设置勾选保密或不保密。其中：empty为不勾选；true为保密，如选此项请填写保密年数；false为不保密。该命令仍然被支持。
+% 
+% \subsection{中英文摘要环境}
+% \par 本模板设置了两个摘要环境，分别是针对中英文摘要。使用方法：对于中文摘要环境，这样使用\DescribeEnv{cnabstract}
+\begin{verbatim}
+\begin{cnabstract}{关键词1；关键词2；关键词3}
+  这里是摘要内容
+\end{cnabstract}
+\end{verbatim}
+% 请注意中文关键词使用{\bfseries 中文分号}进行分割。对于英文摘要环境，这样使用\DescribeEnv{enabstract}
+\begin{verbatim}
+\begin{enabstract}{Key1; Key2; Key3}
+  Here is the content of the abstract.
+\end{enabstract}
+\end{verbatim}
+% 请注意英文关键词使用{\bfseries 英文分号+一个空格}进行分割。
+% 
+% \subsection{目录}\label{subsec:toc}
+% 根据官方样式，目录包含中英文摘要、正文、致谢、参考文献和附录。本模板已经将上述内容加入到目录中，无需手动设置。使用方法：在正文中使用命令\DescribeMacro{\tableofcontents}|\tableofcontents[可选参数]|生成目录。目录包含6个可选参数，可选参数之间使用英文逗号分隔，可选参数分别是：
+% \DescribeMacro{pagenum} |pagenum=yes/no/true/false|表示目录页面是否显示页码，其中yes/true为显示页码no/false为不显示页码，默认不显示。
+% \DescribeMacro{toc in toc}|toc in toc=yes/no/true/false|表示是否将目录本身加入到目录中，默认不加入。请注意，即使设置不显示页码，设置在目录中显示目录的时候仍然会在目录中显示被隐藏的页码。
+% \par 在之前的版本中，还使用了\DescribeMacro{\maketoc}|\maketoc[nopagenum/pagenum/pagenumtoc]|命令，该命令包含一个可选参数，其中：nopagenum指目录没有页码（默认值）；pagenum指目录有页码；pagenumtoc指目录有页码，且目录两字出现在目录中。该命令仍然被支持。
+% \par 请注意本模板不会自动设置页码格式，具体页码设置方法，请参考“{\itshape ~\nameref{subsec:pagenum}}”。
+% 
+% \subsection{正文}
+% \par 正文和标题的使用方法与\LaTeX 基本使用方法一致，在此不做过多说明。
+% 
+% \subsection{致谢环境}
+% \par 本文设置了一个致谢环境，方便添加致谢并将其添加到目录中。使用方法：\DescribeEnv{thankpage}
+\begin{verbatim}
+\begin{thankpage}
+  这里是感谢的话。
+\end{thankpage}
+\end{verbatim}
+% 
+% \subsection{参考文献}
+% \par 本模板参考文献采用\BibTeX 生成，因此需要制作独立的Bib文件。“*.bib”是一种数据库文件，其中包含了参考文献的基本信息，如此即可直接通过编译生成参考文件文字，避免了手打参考文献的繁琐过程。
+% \par 本模板为了使用了南京大学胡海星的《符合国家标准《GB/T 7714-2005 文后参考文献著录规则》的BibTeX样式文件》，虽然官方模板给出的样式与国标并不完全一致，但两者样式基本相同，故采用该样式，其bib文件具体标签说明请参照他写的\href{https://raw.github.com/Haixing-Hu/nju-thesis/master/manual/njuthesis-manual.pdf}{使用手册}\cite{nanda}，考虑其内容较多，不在此列举。
+% \par 文献数据库可以手工逐条录入，也可以从互联网上直接下载现成的文献数据库，很多电子期刊数据库网站会提供相应的\BibTeX 数据库文件或者\BibTeX 条目导出，Google\textsuperscript{\textregistered}  Scholar也免费提供此服务。\cite[\S 3.3]{9787121202087}这对于英文文献十分有效，部分中文期刊也有这样的服务。
+% \par 如果希望手工录入，推荐安装JabRef管理参考文献，该系统可以直接搜索论文的DOI编号、书目的ISBN编号，甚至论文的名称，从而直接获得其相关信息，极大地方便了参考文献的录入。
+% \par 若要在本模板中使用参考文献，请这样使用：首先在文章末尾参考文献的地方使用\DescribeMacro{\bibliography}|\bibliography{bib file name}|，Bib文件名中不需要加扩展名。之后可以通过命令\DescribeMacro{\cite}|\cite{bib id}|引用一个参考文献，被引用的参考文献会自动出现在文章末尾的参考文献中。也可以使用命令\DescribeMacro{\nocite}|\nocite{bib id}|隐式引用一个参考文献，这样引用不会在文中标出参考文献号。当然如果你使用的是自己录入的Bib文件，你也可以通过命令|\nocite{*}|直接将所有Bib文件中的参考文献列出。
+% 
+% \subsection{附录}
+% \par 本附录使用了Appendix宏包，附录使用首先需要开启附录环境，之后可以用Section、Subsection、Subsubsection来构建附录的具体内容。附录的三级标签会在目录中显示，且一级标签会添加上附录二字。理论上可以在文章任意位置加入附录，但是推荐将所有附录放在文末。具体使用方式如下：\DescribeEnv{appendices}
+\begin{verbatim}
+\begin{appendices}
+  \section{这是附录的第一级}
+  \subsection{这是附录的第二级}
+  \subsubsection{这是附录的第三级}
+\end{appendices}
+\end{verbatim}
+% 
+% \section{其他常用命令和环境}
+% \subsection{加粗和斜体}
+% \par 本模板使用了xeCJK宏包带有的伪加粗和伪斜体功能，因此可以在不存在对应粗体或斜体的情况下使用粗体和斜体效果。
+% \par 如果需要使用粗体，请将同时使用字体命令和\DescribeMacro{\bfseries}|\bfseries|命令，比如|{\songti \bfseries 宋体粗体}|可以产生宋体粗体；如果需要使用斜体，请同时使用字体命令和\DescribeMacro{\itshape}|\itshape|命令，比如|{\songti \itshape 宋体斜体}|可以产生宋体斜体；如果需要使用粗斜体，请同时使用字体命令、|\bfseries|命令和|\itshape|命令，比如|{\songti \bfseries \itshape 宋体粗斜体}|可以产生宋体粗斜体。
+% \par 请注意，在正文中如果单独使用|\bfseries|或者|\itshape|会将字体映射为黑体和楷体，并不会将宋体加粗或者斜体。
+% 
+% \subsection{图片环境}
+% \par 本模板保留了原来的图片环境|figure|的同时，添加了一个\DescribeEnv{generalfig}|generalfig|环境，方便添加居中的，带有标题的图片。其使用方法如下：
+\begin{verbatim}
+\begin{generalfig}[htbp]{图片标题}{fig:figlabel}
+\includegraphics{mypic.png}
+\end{generalfig}
+\end{verbatim}
+% \par 其中该环境的第二个参数是图片的位置，选择此处（{\bfseries h} ere）、页顶（{\bfseries t} op）、页底（{\bfseries b} ottom）或者独立一页（{\bfseries p} age）显示\textsuperscript{\cite[\S 5.3]{9787121202087}}，默认选项是“htbp”；第三个参数是图片的标题；第四个参数是引用名称，你可以轻松使用\DescribeMacro{\autoref}|\autoref{fig:figlabel}|引用该图片的编号，输出的效果是：“图4-1”。\DescribeMacro{\includegraphics}|\includegraphics|命令用于引用一张图片，当然你也可以不使用该命令而通过\LaTeX 绘图宏包，如tikz，自行绘制图片。
+% 
+% \subsection{表格环境}
+% \par 本模板保留了原来的表格环境|table|的同时，添加了一个\DescribeEnv{generaltab}|generaltab|环境，方便添加居中的带有标题的表格。其使用方法如下：
+\begin{verbatim}
+\begin{generaltab}{表格标题}{tab:tablabel}
+  \begin{tabularx}{\textwidth}{lCCC}
+    \toprule
+    序号&年龄&身高&体重\\
+    \midrule
+    1&14&156&42\\
+    2&16&158&45\\
+    3&14&162&48\\
+    4&15&163&50\\
+    \cmidrule{2-4}
+    平均&15&159.75&46.25\\
+    \bottomrule
+  \end{tabularx}
+\end{generaltab}
+\end{verbatim}
+% \par 其中该环境的第二个参数是表格的位置，选择此处（{\bfseries h} ere）、页顶（{\bfseries t} op）、页底（{\bfseries b} ottom）或者独立一页（{\bfseries p} age）显示\cite[\S 5.3]{9787121202087}，默认选项是“htbp”；第三个参数是表格的标题；第四个参数是引用名称，你可以轻松使用\DescribeMacro{\autoref}|\autoref{tab:tablabel}|引用该表格的编号，输出的效果是：“表4-1”。
+% \par 本模板还包含了tablularx库用于生成表格，并且定义了新的可变长度左中右（LCR）格式，具体tablularx的使用请参照\href{http://mirror.lzu.edu.cn/CTAN/macros/latex/required/tools/tabularx.pdf}{tabularx的文档}。另外，建议在论文中针对数据使用标准的三线表样式，就像上面使用的那样。
+% 
+% \subsection{公式}
+% \par 本文保留了原来的有标签的公式环境|equation|，同时引入ascmath宏包重新设置了其标签并使之带有章节号。公式的使用与正常\LaTeX 中的使用方法相同，在此不再赘述。
+% 
+% \subsection{带编号列表和不带编号列表}
+% \par 本文保留了原来的带有编号的列表|enumberate|和不带编号的列表|itemize|，并取消了列表项之间的间距，具体使用方法和正常\LaTeX 中的使用方法相同，在此不再赘述。
+%
+% \section{其他注意事项}
+% \subsection{页码问题}\label{subsec:pagenum}
+% \par 本模板没有自动设置页码的功能，因此需要使用者自己设置页码的样式和页码的开始。根据学校官方模板，摘要页采用大写罗马数字作为页码，因此在摘要环境开始前使用如下命令：
+\begin{verbatim}
+\clearpage %完成上一页，进入新的一页
+\pagenumbering{Roman} %摘要页码为大写罗马数字
+\end{verbatim}
+% 正文环境使用阿拉伯数字作为页码，因此在目录之后，第一节开始之前使用如下命令：
+\begin{verbatim}
+\clearpage %完成上一页，进入新的一页
+\pagenumbering{arabic} %正文页码为阿拉伯数字
+\end{verbatim}
+% \par 官方模板未对目录页码做以说明，本模板默认设置目录没有页码，也没有页脚，如需更改该选项，请参考本文中的~\nameref{subsec:toc}章节。如果上面说的不够直观，您也可以参考下文的~\nameref{sec:example}。
+% 
+% \subsection{字体问题}\label{subsec:font}
+% 本模板基于CTEX宏包，CTEX宏包会自动检测设置字体，具体如下：
+% \begin{description}
+% 	\item[Mac OS X] 华文字库\cite[\S 4.3]{ctexdoc}
+% 	\item[Windows（Vista 及以后）]中易字库+ 微软雅黑\cite[\S 4.3]{ctexdoc}
+% 	\item[Windows （XP 及以前）] 中易字库\cite[\S 4.3]{ctexdoc}
+% 	\item[其他] Fandol字库\footnote{由马起园、苏杰、黄晨成等人开发的开源中文字体，参见：\url{https://www.ctan.org/pkg/fandol}。}\cite[\S 4.3]{ctexdoc}
+% \end{description}
+% \par 考虑到学校官方模板并未对宋体、黑体的具体字体做以要求，如果您使用Windows或者Mac OS X您无需进行其他设置，否则请您参考“~\nameref{subsec:setupfont}”选择期望使用的字体。
+% \par 但问题在于，学校官方模板标题页中会使用到华文中宋（STZhongsong）字体，该字体是微软\textsuperscript{\textregistered}公司出品的Office产品中的字体\footnote{该字体实为中国常州华文印刷新技术有限公司\textsuperscript{\texttrademark}开发。}，为了避免版权纠纷，本模板未包含该字体。鉴于本人未在互联网上找到该字体的正版购买渠道，因此{\bfseries 如果需要使用本模板请安装Office软件。因下载安装使用盗版字体造成的版权纠纷与本人无关。}如果您是华中科技大学校园网用户，您可以前往\href{http://software.hust.edu.cn/}{智慧华中大~正版软件服务平台}下载安装正版Microsoft Office。
+% 
+% \section{一个小例子}\label{sec:example}
+% 为了方便使用，在这里提供一个简单的使用范例，范例中只有少量注释，请参考前文查看。本模板还包含了一个相对详细的例子，在“Example”文件夹下，如果需要也可参考该样例。
+%    \begin{macrocode}
+\documentclass{HustGraduPaper}
+
+\title{论文题目} %论文题目
+\author{作者姓名} %作者姓名
+\date{\today} %日期，默认当日
+\school{院系名称} %院系名称
+\classnum{专业班级} %专业班级
+\stunum {U201300000} %学号
+\instructor{指导教师姓名} %指导教师姓名
+
+\begin{document}
+  \maketitle %生成标题页
+  \makestatement{empty} %生成声明页
+  
+  \clearpage %结束上一页
+  \pagenumbering{Roman} %摘要页码为大写罗马数字
+  
+  \begin{cnabstract}{关键词1；关键词2；关键词3}
+    这里是摘要内容
+  \end{cnabstract}
+  \begin{enabstract}{Key1; Key2; Key3}
+     Here is the content of the abstract.
+  \end{enabstract}
+  
+  \maketoc %生成目录
+  
+  \clearpage %结束上一页
+  \pagenumbering{arabic} %正文页码为阿拉伯数字
+  
+  \section{第一节 The first Section}
+  \subsection{第一小节}
+  \subsubsection{第一小小节}
+  正文内容\cite{bibid} %这样引用参考文献
+  
+  \begin{thankpage}
+    感谢页面内容
+  \end{thankpage}
+  
+  \bibliography{Bibs/mybib} %生成参考文献
+  
+  \begin{appendices}
+    \section{这是第一个附录}
+    这里是附录环境，其中的section、subsection、subsubsection已经变为附录的样式，并且会以这种样式加入目录中
+    \subsection{附录可以有小节}
+    \subsubsection{附录中也可以有小小节}
+  \end{appendices}
+\end{document}
+%    \end{macrocode}
+% 
+% \section{模板测试}
+% 
+% \section{写在最后}
+% \par \LaTeX 是一个强大的排版工具，本文所述内容只包含了本模板实现的主要功能，其他诸多功能不能尽述，希望使用者，尤其是初学者，能够针对性参考其他文档进行排版。
+% \par 本文如有描述不周的地方欢迎通过\href{mailto:me@stringblog.com}{邮件方式}联系我。或者访问本人的个人博客\url{https://stringblog.com/}。
+%
+% \phantomsection
+% \addcontentsline{toc}{section}{参考文献}
+% \bibliographystyle{plain}
+% \bibliography{mybib}
