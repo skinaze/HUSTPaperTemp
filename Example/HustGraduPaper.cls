@@ -21,14 +21,37 @@
 %
 %	---	定义类的选项
 %
-%logo颜色
-\def\logopic{HUSTGreen.png} %默认绿色logo
-\DeclareOption{GreenLogo} {
-	\def\logopic{HUSTGreen.png}
-}
-\DeclareOption{BlackLogo} {
-	\def\logopic{HUSTBlack.png}
-}
+%使用条件语句
+\RequirePackage{xstring}
+%字体组
+\def\HGP@fontset{} %默认绿色logo
+\DeclareOption{adobefont} {
+	\def\HGP@fontset{,fontset=adobe}
+}%使用Adobe 公司的四款中文字体
+\DeclareOption{fandolfont} {
+	\def\HGP@fontset{,fontset=fandol}
+}%使用Fandol 中文字体
+\DeclareOption{founderfont} {
+	\def\HGP@fontset{,fontset=founder}
+}%使用方正公司的中文字体
+\DeclareOption{macfont} {
+	\def\HGP@fontset{,fontset=mac}
+}%使用Mac OS X 系统下的华文字体
+\DeclareOption{ubuntufont} {
+	\def\HGP@fontset{,fontset=ubuntu}
+}%使用Ubuntu 系统下的文泉驿和文鼎字体
+\DeclareOption{winfont} {
+	\def\HGP@fontset{,fontset=windows}
+}%使用简体中文Windows 系统下的中文字体
+\DeclareOption{winnewfont} {
+	\def\HGP@fontset{,fontset=windowsnew}
+}%使用简体中文Windows Vista或之后系统下的中易字体和微软雅黑字体
+\DeclareOption{winoldfont} {
+	\def\HGP@fontset{,fontset=windowsold}
+}%使用简体中文Windows XP或之前系统下的中易字体
+\DeclareOption{nofont} {
+	\def\HGP@fontset{,fontset=none}
+}%不配置中文字体，需要用户自己配置
 \ProcessOptions\relax
 
 
@@ -38,7 +61,7 @@
 \LoadClass[a4paper]{article}
 %页面基本设置
 \RequirePackage[boldfont,slantfont]{xeCJK}
-\RequirePackage[cs4size,UTF8,heading=true]{ctex}
+\RequirePackage[cs4size,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/28]
 
 %
 %	---	定义页边距
@@ -229,8 +252,6 @@
 %
 %	---	定义新的标题页面
 %
-%使用条件语句
-\RequirePackage{xstring}
 %用于解析参数
 \RequirePackage{kvsetkeys}
 %添加几个新的文档属性
