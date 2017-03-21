@@ -112,6 +112,10 @@
 % 根据官方样式，目录包含中英文摘要、正文、致谢、参考文献和附录。本模板已经将上述内容加入到目录中，无需手动设置。使用方法：在正文中使用命令\DescribeMacro{\tableofcontents}|\tableofcontents[可选参数]|生成目录。目录包含6个可选参数，可选参数之间使用英文逗号分隔，可选参数分别是：
 % \DescribeMacro{pagenum} |pagenum=yes/no/true/false|表示目录页面是否显示页码，其中yes/true为显示页码no/false为不显示页码，默认不显示。
 % \DescribeMacro{toc in toc}|toc in toc=yes/no/true/false|表示是否将目录本身加入到目录中，默认不加入。请注意，即使设置不显示页码，设置在目录中显示目录的时候仍然会在目录中显示被隐藏的页码。
+% \DescribeMacro{section indent}|section indent=0em|表示目录第一级的缩进量，默认为0em。
+% \DescribeMacro{subsection indent}|subsection indent=1.5em|表示目录第二级缩进，默认为1.5em。
+% \DescribeMacro{subsubsection indent}|subsubsection indent=3.8em|表示目录第三级缩进，默认3.8em。
+% \DescribeMacro{indent}|indent=normal/noindent/sameforsubandsubsub|用于快速设定缩进，其中normal使用默认缩进，即第一级为0em，第二级为1.5em，第三级为3.8em；noindent为三级目录皆无缩进；sameforsubandsubsub使第二级和第三级缩进相同，都为1.5em，此时第一级仍为0em。
 % \par 在之前的版本中，还使用了\DescribeMacro{\maketoc}|\maketoc[nopagenum/pagenum/pagenumtoc]|命令，该命令包含一个可选参数，其中：nopagenum指目录没有页码（默认值）；pagenum指目录有页码；pagenumtoc指目录有页码，且目录两字出现在目录中。该命令仍然被支持。
 % \par 请注意本模板不会自动设置页码格式，具体页码设置方法，请参考“{\itshape ~\nameref{subsec:pagenum}}”。
 % 
@@ -231,7 +235,7 @@
   \pagenumbering{Roman} %摘要页码为大写罗马数字
   
   \begin{cnabstract}{关键词1；关键词2；关键词3}
-    这里是摘要内容
+    这里是摘要内容。
   \end{cnabstract}
   \begin{enabstract}{Key1; Key2; Key3}
      Here is the content of the abstract.
