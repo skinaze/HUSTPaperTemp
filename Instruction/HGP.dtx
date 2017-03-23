@@ -15,7 +15,7 @@
 % \par 请注意，本模板需要使用xeCJK宏包，因此只能在\XeLaTeX 下进行编译。
 % \subsection{在Windows系统中}
 % \begin{enumerate}[itemsep=0pt,parsep=0pt]
-% 	\item 下载并安装最新版本的MiK\TeX （推荐）或者\TeX\space Live；
+% 	\item 下载\footnote{\label{fn:mirror}校园网用户可以前往\href{http://mirror.hust.edu.cn/CTAN/}{华中科技大学开源镜像站}快速下载}并安装最新版本的MiK\TeX 或者\TeX\space Live；
 % 	\item 打开\TeX works，并设置默认编译工具(Edit->Preference->Typesetting->Processing Tools->Default)为\XeLaTeX+MakeIndex+\BibTeX ；
 % 	\item 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
 % 	\item 在新的tex文档中使用|\documentclass{HustGraduPaper}|使用模板定义的样式；
@@ -23,7 +23,7 @@
 % 
 % \subsection{在Mac OS X系统中}
 % \begin{enumerate}[itemsep=0pt,parsep=0pt]
-% 	\item 下载并安装最新版本的Mac\TeX ；
+% 	\item 下载\footref{fn:mirror}并安装最新版本的Mac\TeX ；
 % 	\item 打开\TeX shop，新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下；
 % 	\item 在新的tex文档中使用|\documentclass{HustGraduPaper}|使用模板定义的样式；
 % 	\item 编写完成论文后，使用\XeLaTeX ->MakeIndex->\BibTeX ->\XeLaTeX 的顺序进行编译；
@@ -31,7 +31,7 @@
 % 
 % \subsection{在Ubuntu系统中}
 % \begin{enumerate}[itemsep=0pt,parsep=0pt]
-% 	\item 使用命令|apt-get install texlive|安装最新版\TeX~Live；
+% 	\item 使用命令|apt-get install texlive|安装最新版\TeX~Live\footnote{校园网用户可以将\href{http://mirrors.hust.edu.cn/help.html\#ubuntu}{华中科技大学开源镜像站}添加到apt-get源中加速下载}；
 % 	\item 新建一个.tex文件并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下；
 % 	\item 在新的tex文档中使用|\documentclass[ubuntufont]{HustGraduPaper}|使用模板定义的样式，并设置使用Ubuntu自带的文泉驿和文鼎字体；
 % 	\item 编写完成论文后，使用\XeLaTeX ->MakeIndex->\BibTeX ->\XeLaTeX 的顺序进行编译；
@@ -157,7 +157,7 @@
 % \par 本模板保留了原来的图片环境|figure|的同时，添加了一个\DescribeEnv{generalfig}|generalfig|环境，方便添加居中的，带有标题的图片。其使用方法如下：
 \begin{verbatim}
 \begin{generalfig}[htbp]{图片标题}{fig:figlabel}
-\includegraphics{mypic.png}
+  \includegraphics{mypic.png}
 \end{generalfig}
 \end{verbatim}
 % \par 其中该环境的第二个参数是图片的位置，选择此处（{\bfseries h} ere）、页顶（{\bfseries t} op）、页底（{\bfseries b} ottom）或者独立一页（{\bfseries p} age）显示\textsuperscript{\cite[\S 5.3]{9787121202087}}，默认选项是“htbp”；第三个参数是图片的标题；第四个参数是引用名称，你可以轻松使用\DescribeMacro{\autoref}|\autoref{fig:figlabel}|引用该图片的编号，输出的效果是：“图4-1”。\DescribeMacro{\includegraphics}|\includegraphics|命令用于引用一张图片，当然你也可以不使用该命令而通过\LaTeX 绘图宏包，如tikz，自行绘制图片。
@@ -174,14 +174,14 @@
     2&16&158&45\\
     3&14&162&48\\
     4&15&163&50\\
-    \cmidrule{2-4}
+    \cmidrule{2-4} %添加2-4列的中线
     平均&15&159.75&46.25\\
     \bottomrule
   \end{tabularx}
 \end{generaltab}
 \end{verbatim}
 % \par 其中该环境的第二个参数是表格的位置，选择此处（{\bfseries h} ere）、页顶（{\bfseries t} op）、页底（{\bfseries b} ottom）或者独立一页（{\bfseries p} age）显示\cite[\S 5.3]{9787121202087}，默认选项是“htbp”；第三个参数是表格的标题；第四个参数是引用名称，你可以轻松使用\DescribeMacro{\autoref}|\autoref{tab:tablabel}|引用该表格的编号，输出的效果是：“表4-1”。
-% \par 本模板还包含了tablularx库用于生成表格，并且定义了新的可变长度左中右（LCR）格式，具体tablularx的使用请参照\href{http://mirror.lzu.edu.cn/CTAN/macros/latex/required/tools/tabularx.pdf}{tabularx的文档}。另外，建议在论文中针对数据使用标准的三线表样式，就像上面使用的那样。
+% \par 本模板还包含了tablularx宏包和booktabs用于生成表格，并针对性实现两个新的功能。第一个是定义了可变长度的左中右（LCR）列格式，这三个新格式可以根据定义表格的宽度自动调整列宽，采用这三种格式的列会保持相同的列宽，这个需要在\DescribeEnv{tablularx}|tablularx|环境中实现。第二个是重置了三线表粗细，可以通过指令\DescribeMacro{\toprule}|\toprule|生成表格顶线，通过指令\DescribeMacro{\midrule}|\midrule|生成表格中线，通过指令\DescribeMacro{\cmidrul}|\cmidrule|生成某几列的中线，通过指令\DescribeMacro{\bottomrule}|\bottomrule|生成表格底线。具体使用请参考\href{http://mirror.hust.edu.cn/CTAN/macros/latex/required/tools/tabularx.pdf}{tabularx的文档}和\href{http://mirrors.hust.edu.cn/CTAN/macros/latex/contrib/booktabs/booktabs.pdf}{booktabs的文档}。
 % 
 % \subsection{公式}
 % \par 本文保留了原来的有标签的公式环境|equation|，同时引入ascmath宏包重新设置了其标签并使之带有章节号。公式的使用与正常\LaTeX 中的使用方法相同，在此不再赘述。
@@ -229,7 +229,7 @@
 
 \begin{document}
   \maketitle %生成标题页
-  \makestatement{empty} %生成声明页
+  \statement %生成声明页
   
   \clearpage %结束上一页
   \pagenumbering{Roman} %摘要页码为大写罗马数字
@@ -241,7 +241,7 @@
      Here is the content of the abstract.
   \end{enabstract}
   
-  \maketoc %生成目录
+  \tableofcontents %生成目录
   
   \clearpage %结束上一页
   \pagenumbering{arabic} %正文页码为阿拉伯数字
@@ -267,6 +267,7 @@
 %    \end{macrocode}
 % 
 % \section{模板测试}
+% \par 本模板在Windows 10和Mac OS X中进行了测试，测试环境分别为MiK\TeX 和Mac\TeX 。测试过程中Example文件夹下的样例文档都能够正常编译输出。Ubuntu系统下我安装\TeX~Live过程中有一些问题，不过考虑到Mac\TeX 是\TeX~Live在Mac OS X下的发行版本，理论上应该没有问题。
 % 
 % \section{写在最后}
 % \par \LaTeX 是一个强大的排版工具，本文所述内容只包含了本模板实现的主要功能，其他诸多功能不能尽述，希望使用者，尤其是初学者，能够针对性参考其他文档进行排版。

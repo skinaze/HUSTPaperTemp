@@ -12,21 +12,24 @@
 \usepackage{xltxtra}
 
 \begin{document}
-	%生成标题页
-	%如果要改变填写横杠长度，请这样使用：\maketitle[15em]
+	%生成标题页 \maketitle[可选参数]
+	%可选参数：
+	%logo color=green/black 华中科技大学字样的颜色，绿色或者黑色，默认绿色
+	%line lenght=12em 填写信息处横线的长度，默认12em
 	\maketitle
 	
-	%生成声明与授权书页
-	%使用方法：\makestatement[保密年数]{empty/true/false}
-	%其中：empty为不填；true为保密，请填写保密年数；false为不保密
-	\makestatement{empty}
+	%生成声明与授权书页 \statement[可选参数]
+	%可选参数：
+	%confidentiality=yes/no/true/false/empty 是否保密，yes/true为保密；no/false为不保密，empty为不填，默认为empty
+	%year=5 保密年数，默认为空
+	\statement
 	
 	\clearpage %结束上一页
 	\pagenumbering{Roman} %摘要页码为大写罗马数字
 	
 	%填写中文摘要内容和关键字
 	\begin{cnabstract}{关键词1；关键词2；关键词3}
-		在正文中添加空行可以实现换行功能
+		请注意使用中文分号“；”分割关键词！
 		
 		摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
 		
@@ -34,17 +37,23 @@
 	\end{cnabstract}
 	%填写英文摘要内容和关键字
 	\begin{enabstract}{Key1; Key2; Key3}
+		Please Use English Semicolon and a Space "; " to Separate  Keys! 
+		
 		This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
 		
 		This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
 	\end{enabstract}
 	
-	%生成目录（自定义的命令）
-	%使用方法：\maketoc[nopagenum/pagenum/pagenumtoc]
-	%其中：nopagenum指目录没有页码（默认值）；pagenum指目录有页码；
-	%pagenumtoc指目录有页码，且目录两字出现在目录中
+	%生成目录 \tableofcontents[可选参数]
+	%可选参数：
+	%pagenum=yes/no/true/false 目录是否显示页码，默认为false
+	%toc in toc=yes/no/true/false 目录中是否有目录及其页码，默认为false
+	%section indent=0em 目录第一级的缩进，默认是0em
+	%subsection indent=1.5em 目录第二级的缩进，默认是1.5em
+	%subsubsection indent=3.8em 目录第三级的缩进，默认是3.8em
+	%indent=normal/noindent/sameforsubandsubsub 快速缩进设置，具体见文档
 	%请注意在合适的位置放置\pagenumbering{numstyle}使用新的页码
-	\maketoc
+	\tableofcontents
 	
 	\clearpage%结束上一页
 	\pagenumbering{arabic} %正文页码为阿拉伯数字
@@ -61,6 +70,23 @@
 	\paragraph{段落}这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落
 	\subparagraph{小段落}只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落
 	\subsection{第二小节}
+	本模板已经引入伪加粗和伪斜体，这样就不需要对应的粗体和斜体字体也能生成需要的效果，就像下面这样
+	
+	{\songti \bfseries 宋体加粗}
+	
+	{\songti \itshape 宋体斜体}
+	
+	{\songti \bfseries \itshape 宋体粗斜体}
+	
+	请注意，使用加粗和斜体时，请与字体名称一同使用，否则会自动将粗体匹配为黑体，斜体匹配为楷体，就像下面这样
+	
+	{正常显示宋体}
+	
+	{\bfseries 加粗后变为黑体}
+	
+	{\itshape 斜体后变为楷体}
+	
+	\subsection{第三小节}
 	这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字这是一大段文字
 	\section{新的大节}
 	新的大节会自动出现在新的一页上
@@ -123,7 +149,7 @@
 			2&16&158&45\\
 			3&14&162&48\\
 			4&15&163&50\\
-			\cmidrule{2-4}
+			\cmidrule{2-4} %添加2-4列的中线
 			平均&15&159.75&46.25\\
 			\bottomrule
 		\end{tabularx}

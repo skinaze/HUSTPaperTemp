@@ -3,7 +3,7 @@
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
 % 	@date 2017/03/01
-%	@version v1.0.0
+%	@version v2.0.0
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/03/01}
-\def\HGP@version{v1.3.0}
+\def\HGP@date{2017/03/23}
+\def\HGP@version{v2.0.0}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -21,14 +21,37 @@
 %
 %	---	定义类的选项
 %
-%logo颜色
-\def\logopic{HUSTGreen.png} %默认绿色logo
-\DeclareOption{GreenLogo} {
-	\def\logopic{HUSTGreen.png}
-}
-\DeclareOption{BlackLogo} {
-	\def\logopic{HUSTBlack.png}
-}
+%使用条件语句
+\RequirePackage{xstring}
+%字体组
+\def\HGP@fontset{} %默认绿色logo
+\DeclareOption{adobefont} {
+	\def\HGP@fontset{,fontset=adobe}
+}%使用Adobe 公司的四款中文字体
+\DeclareOption{fandolfont} {
+	\def\HGP@fontset{,fontset=fandol}
+}%使用Fandol 中文字体
+\DeclareOption{founderfont} {
+	\def\HGP@fontset{,fontset=founder}
+}%使用方正公司的中文字体
+\DeclareOption{macfont} {
+	\def\HGP@fontset{,fontset=mac}
+}%使用Mac OS X 系统下的华文字体
+\DeclareOption{ubuntufont} {
+	\def\HGP@fontset{,fontset=ubuntu}
+}%使用Ubuntu 系统下的文泉驿和文鼎字体
+\DeclareOption{winfont} {
+	\def\HGP@fontset{,fontset=windows}
+}%使用简体中文Windows 系统下的中文字体
+\DeclareOption{winnewfont} {
+	\def\HGP@fontset{,fontset=windowsnew}
+}%使用简体中文Windows Vista或之后系统下的中易字体和微软雅黑字体
+\DeclareOption{winoldfont} {
+	\def\HGP@fontset{,fontset=windowsold}
+}%使用简体中文Windows XP或之前系统下的中易字体
+\DeclareOption{nofont} {
+	\def\HGP@fontset{,fontset=none}
+}%不配置中文字体，需要用户自己配置
 \ProcessOptions\relax
 
 
@@ -38,7 +61,7 @@
 \LoadClass[a4paper]{article}
 %页面基本设置
 \RequirePackage[boldfont,slantfont]{xeCJK}
-\RequirePackage[cs4size,UTF8,heading=true]{ctex}
+\RequirePackage[cs4size,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/28]
 
 %
 %	---	定义页边距
@@ -229,19 +252,17 @@
 %
 %	---	定义新的标题页面
 %
-%使用条件语句
-\RequirePackage{xstring}
 %用于解析参数
 \RequirePackage{kvsetkeys}
 %添加几个新的文档属性
-\def \defschool {}
-\def \defclassnum {}
-\def \defstunum {}
-\def \definstructor {}
-\newcommand{\school}[1]{\def \defschool {#1}}
-\newcommand{\classnum}[1]{\def \defclassnum {#1}}
-\newcommand{\stunum}[1]{\def \defstunum {#1}}
-\newcommand{\instructor}[1]{\def \definstructor {#1}}
+\def \@school {}
+\def \@classnum {}
+\def \@stunum {}
+\def \@instructor {}
+\newcommand{\school}[1]{\def \@school {#1}}
+\newcommand{\classnum}[1]{\def \@classnum {#1}}
+\newcommand{\stunum}[1]{\def \@stunum {#1}}
+\newcommand{\instructor}[1]{\def \@instructor {#1}}
 
 %设置maketitle的参数解析
 \newcommand{\arg@maketitle}[2]{
@@ -280,15 +301,15 @@
 				\renewcommand\arraystretch{1.5}
 				\begin{tabular}{lc}
 					\makebox[4em][s]{院 \hfill 系} &
-					\underline{\makebox[\HGP@titlelength]{\defschool}} \\
+					\underline{\makebox[\HGP@titlelength]{\@school}} \\
 					\makebox[4em][s]{专业班级} &
-					\underline{\makebox[\HGP@titlelength]{\defclassnum}} \\
+					\underline{\makebox[\HGP@titlelength]{\@classnum}} \\
 					\makebox[4em][s]{姓 \hfill 名} &
 					\underline{\makebox[\HGP@titlelength]{\@author}} \\
 					\makebox[4em][s]{学 \hfill 号} &
-					\underline{\makebox[\HGP@titlelength]{\defstunum}} \\
+					\underline{\makebox[\HGP@titlelength]{\@stunum}} \\
 					\makebox[4em][s]{指导教师} &
-					\underline{\makebox[\HGP@titlelength]{\definstructor}} \\
+					\underline{\makebox[\HGP@titlelength]{\@instructor}} \\
 			\end{tabular}}\\
 			\vspace{4em}
 			{\zihao{3} \huawenzhongsong \@date}\\
@@ -303,27 +324,44 @@
 %使用特殊符号
 \RequirePackage{amssymb}
 
-%定义三个条件语句
-\newcommand{\encryption}[1]{
-	\IfStrEqCase{#1}{{empty}{$\square$}
-		{true}{$\text{\rlap{\checkmark}}\square$ }
-		{false}{$\square$}}
-	[$\square$]
+%设置statement的参数解析
+\def\HGP@checkedbox{$\text{\rlap{\checkmark}}\square$}
+\def\HGP@box{$\square$}
+\newcommand{\arg@statement}[2]{
+	\IfStrEqCase{#1}{
+		{confidentiality}{
+			\IfStrEqCase{#2}{
+				{yes}{
+					\def\HGP@confidential{\HGP@checkedbox}
+					\def\HGP@notconfidential{\HGP@box}
+				}
+				{true}{
+					\def\HGP@confidential{\HGP@checkedbox}
+					\def\HGP@notconfidential{\HGP@box}
+				}
+				{no}{
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@checkedbox}
+				}
+				{false}{
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@checkedbox}
+				}
+				{empty}{
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@box}
+				}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (statement)}]
+		}
+		{year}{\def\HGP@yearofconfidentiality{#2}}
+	}[\ClassWarning{\HGP@name}{There's no such argument for statement}]
 }
-\newcommand{\nonencryption}[1]{
-	\IfStrEqCase{#1}{{empty}{$\square$}
-		{true}{$\square$}
-		{false}{$\text{\rlap{\checkmark}}\square$}}
-	[$\square$]
-}
-\newcommand{\encryptionyear}[2]{
-	\IfStrEqCase{#1}{{empty}{}
-		{true}{#2}
-		{false}{}}
-}
-
 %设置命令
-\newcommand{\makestatement}[2][0]{
+\newcommand{\statement}[1][confidentiality=empty]{
+	\def\HGP@confidential{\HGP@box}
+	\def\HGP@notconfidential{\HGP@checkedbox}
+	\def\HGP@yearofconfidentiality{}
+	\kv@parse{#1}{\arg@statement}
 	\clearpage
 	\thispagestyle{empty}
 	\vspace*{1em}
@@ -345,9 +383,9 @@
 	本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
 	
 	\begin{tabbing}
-		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\encryption{#2}
-		，在\makebox[2em][c]{\encryptionyear{#2}{#1}}年解密后适用本授权书。\\
-		\>2、不保密\>\nonencryption{#2}
+		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\HGP@confidential
+		，在\makebox[2em][c]{\HGP@yearofconfidentiality}年解密后适用本授权书。\\
+		\>2、不保密\>\HGP@notconfidential
 		。\\
 		\>（请在以上相应方框内打“$\checkmark$”）
 	\end{tabbing}
@@ -358,6 +396,8 @@
 	
 	\clearpage
 }
+%旧的命令
+\newcommand{\makestatement}[2][]{\statement[confidentiality=#2,year=#1]}
 
 
 %
@@ -409,45 +449,87 @@
 \renewcommand{\cftafterloftitleskip}{0.5em}
 \renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
 \renewcommand{\cftbeforesecskip}{0em} %设置段间距
-\renewcommand{\cftpartfont}{\songti \bfseries}%设置Part字体
-\renewcommand{\cftsecfont}{\songti \bfseries}%设置Section字体
+\renewcommand{\cftpartfont}{\songti \bfseries} %设置Part字体
+\renewcommand{\cftsecfont}{\songti \bfseries} %设置Section字体
 
-%使用条件语句
-\RequirePackage{xstring}
-
-%定义两个新语句
-%第一个语句更改fancyhdr样式
-\newcommand{\plainfooterstyle}[1]{
-	\IfStrEqCase{#1}{{nopagenum}{}
-		{pagenum}{\footstyle}
-		{pagenumtoc}{\footstyle}}
+%设置tableofcontents参数解析
+\newcommand{\arg@tableofcontents}[2]{
+	\IfStrEqCase{#1}{
+		{pagenum}{
+			\IfStrEqCase{#2}{
+				{yes}{\def\HGP@plainfooterstyle{\footstyle}}
+				{true}{\def\HGP@plainfooterstyle{\footstyle}}
+				{no}{\def\HGP@plainfooterstyle{}}
+				{false}{\def\HGP@plainfooterstyle{}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+		{toc in toc}{
+			\IfStrEqCase{#2}{
+				{yes}{\def\HGP@addtoctotoc{
+					\phantomsection
+					\addcontentsline{toc}{section}{目录}
+				}}
+				{true}{\def\HGP@addtoctotoc{
+					\phantomsection
+					\addcontentsline{toc}{section}{目录}
+				}}
+				{no}{\def\HGP@addtoctotoc{}}
+				{false}{\def\HGP@addtoctotoc{}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+		{section indent}{\renewcommand{\cftsecindent}{#2}}
+		{subsection indent}{\renewcommand{\cftsubsecindent}{#2}}
+		{subsubsection indent}{\renewcommand{\cftsubsubsecindent}{#2}}
+		{indent}{
+			\IfStrEqCase{#2}{
+				{normal}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{1.5em}
+					\renewcommand{\cftsubsubsecindent}{3.8em}
+				}
+				{noindent}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{0em}
+					\renewcommand{\cftsubsubsecindent}{0em}
+				}
+				{sameforsubandsubsub}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{1.5em}
+					\renewcommand{\cftsubsubsecindent}{1.5em}
+				}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+	}[\ClassWarning{\HGP@name}{There's no such argument for tableofcontents}]
 }
-%第二个语句在目录中添加目录标签
-\newcommand{\addtoctotoc}[1]{
-	\IfStrEqCase{#1}{{nopagenum}{}
-		{pagenum}{}
-		{pagenumtoc}{\phantomsection
-			\addcontentsline{toc}{section}{目录}}}
-}
-
-%设置新的生成目录命令
-\let \oldtableofcontens \tableofcontents
-\newcommand{\maketoc}[1][nopagenum]{
-	%修改hdr原plain格式
-	\fancypagestyle{plain}{%
-		\fancyhf{} %清空原有样式
-		\headstyle
-		\plainfooterstyle{#1}
+\AtBeginDocument{
+	%设置新的生成目录命令
+	\let \oldtableofcontents \tableofcontents
+	\renewcommand{\tableofcontents}[1][pagenum=false,toc in toc=false]{
+		\def\HGP@plainfooterstyle{}
+		\def\HGP@addtoctotoc{}
+		\kv@parse{#1}{\arg@tableofcontents}
+		%修改hdr原plain格式
+		\fancypagestyle{plain}{%
+			\fancyhf{} %清空原有样式
+			\headstyle
+			\HGP@plainfooterstyle
+		}
+		%设置目录hdr和页码选项
+		\clearpage
+		\pagestyle{plain}
+		\HGP@addtoctotoc
+		\oldtableofcontents
+		\clearpage
+		\pagestyle{main}
 	}
-	%设置目录hdr和页码选项
-	\clearpage
-	\pagestyle{plain}
-	\addtoctotoc{#1}
-	\tableofcontents
-	\clearpage
-	\pagestyle{main}
+	%旧的命令
+	\newcommand{\maketoc}[1][nopagenum]{
+		\IfStrEqCase{#1}{{nopagenum}{\tableofcontents[pagenum=false,toc in toc=false]}
+			{pagenum}{\tableofcontents[pagenum=true,toc in toc=false]}
+			{pagenumtoc}{\tableofcontents[pagenum=true,toc in toc=true]}
+		}
+	}
 }
-
 
 %
 %	---	定义新的致谢环境
@@ -479,14 +561,6 @@
 	\addcontentsline{toc}{section}{参考文献}
 	\oldbibliography{#1}
 }
-
-
-%Test kvsetkeys
-%\RequirePackage{kvsetkeys}
-%\newcommand{\testtodo}[2]{#1~is~#2;~}
-%\newcommand{\test}[1][]{
-%	\kv@parse{#1}{\testtodo}
-%}
 
 
 
