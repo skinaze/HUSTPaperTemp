@@ -61,7 +61,7 @@
 \LoadClass[a4paper]{article}
 %页面基本设置
 \RequirePackage[boldfont,slantfont]{xeCJK}
-\RequirePackage[cs4size,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/28]
+\RequirePackage[cs4size,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
 
 %
 %	---	定义页边距
