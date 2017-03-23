@@ -7,11 +7,27 @@
 正文样例可以参照[PDF样例文档](Example/example.pdf)
 
 ## 使用方法
+
+### 在Windows系统中
 * 下载本模板[最新Release版本](https://github.com/skinaze/HUSTPaperTemp/releases)
-* 下载并安装最新版本的MiKTeX （推荐）或者TeX Live
+* 下载并安装最新版本的MiKTeX 或者TeX Live
 * 打开TeX works，并设置默认编译工具(Edit->Preference->Typesetting->Processing Tools->Default)为XeLaTeX+MakeIndex+BibTeX
 * 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
 * 在新的tex文档中使用\documentclass{HustGraduPaper}使用模板定义的样式
+
+### 在Mac OS X系统中
+* 下载本模板[最新Release版本](https://github.com/skinaze/HUSTPaperTemp/releases)
+* 下载并安装最新版本的MacTeX
+* 打开TeXshop，新建一个tex 文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
+* 在新的tex 文档中使用\documentclass{HustGraduPaper} 使用模板定义的样式
+* 编写完成论文后，使用XeLaTeX->MakeIndex->BibTeX->XeLaTeX 的顺序进行编译
+
+### 在Ubuntu系统中
+* 下载本模板[最新Release版本](https://github.com/skinaze/HUSTPaperTemp/releases)
+* 使用命令apt-get install texlive 安装最新版TEX Live
+* 新建一个.tex 文件并保存在一个文件夹下，将Template 文件夹下所有文件拷贝到该文件夹下
+* 在新的tex 文档中使用\documentclass[ubuntufont]{HustGraduPaper}使用模板定义的样式，并设置使用Ubuntu 自带的文泉驿和文鼎字体
+* 编写完成论文后，使用XeLaTeX->MakeIndex->BibTeX->XeLaTeX 的顺序进行编译
 
 ## 详细说明
 详细说明请参考[使用说明](Instruction/使用说明.pdf)，或者查看[Example文件夹](Example)下的例子。
