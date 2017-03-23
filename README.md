@@ -30,10 +30,10 @@
 * 编写完成论文后，使用XeLaTeX->MakeIndex->BibTeX->XeLaTeX 的顺序进行编译
 
 ## 详细说明
-详细说明请参考[使用说明](Instruction/使用说明.pdf)，或者查看[Example文件夹](Example)下的例子。
+详细说明请参考[使用说明](Instruction/HGP.pdf)，或者查看[Example文件夹](Example)下的例子。
 
 ## 问题反馈
-如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](http://stringblog.com/)。
+如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)。
 
 ## 未发布的更新内容
 无
