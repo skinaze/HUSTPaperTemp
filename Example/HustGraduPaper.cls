@@ -21,10 +21,10 @@
 %
 %	---	定义类的选项
 %
-%使用条件语句
-\RequirePackage{xstring}
+\RequirePackage{xstring}%使用条件语句
 %字体组
-\def\HGP@fontset{} %默认绿色logo
+\def\HGP@fontset{}
+\DeclareOption{autofont}{}%自动设置字体
 \DeclareOption{adobefont} {
 	\def\HGP@fontset{,fontset=adobe}
 }%使用Adobe 公司的四款中文字体
@@ -52,7 +52,20 @@
 \DeclareOption{nofont} {
 	\def\HGP@fontset{,fontset=none}
 }%不配置中文字体，需要用户自己配置
-\ProcessOptions\relax
+%引用样式
+\DeclareOption{normalcite}{}%使用正文式引用样式
+\DeclareOption{supercite}{
+	\let \oldcite \cite
+	\renewcommand{\cite}[2][]{
+		\unskip
+		\def\HGP@temp{#1}
+		\ifx\HGP@temp\empty{\unskip\textsuperscript{\oldcite{#2}}}
+		\else{\unskip\textsuperscript{\oldcite[#1]{#2}}}\fi
+	}
+}%使用上标型引用样式
+\ProcessOptions
+\ExecuteOptions{autofont,normalcites}
+\relax
 
 
 %

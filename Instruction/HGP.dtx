@@ -48,17 +48,20 @@
 % 
 % \subsection{字体组设置}\label{subsec:setupfont}
 % \par 本样式基于CTEX宏包，因此可以在Windows系统下和Mac OS X系统下自动识别并使用中易字体和华文字体，关于字体问题更多请见“~\nameref{subsec:font}”，如果需要在其他系统下或者希望选用其他字体请只用这个样式选项.
-% \par\noindent\DescribeMacro{adobefont} 使用Adobe公司的四款中文字体。
-% \cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{autofont} 使用CTEX宏包自动设置字体，针对Windows和Mac OS X，详见“~\nameref{subsec:font}”（默认）。
+% \par\noindent\DescribeMacro{adobefont} 使用Adobe公司的四款中文字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{fancdolfont} 使用Fandol中文字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{founderfont} 使用方正公司中文字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{macfont} 使用Mac OS X下的华文字体。\cite[\S 4.3]{ctexdoc}
-% \par\noindent\DescribeMacro{ubuntufont} 使用Ubuntu 系统下的文泉驿和文鼎字体。
-% \cite[\S 4.3]{ctexdoc}
+% \par\noindent\DescribeMacro{ubuntufont} 使用Ubuntu 系统下的文泉驿和文鼎字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{winfont} 使用简体中文Windows系统下的中文字体，自动判断Windows系统版本，采用winnewfont或winoldfont 的设置。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{winnewfont}使用简体中文Windows Vista或之后系统下的中易字体和微软雅黑字体。
 % \par\noindent\DescribeMacro{winoldfont}使用简体中文Windows XP或之前系统下的中易字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{nofont}不配置中文字体，需要用户自己配置|\songti|和|\heiti|命令。\cite[\S 4.3]{ctexdoc}
+% 
+% \subsection{引用样式设置}
+% \par\noindent\DescribeMacro{normalcite} 使用\LaTeX 常见的文中引用格式，如“引用[1]”（默认）。
+% \par\noindent\DescribeMacro{supercite} 使用上标引用格式，如“引用\textsuperscript{[1]}”。
 % 
 % \section{页面与章节}
 % \par 本模板针对论文内容设定了如下几个新的/重写的页面：
