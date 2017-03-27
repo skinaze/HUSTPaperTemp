@@ -139,6 +139,23 @@
 \ctexset{paragraph={beforeskip={0em}}}
 \ctexset{subparagraph={beforeskip={0em}}}
 
+%设置标题的引用
+\def\sectionautorefname~#1\null{%
+	第~#1~章\null
+}
+\def\subsectionautorefname~#1\null{%
+	第~#1~章\null
+}
+\def\subsubsectionautorefname~#1\null{%
+	第~#1~章\null
+}
+\def\paragraphautorefname~#1\null{%
+	段落~#1~\null
+}
+\def\subparagraphautorefname~#1\null{%
+	段落~#1~\null
+}
+
 %设置附录
 \RequirePackage[title,titletoc]{appendix}
 \renewcommand{\appendixname}{附录}
@@ -187,8 +204,14 @@
 \setlength{\belowcaptionskip}{0pt}
 
 %重新设置图表autoref
-\newcommand{\figureautorefname}{图}
-\newcommand{\tableautorefname}{表}
+%\newcommand{\figureautorefname}{图}
+\def\figureautorefname~#1\null{%
+	图~#1~\null
+}
+%\newcommand{\tableautorefname}{表}
+\def\tableautorefname~#1\null{%
+	表~#1~\null
+}
 
 %使用tabularx库并定义新的左右中格式
 \RequirePackage{tabularx}
@@ -252,7 +275,10 @@
 \numberwithin{equation}{section}
 
 %重新设置公式autoref
-\newcommand{\equationautorefname}{等式}
+%\newcommand{\equationautorefname}{等式}
+\def\equationautorefname~#1\null{%
+	等式~(#1)~\null
+}
 
 
 %
@@ -453,8 +479,9 @@
 \hypersetup{
 	%colorlinks = true,
 	%linkcolor  = black,
-	pdfborder = 000
-} %去掉目录红框
+	pdfborder = 000,%去掉链接红框
+	pdfstartview=FitH%打开页面以窗口宽度显示
+} 
 \renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} \bfseries}
 \renewcommand{\contentsname}{目\hspace{2em}录}
 \renewcommand{\cftaftertoctitle}{\hfill}
