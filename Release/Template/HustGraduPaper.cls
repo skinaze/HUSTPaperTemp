@@ -144,10 +144,10 @@
 	第~#1~章\null
 }
 \def\subsectionautorefname~#1\null{%
-	第~#1~章\null
+	第~#1~节\null
 }
 \def\subsubsectionautorefname~#1\null{%
-	第~#1~章\null
+	第~#1~小节\null
 }
 \def\paragraphautorefname~#1\null{%
 	段落~#1~\null
