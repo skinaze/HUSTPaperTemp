@@ -191,6 +191,8 @@
 %设置图表标题的计数方式
 \renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection-\fi \@arabic\c@figure}
 \renewcommand{\thetable}{\ifnum \c@section>\z@ \thesection-\fi \@arabic\c@table}
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
 
 %设置标题的样式
 \RequirePackage{caption}
