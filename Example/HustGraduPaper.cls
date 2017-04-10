@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
-% 	@date 2017/04/01
-%	@version v2.0.3
+% 	@date 2017/04/03
+%	@version v2.0.4
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/04/01}
-\def\HGP@version{v2.0.3}
+\def\HGP@date{2017/04/03}
+\def\HGP@version{v2.0.4}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -603,6 +603,21 @@
 	\addcontentsline{toc}{section}{参考文献}
 	\oldbibliography{#1}
 }
+
+%
+%	---	其他设置
+%
+%pdf文件信息设置
+\AtBeginDocument{
+	\hypersetup{
+		pdfinfo={
+			Title={\@title},
+			Author={\@author},
+			Subject={华中科技大学本科生毕业论文}
+		}
+	}
+}
+
 
 
 
