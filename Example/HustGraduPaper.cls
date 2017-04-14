@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
-% 	@date 2017/04/03
-%	@version v2.0.4
+% 	@date 2017/04/14
+%	@version v2.1.0
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/04/03}
-\def\HGP@version{v2.0.4}
+\def\HGP@date{2017/04/14}
+\def\HGP@version{v2.1.0}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -144,28 +144,6 @@
 	{1em}%
 	{\normalfont\normalsize\bfseries}}
 
-%设置标题的引用
-\def\sectionautorefname~#1\null{%
-	第~#1~章\null
-}
-\def\subsectionautorefname~#1\null{%
-	第~#1~节\null
-}
-\def\subsubsectionautorefname~#1\null{%
-	第~#1~小节\null
-}
-\def\paragraphautorefname~#1\null{%
-	段落~#1~\null
-}
-\def\subparagraphautorefname~#1\null{%
-	段落~#1~\null
-}
-
-%设置附录
-\RequirePackage[title,titletoc]{appendix}
-\renewcommand{\appendixname}{附录}
-
-%首行缩进存在问题，暂不使用
 \RequirePackage[indentafter]{titlesec}
 %设置新的标题层级subsubsubsection
 \titleclass{\subsubsubsection}{straight}[\subsubsection]
@@ -175,7 +153,6 @@
 %设置标题样式
 \titleformat{\subsubsubsection}{\raggedright \heiti \bfseries \zihao{-4}}{\thesubsubsubsection}{1em}{}[]
 \titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
 %重新设置段落等级
 \AtBeginDocument{
 	\def\toclevel@subsubsubsection{4}
@@ -188,6 +165,30 @@
 %设置目录深度
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
+
+%设置附录
+\RequirePackage[title,titletoc]{appendix}
+\renewcommand{\appendixname}{附录}
+
+%设置标题的引用
+\def\sectionautorefname~#1\null{%
+	第~#1~节\null
+}
+\def\subsectionautorefname~#1\null{%
+	第~#1~小节\null
+}
+\def\subsubsectionautorefname~#1\null{%
+	第~#1~小节\null
+}
+\def\subsubsubsectionautorefname~#1\null{%
+	第~#1~小节\null
+}
+\def\paragraphautorefname~#1\null{%
+	段落~#1~\null
+}
+\def\subparagraphautorefname~#1\null{%
+	段落~#1~\null
+}
 
 
 %
@@ -268,7 +269,6 @@
 %
 %使用ams的数学库
 \RequirePackage{amsmath}
-\RequirePackage{bm}
 
 %设置公式间距为零
 \AtBeginDocument{
@@ -459,7 +459,7 @@
 	
 }{
 	\vspace{1em}
-	\paragraph{\heiti \bfseries 关键词：} \cnkeyword
+	\par\noindent {\heiti \bfseries 关键词：} \cnkeyword
 	\clearpage
 }
 
@@ -473,7 +473,7 @@
 	
 }{
 	\vspace{1em}
-	\paragraph{\bfseries Key Words: } \enkeyword
+	\par\noindent {\bfseries Key Words: } \enkeyword
 	\clearpage
 }
 
@@ -524,25 +524,38 @@
 				{false}{\def\HGP@addtoctotoc{}}
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
 		}
+		{level}{\setcounter{tocdepth}{#2}}
 		{section indent}{\renewcommand{\cftsecindent}{#2}}
 		{subsection indent}{\renewcommand{\cftsubsecindent}{#2}}
 		{subsubsection indent}{\renewcommand{\cftsubsubsecindent}{#2}}
+		{subsubsubsection indent}{\def\l@subsubsubsection{\@dottedtocline{4}{#2}{4em}}}
+		{paragraph indent}{\def\l@paragraph{\@dottedtocline{5}{#2}{5em}}}
+		{subparagraph indent}{\def\l@subparagraph{\@dottedtocline{5}{#2}{5em}}}
 		{indent}{
 			\IfStrEqCase{#2}{
 				{normal}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{1.5em}
 					\renewcommand{\cftsubsubsecindent}{3.8em}
+					\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+					\def\l@paragraph{\@dottedtocline{5}{11em}{5em}}
+					\def\l@subparagraph{\@dottedtocline{5}{13em}{5em}}
 				}
 				{noindent}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{0em}
 					\renewcommand{\cftsubsubsecindent}{0em}
+					\def\l@subsubsubsection{\@dottedtocline{4}{0em}{4em}}
+					\def\l@paragraph{\@dottedtocline{5}{0em}{5em}}
+					\def\l@subparagraph{\@dottedtocline{5}{0em}{5em}}
 				}
 				{sameforsubandsubsub}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{1.5em}
 					\renewcommand{\cftsubsubsecindent}{1.5em}
+					\def\l@subsubsubsection{\@dottedtocline{4}{1.5em}{4em}}
+					\def\l@paragraph{\@dottedtocline{5}{1.5em}{5em}}
+					\def\l@subparagraph{\@dottedtocline{5}{1.5em}{5em}}
 				}
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
 		}
