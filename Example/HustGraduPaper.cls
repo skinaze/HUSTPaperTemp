@@ -131,13 +131,18 @@
 
 %设置各个标题样式
 %不需要使用part和chapter层级
-\RequirePackage{titlesec}
 \ctexset{section={format={\centering \heiti \bfseries \zihao{-2}}}} %节
 \newcommand{\sectionbreak}{\clearpage} %小节从新的一页开始
 \ctexset{subsection={format={\raggedright \heiti \bfseries \zihao{4}}}} %小节
 \ctexset{subsubsection={format={\raggedright \heiti \bfseries \zihao{-4}}}} %小小节
-\ctexset{paragraph={beforeskip={0em}}}
-\ctexset{subparagraph={beforeskip={0em}}}
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+	{0ex \@plus1ex \@minus.2ex}%
+	{1em}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+	{0ex \@plus1ex \@minus .2ex}%
+	{1em}%
+	{\normalfont\normalsize\bfseries}}
 
 %设置标题的引用
 \def\sectionautorefname~#1\null{%
@@ -161,28 +166,28 @@
 \renewcommand{\appendixname}{附录}
 
 %首行缩进存在问题，暂不使用
-\iffalse
+\RequirePackage[indentafter]{titlesec}
 %设置新的标题层级subsubsubsection
-\titleclass{\subsubsubsection}{straight}[\subsection]
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
 %设置编号
 \newcounter{subsubsubsection}[subsubsection]
 \renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
 %设置标题样式
-\titleformat{\subsubsubsection}
-{\raggedright \heiti \bfseries \zihao{-4}}{\thesubsubsubsection}{1em}{}[]
-\titlespacing*{\subsubsubsection}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titleformat{\subsubsubsection}{\raggedright \heiti \bfseries \zihao{-4}}{\thesubsubsubsection}{1em}{}[]
+\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
 %重新设置段落等级
-\def\toclevel@subsubsubsection{4}
-\def\toclevel@paragraph{5}
-\def\toclevel@paragraph{6}
-\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
-\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
-\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\AtBeginDocument{
+	\def\toclevel@subsubsubsection{4}
+	\def\toclevel@paragraph{5}
+	\def\toclevel@subparagraph{6}
+	\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+	\def\l@paragraph{\@dottedtocline{5}{11em}{5em}}
+	\def\l@subparagraph{\@dottedtocline{6}{13em}{6em}}
+}
 %设置目录深度
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
-\fi
 
 
 %
