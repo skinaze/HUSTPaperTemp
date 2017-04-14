@@ -112,18 +112,23 @@
 % 请注意英文关键词使用{\bfseries 英文分号+一个空格}进行分割。
 % 
 % \subsection{目录}\label{subsec:toc}
-% 根据官方样式，目录包含中英文摘要、正文、致谢、参考文献和附录。本模板已经将上述内容加入到目录中，无需手动设置。使用方法：在正文中使用命令\DescribeMacro{\tableofcontents}|\tableofcontents[<可选参数>]|生成目录。目录包含6个可选参数，可选参数之间使用英文逗号分隔，可选参数分别是：
-% \DescribeMacro{pagenum} |pagenum=yes/no/true/false|表示目录页面是否显示页码，其中yes/true为显示页码no/false为不显示页码，默认不显示。
-% \DescribeMacro{toc in toc}|toc in toc=yes/no/true/false|表示是否将目录本身加入到目录中，默认不加入。请注意，即使设置不显示页码，设置在目录中显示目录的时候仍然会在目录中显示被隐藏的页码。
-% \DescribeMacro{section indent}|section indent=0em|表示目录第一级的缩进量，默认为0em。
-% \DescribeMacro{subsection indent}|subsection indent=1.5em|表示目录第二级缩进，默认为1.5em。
-% \DescribeMacro{subsubsection indent}|subsubsection indent=3.8em|表示目录第三级缩进，默认3.8em。
-% \DescribeMacro{indent}|indent=normal/noindent/sameforsubandsubsub|用于快速设定缩进，其中|normal|使用默认缩进，即第一级为0em，第二级为1.5em，第三级为3.8em；|noindent|为三级目录皆无缩进；|sameforsubandsubsub|使第二级和第三级缩进相同，都为1.5em，此时第一级仍为0em。
+% 根据官方样式，目录包含中英文摘要、正文、致谢、参考文献和附录。本模板已经将上述内容加入到目录中，无需手动设置。使用方法：在正文中使用命令\DescribeMacro{\tableofcontents}|\tableofcontents[<可选参数>]|生成目录。目录包含10个可选参数，可选参数之间使用英文逗号分隔，可选参数分别是：\\
+% \DescribeMacro{pagenum} |pagenum=yes/no/true/false|表示目录页面是否显示页码，其中yes/true为显示页码no/false为不显示页码，默认不显示。\\
+% \DescribeMacro{toc in toc}|toc in toc=yes/no/true/false|表示是否将目录本身加入到目录中，默认不加入。请注意，即使设置不显示页码，设置在目录中显示目录的时候仍然会在目录中显示被隐藏的页码。\\
+% \DescribeMacro{level}|level=4|表示目录的级数，默认为4。\\
+% \DescribeMacro{section indent}|section indent=0em|表示目录第一级的缩进量，默认为0em。\\
+% \DescribeMacro{subsection indent}|subsection indent=1.5em|表示目录第二级缩进，默认为1.5em。\\
+% \DescribeMacro{subsubsection indent}|subsubsection indent=3.8em|表示目录第三级缩进，默认3.8em。\\
+% \DescribeMacro{subsubsubsection indent}|subsubsubsection indent=7em|表示目录第四级缩进，默认7em。\\
+% \DescribeMacro{paragraph indent}|paragraph indent=11em|表示目录第五级缩进，默认11em。\\
+% \DescribeMacro{subparagraph indent}|subparagraph indent=13em|表示目录第六级缩进，默认13em。\\
+% \DescribeMacro{indent}|indent=normal/noindent/sameforsubandsubsub|用于快速设定缩进，其中|normal|使用默认缩进；|noindent|为三级目录皆无缩进；|sameforsubandsubsub|使第二级之后缩进相同，都为1.5em，此时第一级仍为0em。
 % \par 在之前的版本中，还使用了\DescribeMacro{\maketoc}|\maketoc[<nopagenum/pagenum/pagenumtoc>]|命令，该命令包含一个可选参数，其中：|nopagenum|指目录没有页码（默认值）；|pagenum|指目录有页码；|pagenumtoc|指目录有页码，且目录两字出现在目录中。该命令仍然被支持。
 % \par 请注意本模板不会自动设置页码格式，具体页码设置方法，请参考“{\itshape ~\nameref{subsec:pagenum}}”。
 % 
 % \subsection{正文}
-% \par 正文和标题的使用方法与\LaTeX 基本使用方法一致，在此不做过多说明。
+% \par 正文章节标题在\LaTeX 基本的三个级别标题即|\section|、|\subsection|和|\subsubsection|的基础上，定义了新的\DescribeMacro{\subsubsubsection}|\subsubsubsection|命令，其使用方法和标准的三级标题格式一样：|\subsubsubsection{<标题>}|。
+% \par 该标题默认包含在目录中，且在目录中的等级是四级，为此段落|\paragraph|和小段落|\subparagraph|的等级下移到第五级和第六级。该等级的标题也可以用在附录中，详见\nameref{subsec:appendix}部分的说明。
 % 
 % \subsection{致谢环境}
 % \par 本文设置了一个致谢环境，方便添加致谢并将其添加到目录中。使用方法：\DescribeEnv{thankpage}
@@ -140,13 +145,14 @@
 % \par 如果希望手工录入，推荐安装JabRef管理参考文献，该系统可以直接搜索论文的DOI编号、书目的ISBN编号，甚至论文的名称，从而直接获得其相关信息，极大地方便了参考文献的录入。
 % \par 若要在本模板中使用参考文献，请这样使用：首先在文章末尾参考文献的地方使用\DescribeMacro{\bibliography}|\bibliography{<bib文件名>}|，Bib文件名中不需要加扩展名。之后可以通过命令\DescribeMacro{\cite}|\cite{<bib id>}|引用一个参考文献，被引用的参考文献会自动出现在文章末尾的参考文献中。也可以使用命令\DescribeMacro{\nocite}|\nocite{<bib id>}|隐式引用一个参考文献，这样引用不会在文中标出参考文献号。当然如果你使用的是自己录入的Bib文件，你也可以通过命令|\nocite{*}|直接将所有Bib文件中的参考文献列出。
 % 
-% \subsection{附录}
-% \par 本附录使用了Appendix宏包，附录使用首先需要开启附录环境，之后可以用Section、Subsection、Subsubsection来构建附录的具体内容。附录的三级标签会在目录中显示，且一级标签会添加上附录二字。理论上可以在文章任意位置加入附录，但是推荐将所有附录放在文末。具体使用方式如下：\DescribeEnv{appendices}
+% \subsection{附录}\label{subsec:appendix}
+% \par 本附录使用了Appendix宏包，附录使用首先需要开启附录环境，之后可以用|\section|、|\subsection|、|\subsubsection|和|\subsubsubsection|来构建附录的具体内容。附录的三级标签会在目录中显示，且一级标签会添加上附录二字。理论上可以在文章任意位置加入附录，但是推荐将所有附录放在文末。具体使用方式如下：\DescribeEnv{appendices}
 \begin{verbatim}
 \begin{appendices}
   \section{这是附录的第一级}
   \subsection{这是附录的第二级}
   \subsubsection{这是附录的第三级}
+  \subsubsubsection{这是附录的第四级}
 \end{appendices}
 \end{verbatim}
 % 
@@ -157,7 +163,8 @@
 % \par 请注意，在正文中如果单独使用|\bfseries|或者|\itshape|会将字体映射为黑体和楷体，并不会将宋体加粗或者斜体。
 % 
 % \subsection{交叉引用}
-% 本模板重写了章节、公式和图表的\DescribeMacro{\autoref}|\autoref|命令使之格式美观且符合一般引用方法，因此推荐使用该命令对章节、公式和图表进行引用。使用方法：在引用之前需要在对应的位置使用\DescribeMacro{\label}|\label{<引用标签>}|添加一个新的标签，然后使用|\autoref{<引用标签>}|引用该标签所在的章节、公式和图表。
+% \par 本模板重写了章节、公式和图表的\DescribeMacro{\autoref}|\autoref|命令使之格式美观且符合一般引用方法，因此推荐使用该命令对章节、公式和图表进行引用。使用方法：在引用之前需要在对应的位置使用\DescribeMacro{\label}|\label{<引用标签>}|添加一个新的标签，然后使用|\autoref{<引用标签>}|引用该标签所在的章节、公式和图表。
+% \par 因为|\autoref|引用序号，但是段落并没有序号，所以不建议使用|\autoref|来引用段落。因为|\autoref|无法识别|appendices|环境，其在附录中的引用样式与正文中相同，所以也不建议使用|\autoref|来引用附录。
 % 
 % \subsection{图片环境}
 % \par 本模板保留了原来的图片环境|figure|的同时，添加了一个\DescribeEnv{generalfig}|generalfig|环境，方便添加居中的，带有标题的图片。其使用方法如下：
@@ -255,6 +262,7 @@
   \section{第一节 The first Section}
   \subsection{第一小节}
   \subsubsection{第一小小节}
+  \subsubsection{第一小小小节}
   正文内容\cite{bibid} %这样引用参考文献
   
   \begin{thankpage}
@@ -266,8 +274,6 @@
   \begin{appendices}
     \section{这是第一个附录}
     这里是附录环境，其中的section、subsection、subsubsection已经变为附录的样式，并且会以这种样式加入目录中
-    \subsection{附录可以有小节}
-    \subsubsection{附录中也可以有小小节}
   \end{appendices}
 \end{document}
 %    \end{macrocode}
