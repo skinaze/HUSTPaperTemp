@@ -10,6 +10,7 @@
 
 %添加自己要用的其他宏包
 \usepackage{xltxtra}
+\usepackage{bm}
 
 \begin{document}
 	%生成标题页 \maketitle[可选参数]
@@ -48,9 +49,13 @@
 	%可选参数：
 	%pagenum=yes/no/true/false 目录是否显示页码，默认为false
 	%toc in toc=yes/no/true/false 目录中是否有目录及其页码，默认为false
+	%level=4 目录级数，默认是4，即显示到subsubsubsection
 	%section indent=0em 目录第一级的缩进，默认是0em
 	%subsection indent=1.5em 目录第二级的缩进，默认是1.5em
 	%subsubsection indent=3.8em 目录第三级的缩进，默认是3.8em
+	%subsubsubsection indent=7em 目录第四级的缩进，默认是7em
+	%paragraph indent=11em 目录第五级的缩进，默认是11em
+	%subparagraph indent=13em 目录第六级的缩进，默认13em
 	%indent=normal/noindent/sameforsubandsubsub 快速缩进设置，具体见文档
 	%请注意在合适的位置放置\pagenumbering{numstyle}使用新的页码
 	\tableofcontents
@@ -66,9 +71,14 @@
 	\par 也可以通过\verb|\par|命令来新起一段
 	\subsection{第一小节}
 	\subsubsection{第一小小节}
+	\subsubsubsection{第一小小小节}
 	\subsubsection{第二小小节}
+	\subsubsubsection{第二小小小节}\label{subsubsubsec:subsubsubsec}
+	
+	\verb|\subsubsubsection|是本样式定义的第四级标题，其使用方法与前三级相同。
+	
 	\paragraph{段落}\label{para:para}这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落这是一个带有顶头标签的段落
-	\subparagraph{小段落}只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落
+	\subparagraph{小段落}\label{subpara:subpara}只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落只是一个带有缩进标签的段落
 	\subsection{第二小节}
 	本模板已经引入伪加粗和伪斜体，这样就不需要对应的粗体和斜体字体也能生成需要的效果，就像下面这样
 	
@@ -92,7 +102,7 @@
 	新的大节会自动出现在新的一页上
 	\section{参考文献和交叉引用}\label{sec:ref}
 	\subsection{参考文献}
-	这是一个参考文献引用的范例\cite{Stone_1998}；
+	这是一个参考文献引用的范例\cite{Stone_1998}
 	
 	这样可以添加一个不标注的参考文献引用\nocite{9787508342894}
 	
@@ -101,7 +111,9 @@
 	\subsection{交叉引用}\label{subsec:crossref}
 	本模板已经重写了hyperref宏包的\verb|\autoref|命令，方便引用章节、公式和图表。
 	
-	比如说\autoref{sec:ref}和\autoref{subsec:crossref}就引用了本章节，\autoref{para:para}引用了之前的一个段落。
+	比如说\autoref{sec:ref}和\autoref{subsec:crossref}就引用了本章节，\autoref{para:para}和\autoref{subpara:subpara}引用了之前的两个段落。显然段落因为没有序号，引用结果和上一节的需要相同，因此建议使用段落“\nameref{para:para}”和段落“\nameref{subpara:subpara}”。
+	
+	本样式定义的第四级标题也可以引用，就像这样：\autoref{subsubsubsec:subsubsubsec}。
 	
 	
 	
@@ -125,8 +137,8 @@
 	\end{equation}
 	或者多个带编号的公式
 	\begin{eqnarray}
-	f_1(x)=12x^2+36x+sinx\\
-	f_2(x)=sqrt[3]{x^3+3x}
+	f_1(x)=12x^2+36x+\sin x\\
+	f_2(x)=\sqrt{3}{x^3+3x}
 	\end{eqnarray}
 	以上
 	
@@ -202,7 +214,9 @@
 		\section{这是第一个附录}
 		这里是附录环境，其中的section、subsection、subsubsection已经变为附录的样式，并且会以这种样式加入目录中
 		\subsection{附录可以有小节}
-		\subsubsection{附录中也可以有小小节}
+		\subsubsection{附录中也可以有小小节}\label{apxsubsubsec:appendix}
+		\subsubsubsection{附录中也有小小小节}
+		\verb|\autoref|无法识别Appendices环境，引用效果和正文一样，如\autoref{apxsubsubsec:appendix}。所以如果引用附录的话，建议直接使用附录~\ref{apxsubsubsec:appendix}~。
 	\end{appendices}
 	
 \end{document}
