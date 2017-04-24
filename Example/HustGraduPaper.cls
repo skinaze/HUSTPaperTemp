@@ -202,6 +202,7 @@
 
 %设置标题的样式
 \RequirePackage{caption}
+\captionsetup{labelsep=quad}
 \captionsetup{font={normalsize,bf,singlespacing}}
 \captionsetup[figure]{position=bottom,skip={0pt}}
 \captionsetup[table]{position=top,skip={0pt}}

@@ -36,4 +36,4 @@
 如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)，亦可在[Issues](https://github.com/skinaze/HUSTPaperTemp/issues)中留言。
 
 ## 未发布的更新内容
-无
+* 修正图表编号后使用冒号的错误，改为使用1em间距；
