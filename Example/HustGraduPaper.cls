@@ -74,7 +74,7 @@
 \LoadClass[a4paper]{article}
 %页面基本设置
 \RequirePackage[boldfont,slantfont]{xeCJK}
-\RequirePackage[cs4size,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
+\RequirePackage[zihao=-4,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
 
 %
 %	---	定义页边距
@@ -88,7 +88,6 @@
 %
 %	---	定义字体
 %
-\RequirePackage{xeCJK}
 %用于设置非常用字体
 \RequirePackage{fontspec}
 %论文封面使用华文中宋
