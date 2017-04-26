@@ -9,6 +9,8 @@
 *.toc
 *.lof
 *.lot
+*.ilg
+*.ind
 
 #BIB files
 *.bbl
