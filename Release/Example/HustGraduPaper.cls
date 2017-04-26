@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
-% 	@date 2017/04/14
-%	@version v2.1.0
+% 	@date 2017/04/26
+%	@version v2.1.1
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/04/14}
-\def\HGP@version{v2.1.0}
+\def\HGP@date{2017/04/26}
+\def\HGP@version{v2.1.1}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -74,7 +74,7 @@
 \LoadClass[a4paper]{article}
 %页面基本设置
 \RequirePackage[boldfont,slantfont]{xeCJK}
-\RequirePackage[cs4size,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
+\RequirePackage[zihao=-4,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
 
 %
 %	---	定义页边距
@@ -88,7 +88,6 @@
 %
 %	---	定义字体
 %
-\RequirePackage{xeCJK}
 %用于设置非常用字体
 \RequirePackage{fontspec}
 %论文封面使用华文中宋
@@ -202,6 +201,7 @@
 
 %设置标题的样式
 \RequirePackage{caption}
+\captionsetup{labelsep=quad}
 \captionsetup{font={normalsize,bf,singlespacing}}
 \captionsetup[figure]{position=bottom,skip={0pt}}
 \captionsetup[table]{position=top,skip={0pt}}
