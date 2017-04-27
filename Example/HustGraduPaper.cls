@@ -284,7 +284,7 @@
 %重新设置公式autoref
 %\newcommand{\equationautorefname}{等式}
 \def\equationautorefname~#1\null{%
-	等式~(#1)~\null
+	式~(#1)~\null
 }
 
 
