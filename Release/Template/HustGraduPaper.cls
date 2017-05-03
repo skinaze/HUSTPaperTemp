@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
-% 	@date 2017/04/26
-%	@version v2.1.1
+% 	@date 2017/05/03
+%	@version v2.1.2
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/04/26}
-\def\HGP@version{v2.1.1}
+\def\HGP@date{2017/05/03}
+\def\HGP@version{v2.1.2}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -284,7 +284,7 @@
 %重新设置公式autoref
 %\newcommand{\equationautorefname}{等式}
 \def\equationautorefname~#1\null{%
-	等式~(#1)~\null
+	式~(#1)~\null
 }
 
 
@@ -320,6 +320,17 @@
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (maketitle)}]
 		}
 		{line length}{\def\HGP@titlelength{#2}}
+		{line font}{
+			\IfStrEqCase{#2}{
+				{huawenzhongsong}{\def\HGP@titlelinefont{\huawenzhongsong}}
+				{songti}{\def\HGP@titlelinefont{\songti}}
+				{heiti}{\def\HGP@titlelinefont{\heiti}}
+				{fangsong}{\def\HGP@titlelinefont{\fangsong}}
+				{kaishu}{\def\HGP@titlelinefont{\kaishu}}
+				{lishu}{\def\HGP@titlelinefont{\lishu}}
+				{youyuan}{\def\HGP@titlelinefont{\youyuan}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (maketitle)}]
+		}
 	}[\ClassWarning{\HGP@name}{There's no such argument for maketitle}]
 }
 \newcommand{\maketitlearg}[1]{
@@ -333,6 +344,7 @@
 \renewcommand{\maketitle}[1][12em]{
 	\def\HGP@titlecolor{HUSTGreen.png}
 	\def\HGP@titlelength{12em}
+	\def\HGP@titlelinefont{}
 	\maketitlearg{#1}
 	\begin{titlepage}
 		\begin{center}
@@ -347,15 +359,15 @@
 				\renewcommand\arraystretch{1.5}
 				\begin{tabular}{lc}
 					\makebox[4em][s]{院 \hfill 系} &
-					\underline{\makebox[\HGP@titlelength]{\@school}} \\
+					\underline{\makebox[\HGP@titlelength]{\HGP@titlelinefont\@school}} \\
 					\makebox[4em][s]{专业班级} &
-					\underline{\makebox[\HGP@titlelength]{\@classnum}} \\
+					\underline{\makebox[\HGP@titlelength]{\HGP@titlelinefont\@classnum}} \\
 					\makebox[4em][s]{姓 \hfill 名} &
-					\underline{\makebox[\HGP@titlelength]{\@author}} \\
+					\underline{\makebox[\HGP@titlelength]{\HGP@titlelinefont\@author}} \\
 					\makebox[4em][s]{学 \hfill 号} &
-					\underline{\makebox[\HGP@titlelength]{\@stunum}} \\
+					\underline{\makebox[\HGP@titlelength]{\HGP@titlelinefont\@stunum}} \\
 					\makebox[4em][s]{指导教师} &
-					\underline{\makebox[\HGP@titlelength]{\@instructor}} \\
+					\underline{\makebox[\HGP@titlelength]{\HGP@titlelinefont\@instructor}} \\
 			\end{tabular}}\\
 			\vspace{4em}
 			{\zihao{3} \huawenzhongsong \@date}\\
