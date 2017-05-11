@@ -471,7 +471,7 @@
 	
 }{
 	\vspace{1em}
-	\par\noindent {\heiti \bfseries 关键词：} \cnkeyword
+	\par\noindent {\heiti\zihao{4}\bfseries 关键词：} \cnkeyword
 	\clearpage
 }
 
@@ -485,7 +485,7 @@
 	
 }{
 	\vspace{1em}
-	\par\noindent {\bfseries Key Words: } \enkeyword
+	\par\noindent {\zihao{4}\bfseries Key Words: } \enkeyword
 	\clearpage
 }
 
