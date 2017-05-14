@@ -351,7 +351,7 @@
 			\vspace*{4em}
 			\includegraphics[height=1.61cm]{\HGP@titlecolor}\\
 			\vspace*{2em}
-			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计[论文]}\\
+			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计\hspace{-0.4em}［论文］}\\
 			\vspace{6em}
 			{\zihao{2} \heiti \bfseries \@title}\\
 			\vspace{6em}
