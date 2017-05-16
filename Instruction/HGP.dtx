@@ -38,7 +38,7 @@
 % \footnote{Ubuntu系统中中文字体问题比较复杂，请参考其他文章进行编译字体设置}
 % \end{enumerate}
 % 
-% \section{样式选项}
+% \section{样式选项}\label{sec:packageoption}
 % \par 和一般的样式一样，本样式需要使用指令|\documentclass|来引入样式，
 % |\documentclass|的使用如下
 \begin{verbatim}
@@ -62,6 +62,10 @@
 % \subsection{引用样式设置}
 % \par\noindent\DescribeMacro{normalcite} 使用\LaTeX 常见的文中引用格式，如“引用[1]”（默认）。
 % \par\noindent\DescribeMacro{supercite} 使用上标引用格式，如“引用\textsuperscript{[1]}”。
+%
+% \subsection{参考文献样式设置}\label{subsec:setupbibstyle}
+% \par\noindent\DescribeMacro{bstcite} 使用GBT7714-2005参考文献样式（默认）。
+% \par\noindent\DescribeMacro{tsinghuacite} 使用清华大学论文的参考文献样式，详见\href{https://www.ctan.org/tex-archive/macros/latex/contrib/thuthesis}{ThuThesis}。
 % 
 % \section{页面与章节}
 % \par 本模板针对论文内容设定了如下几个新的/重写的页面：
@@ -141,10 +145,10 @@
 % 
 % \subsection{参考文献}
 % \par 本模板参考文献采用\BibTeX 生成，因此需要制作独立的Bib文件。“*.bib”是一种数据库文件，其中包含了参考文献的基本信息，如此即可直接通过编译生成参考文件文字，避免了手打参考文献的繁琐过程。
-% \par 本模板为了使用了南京大学胡海星的《符合国家标准《GB/T 7714-2005 文后参考文献著录规则》的BibTeX样式文件》，虽然官方模板给出的样式与国标并不完全一致，但两者样式基本相同，故采用该样式，其bib文件具体标签说明请参照他写的\href{https://raw.github.com/Haixing-Hu/nju-thesis/master/manual/njuthesis-manual.pdf}{使用手册}\cite{nanda}，考虑其内容较多，不在此列举。
+% \par 本模板提供了两种参考文献样式：第一种是南京大学胡海星的《符合国家标准《GB/T 7714-2005 文后参考文献著录规则》的BibTeX样式文件》，虽然官方模板给出的样式与国标并不完全一致，但两者样式基本相同，其bib文件具体标签说明请参照他写的\href{https://raw.github.com/Haixing-Hu/nju-thesis/master/manual/njuthesis-manual.pdf}{使用手册}\cite{nanda}，考虑其内容较多，不在此列举。第二种是清华大学论文使用的参考文献样式，来自项目\href{https://github.com/xueruini/thuthesis}{ThuThesis}，关于这个样式的相关说明也请参照其\href{http://mirrors.opencas.org/ctan/macros/latex/contrib/thuthesis/thuthesis.pdf}{官方文档}。这两种样式通过宏包选项进行设置，详见\nameref{subsec:setupbibstyle}。本人推荐使用GB/T7714-2005的样式，也就是第一种。
 % \par 文献数据库可以手工逐条录入，也可以从互联网上直接下载现成的文献数据库，很多电子期刊数据库网站会提供相应的\BibTeX 数据库文件或者\BibTeX 条目导出，\href{https://scholar.google.com/}{Google\textsuperscript{\textregistered}  Scholar}和\href{https://xueshu.baidu.com/}{百度\textsuperscript{\textregistered}学术}也免费提供此服务。\cite[\S 3.3]{9787121202087}这对于中英文文献都十分有效。
 % \par 如果希望手工录入，推荐安装JabRef管理参考文献，该系统可以直接搜索论文的DOI编号、书目的ISBN编号，甚至论文的名称，从而直接获得其相关信息，极大地方便了参考文献的录入。
-% \par 若要在本模板中使用参考文献，请这样使用：首先在文章末尾参考文献的地方使用\DescribeMacro{\bibliography}|\bibliography{<bib文件名>}|，Bib文件名中不需要加扩展名。之后可以通过命令\DescribeMacro{\cite}|\cite{<bib id>}|引用一个参考文献，被引用的参考文献会自动出现在文章末尾的参考文献中。也可以使用命令\DescribeMacro{\nocite}|\nocite{<bib id>}|隐式引用一个参考文献，这样引用不会在文中标出参考文献号。当然如果你使用的是自己录入的Bib文件，你也可以通过命令|\nocite{*}|直接将所有Bib文件中的参考文献列出。
+% \par 若要在本模板中使用参考文献，请这样使用：首先参考\nameref{sec:packageoption}选择引用样式（文中引用或者上标式引用）和参考文献样式（GB/T7714-2005或者清华样式），在此之后在文章末尾参考文献的地方使用\DescribeMacro{\bibliography}|\bibliography{<bib文件名>}|，Bib文件名中不需要加扩展名。之后可以通过命令\DescribeMacro{\cite}|\cite{<bib id>}|按照设定好的引用样式引用一个参考文献，或通过\DescribeMacro{\normalcite}|\normalcite{<bib id>}|和\DescribeMacro{\supercite}|\supercite{<bib id>}|分别以文中样式（“[1]”）和上标样式（“\textsuperscript{[1]}”）引用参考文献\footnote{推荐通过宏包选项设定默认引用样式，这两个命令建议只临时使用}，被引用的参考文献会自动出现在文章末尾的参考文献中。也可以使用命令\DescribeMacro{\nocite}|\nocite{<bib id>}|隐式引用一个参考文献，这样引用不会在文中标出参考文献号。当然如果你使用的是自己录入的Bib文件，你也可以通过命令|\nocite{*}|直接将所有Bib文件中的参考文献列出。
 % 
 % \subsection{附录}\label{subsec:appendix}
 % \par 本附录使用了Appendix宏包，附录使用首先需要开启附录环境，之后可以用|\section|、|\subsection|、|\subsubsection|和|\subsubsubsection|来构建附录的具体内容。附录的三级标签会在目录中显示，且一级标签会添加上附录二字。理论上可以在文章任意位置加入附录，但是推荐将所有附录放在文末。具体使用方式如下：\DescribeEnv{appendices}

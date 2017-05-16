@@ -47,3 +47,5 @@
 * 更正“关键词：”和“Abstract: ”为四号字体；
 * 解决封面中“[]”使用字体非华文中宋的问题；
 * 删除带DOI论文自动设置DOI链接问题；
+* 添加新的参考文献样式支持：[清华论文参考文献](https://github.com/xueruini/thuthesis)；
+* 添加\normalcite和\supercite命令方便临时使用；
