@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
-% 	@date 2017/05/03
-%	@version v2.1.2
+% 	@date 2017/05/16
+%	@version v2.1.3
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/05/03}
-\def\HGP@version{v2.1.2}
+\def\HGP@date{2017/05/16}
+\def\HGP@version{v2.1.3}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -93,6 +93,7 @@
 %论文封面使用华文中宋
 \setCJKfamilyfont{hwzs}{STZhongsong}
 \newcommand{\huawenzhongsong}{\CJKfamily{hwzs}}
+\newfontfamily\hwzsAll{STZhongsong}
 
 
 %
@@ -351,7 +352,7 @@
 			\vspace*{4em}
 			\includegraphics[height=1.61cm]{\HGP@titlecolor}\\
 			\vspace*{2em}
-			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计[论文]}\\
+			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计\makebox{\hwzsAll\bfseries [}论文\makebox{\hwzsAll\bfseries ]}}\\
 			\vspace{6em}
 			{\zihao{2} \heiti \bfseries \@title}\\
 			\vspace{6em}
