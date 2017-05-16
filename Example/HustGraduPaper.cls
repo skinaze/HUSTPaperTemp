@@ -53,18 +53,14 @@
 	\def\HGP@fontset{,fontset=none}
 }%不配置中文字体，需要用户自己配置
 %引用样式
-\DeclareOption{normalcite}{}%使用正文式引用样式
-\DeclareOption{supercite}{
-	\let \oldcite \cite
-	\renewcommand{\cite}[2][]{
-		\unskip
-		\def\HGP@temp{#1}
-		\ifx\HGP@temp\empty{\unskip\textsuperscript{\oldcite{#2}}}
-		\else{\unskip\textsuperscript{\oldcite[#1]{#2}}}\fi
-	}
-}%使用上标型引用样式
+\def\HGP@citestyle{normal}
+\DeclareOption{normalcite}{\def\HGP@citestyle{normal}}%使用正文式引用样式
+\DeclareOption{supercite}{\def\HGP@citestyle{super}}%使用上标型引用样式
+\def\HGP@citebst{gbt7714-2005}
+\DeclareOption{gbtcite}{\def\HGP@citebst{gbt7714-2005}}%使用GBT7714-2005样式
+\DeclareOption{tsinghuacite}{\def\HGP@citebst{thuthesis}}%使用清华样式
 \ProcessOptions
-\ExecuteOptions{autofont,normalcites}
+\ExecuteOptions{autofont,normalcites,gbtcite}
 \relax
 
 
@@ -624,11 +620,33 @@
 %	---	重新定义参考文献页
 %
 %设置参考文献
-%\RequirePackage[numbers]{natbib}
-\bibliographystyle{gbt7714-2005}
+\usepackage{natbib}
+\setcitestyle{numbers,square,comma}
 \ctexset{bibname={参考文献}}
 
-%设置新的附录命令
+%正常引用和上标引用
+\let \normalcite \cite
+\newcommand{\supercite}[2][]{
+	\unskip
+	\def\HGP@temp{#1}
+	\ifx\HGP@temp\empty{\unskip\textsuperscript{\normalcite{#2}}}
+	\else{\unskip\textsuperscript{\normalcite[#1]{#2}}}\fi
+}
+\IfStrEqCase{\HGP@citestyle}{
+	{normal}{}
+	{super}{\let \cite \supercite}
+}
+
+%设置参考文献样式
+\IfStrEqCase{\HGP@citebst}{
+	{gbt7714-2005}{\bibliographystyle{gbt7714-2005}}
+	{thuthesis}{
+		\bibliographystyle{thuthesis}
+		\def\thudot{\unskip.}
+	}
+}
+
+%设置新的参考文献
 \let \oldbibliography \bibliography
 \renewcommand{\bibliography}[1]{
 	%添加到目录
