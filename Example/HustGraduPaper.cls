@@ -93,7 +93,10 @@
 %论文封面使用华文中宋
 \setCJKfamilyfont{hwzs}{STZhongsong}
 \newcommand{\huawenzhongsong}{\CJKfamily{hwzs}}
-\newfontfamily\hwzsAll{STZhongsong}
+\newfontfamily\hwzsAll{STZhongsong}[
+	BoldFont={STZhongsong},
+	BoldFeatures={FakeBold=4}
+]
 
 
 %
