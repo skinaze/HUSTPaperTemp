@@ -351,7 +351,7 @@
 			\vspace*{4em}
 			\includegraphics[height=1.61cm]{\HGP@titlecolor}\\
 			\vspace*{2em}
-			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计[论文]}\\
+			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计\hspace{-0.4em}［论文］}\\
 			\vspace{6em}
 			{\zihao{2} \heiti \bfseries \@title}\\
 			\vspace{6em}
@@ -620,8 +620,9 @@
 %	---	重新定义参考文献页
 %
 %设置参考文献
-%\RequirePackage[numbers]{natbib}
-\bibliographystyle{gbt7714-2005}
+\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
+\bibliographystyle{thuthesis}
+\def\thudot{\unskip.}
 \ctexset{bibname={参考文献}}
 
 %设置新的附录命令
