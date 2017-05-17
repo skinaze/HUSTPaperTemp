@@ -47,8 +47,8 @@
 % 其中样式选项可以包含如下下内容：
 % 
 % \subsection{字体组设置}\label{subsec:setupfont}
-% \par 本样式基于CTEX宏包，因此可以在Windows系统下和Mac OS X系统下自动识别并使用中易字体和华文字体，关于字体问题更多请见“~\nameref{subsec:font}”，如果需要在其他系统下或者希望选用其他字体请只用这个样式选项.
-% \par\noindent\DescribeMacro{autofont} 使用CTEX宏包自动设置字体，针对Windows和Mac OS X，详见“~\nameref{subsec:font}”（默认）。
+% \par 本样式基于\CTeX 宏包，因此可以在Windows系统下和Mac OS X系统下自动识别并使用中易字体和华文字体，关于字体问题更多请见“~\nameref{subsec:font}”，如果需要在其他系统下或者希望选用其他字体请只用这个样式选项.
+% \par\noindent\DescribeMacro{autofont} 使用\CTeX 宏包自动设置字体，针对Windows和Mac OS X，详见“~\nameref{subsec:font}”（默认）。
 % \par\noindent\DescribeMacro{adobefont} 使用Adobe公司的四款中文字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{fancdolfont} 使用Fandol中文字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{founderfont} 使用方正公司中文字体。\cite[\S 4.3]{ctexdoc}
@@ -200,6 +200,7 @@
 \end{verbatim}
 % \par 其中该环境的第二个参数是表格的位置，选择此处（{\bfseries h} ere）、页顶（{\bfseries t} op）、页底（{\bfseries b} ottom）或者独立一页（{\bfseries p} age）显示\cite[\S 5.3]{9787121202087}，默认选项是“htbp”；第三个参数是表格的标题；第四个参数是引用名称，你可以轻松使用\DescribeMacro{\autoref}|\autoref{tab:tablabel}|引用该表格的编号，输出的效果是：“表4-1”。
 % \par 本模板还包含了tablularx宏包和booktabs用于生成表格，并针对性实现两个新的功能。第一个是定义了可变长度的左中右（LCR）列格式，这三个新格式可以根据定义表格的宽度自动调整列宽，采用这三种格式的列会保持相同的列宽，这个需要在\DescribeEnv{tablularx}|tablularx|环境中实现。第二个是重置了三线表粗细，可以通过指令\DescribeMacro{\toprule}|\toprule|生成表格顶线，通过指令\DescribeMacro{\midrule}|\midrule|生成表格中线，通过指令\DescribeMacro{\cmidrul}|\cmidrule|生成某几列的中线，通过指令\DescribeMacro{\bottomrule}|\bottomrule|生成表格底线。具体使用请参考\href{http://mirror.hust.edu.cn/CTAN/macros/latex/required/tools/tabularx.pdf}{tabularx的文档}和\href{http://mirrors.hust.edu.cn/CTAN/macros/latex/contrib/booktabs/booktabs.pdf}{booktabs的文档}。
+% \par 手打\LaTeX 表格比较繁琐，好在有很多自动化工具可以协助生成\LaTeX 表格代码，例如：\href{https://www.ctan.org/pkg/excel2latex}{Excel2LaTeX}就是一个可以将Excel中设置好格式的表格直接转化为\LaTeX 代码的Excel宏。如果使用Excel2LaTeX请注意这个宏不会提示\LaTeX 需要引入的宏包，请参考相关数据或者通过搜索引擎确定需要的宏包。此外还有很多在线工具提供\LaTeX 表格代码生成，请善用搜索引擎，在此不再列举。
 % 
 % \subsection{公式}
 % \par 本文保留了原来的有标签的公式环境|equation|，同时引入ascmath宏包重新设置了其标签并使之带有章节号。公式的使用与正常\LaTeX 中的使用方法相同，在此不再赘述。
@@ -222,7 +223,7 @@
 % \par 官方模板未对目录页码做以说明，本模板默认设置目录没有页码，也没有页脚，如需更改该选项，请参考本文中的~\nameref{subsec:toc}章节。如果上面说的不够直观，您也可以参考下文的~\nameref{sec:example}。
 % 
 % \subsection{字体问题}\label{subsec:font}
-% 本模板基于CTEX宏包，CTEX宏包会自动检测设置字体，具体如下：
+% 本模板基于\CTeX 宏包，\CTeX 宏包会自动检测设置字体，具体如下：
 % \begin{description}
 % 	\item[Mac OS X] 华文字库\cite[\S 4.3]{ctexdoc}
 % 	\item[Windows（Vista 及以后）]中易字库+ 微软雅黑\cite[\S 4.3]{ctexdoc}
@@ -288,14 +289,14 @@
 % 
 % \section{待解决问题}
 % \subsection{章节标题后使用在此处（h）的图表环境造成后文伪加粗}
-% \par 根据华中科技大学官方毕业论文模板要求，章节标题使用黑体加粗，为了方便加粗效果的实现，本模板使用伪加粗而非独立的粗体黑体字体。但因为CTEX宏包内部设置问题（也许是编译器的问题），如果在章节标题后使用图表环境，且图表位置设置为在此处（h），伪加粗格式会继续保留到本页结束。
+% \par 根据华中科技大学官方毕业论文模板要求，章节标题使用黑体加粗，为了方便加粗效果的实现，本模板使用伪加粗而非独立的粗体黑体字体。但因为\CTeX 宏包内部设置问题（也许是编译器的问题），如果在章节标题后使用图表环境，且图表位置设置为在此处（h），伪加粗格式会继续保留到本页结束。
 % \par 因为该问题涉及其他宏包，暂未找到比较好的解决办法。建议不要暂时不要在标题后使用在此处（h）的图片。
 % 
 % \section{关于查重}
 % \par 据我目前了解到的情况我们学校使用的是知网查重，硕博论文提交窗口要求的提交的格式也是PDF。本科论文似乎是通过各院系教务科统一提交，通常是提交PDF文档，部分院系可能要求提交WORD文档，对于这个问题，我目前找到两种解决方案：
 % \begin{enumerate}
 %	\item 通过Adobe Acrobat导出到Microsoft Word，这是我目前找到的唯一一个可以比较完美识别PDF格式并转换为WORD格式的工具，导出格式中的公式图片可能存在问题，但是查重不查公式图片，所以问题不大，但缺点是这个工具是收费的；
-% 	\item 通过Pandoc\footnote{官网链接：\url{http://pandoc.org/}}直接从\LaTeX 转换为Microsoft Word\footnote{转换命令：pandoc TeXfile.tex --toc --output WORDfile.docx}，这需要一个已经设置好各级标题样式的WORD文档作为格式参考，好处是转换结果中公式都能完整展现，坏处是需要已经设定好格式的WORD文档而且直接生成PDF脚本的命令（如各种绘图宏包）不能正常工作。
+% 	\item 通过Pandoc\footnote{官网链接：\url{http://pandoc.org/}}直接从\LaTeX 转换为Microsoft Word\footnote{转换命令：pandoc TeXfile.tex --toc  --reference-docx=WORDRef.docx --output WORDfile.docx}，这需要一个已经设置好各级标题样式的WORD文档作为格式参考，好处是转换结果中公式都能完整展现，坏处是需要已经设定好格式的WORD文档而且直接生成PDF脚本的命令（如各种绘图宏包）不能正常工作。
 % \end{enumerate}
 % \par 个人认为提交的WORD文档仅作为查重使用，并不需要格式完全准确，所以虽然转换得到的WORD存在各种问题，但并不会有太大影响。当然，如果对最终提交的WORD格式有近乎完美的追求，建议使用WORD直接进行论文排版。关于这个问题如果您有更好的建议也请\href{mailto:me@stringblog.com}{联系我}。
 % 
