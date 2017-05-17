@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
-% 	@date 2017/05/03
-%	@version v2.1.2
+% 	@date 2017/05/16
+%	@version v2.1.3
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/05/03}
-\def\HGP@version{v2.1.2}
+\def\HGP@date{2017/05/16}
+\def\HGP@version{v2.1.3}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -53,18 +53,14 @@
 	\def\HGP@fontset{,fontset=none}
 }%不配置中文字体，需要用户自己配置
 %引用样式
-\DeclareOption{normalcite}{}%使用正文式引用样式
-\DeclareOption{supercite}{
-	\let \oldcite \cite
-	\renewcommand{\cite}[2][]{
-		\unskip
-		\def\HGP@temp{#1}
-		\ifx\HGP@temp\empty{\unskip\textsuperscript{\oldcite{#2}}}
-		\else{\unskip\textsuperscript{\oldcite[#1]{#2}}}\fi
-	}
-}%使用上标型引用样式
+\def\HGP@citestyle{normal}
+\DeclareOption{normalcite}{\def\HGP@citestyle{normal}}%使用正文式引用样式
+\DeclareOption{supercite}{\def\HGP@citestyle{super}}%使用上标型引用样式
+\def\HGP@citebst{gbt7714-2005}
+\DeclareOption{gbtcite}{\def\HGP@citebst{gbt7714-2005}}%使用GBT7714-2005样式
+\DeclareOption{tsinghuacite}{\def\HGP@citebst{thuthesis}}%使用清华样式
 \ProcessOptions
-\ExecuteOptions{autofont,normalcites}
+\ExecuteOptions{autofont,normalcites,gbtcite}
 \relax
 
 
@@ -93,6 +89,10 @@
 %论文封面使用华文中宋
 \setCJKfamilyfont{hwzs}{STZhongsong}
 \newcommand{\huawenzhongsong}{\CJKfamily{hwzs}}
+\newfontfamily\hwzsAll{STZhongsong}[
+	BoldFont={STZhongsong},
+	BoldFeatures={FakeBold=4}
+]
 
 
 %
@@ -351,7 +351,7 @@
 			\vspace*{4em}
 			\includegraphics[height=1.61cm]{\HGP@titlecolor}\\
 			\vspace*{2em}
-			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计[论文]}\\
+			{\zihao{-0} \huawenzhongsong \bfseries 本科生毕业设计\makebox{\hwzsAll\bfseries [}论文\makebox{\hwzsAll\bfseries ]}}\\
 			\vspace{6em}
 			{\zihao{2} \heiti \bfseries \@title}\\
 			\vspace{6em}
@@ -471,7 +471,7 @@
 	
 }{
 	\vspace{1em}
-	\par\noindent {\heiti \bfseries 关键词：} \cnkeyword
+	\par\noindent {\heiti\zihao{4}\bfseries 关键词：} \cnkeyword
 	\clearpage
 }
 
@@ -485,7 +485,7 @@
 	
 }{
 	\vspace{1em}
-	\par\noindent {\bfseries Key Words: } \enkeyword
+	\par\noindent {\zihao{4}\bfseries Key Words: } \enkeyword
 	\clearpage
 }
 
@@ -620,11 +620,33 @@
 %	---	重新定义参考文献页
 %
 %设置参考文献
-%\RequirePackage[numbers]{natbib}
-\bibliographystyle{gbt7714-2005}
+\usepackage{natbib}
+\setcitestyle{numbers,square,comma}
 \ctexset{bibname={参考文献}}
 
-%设置新的附录命令
+%正常引用和上标引用
+\let \normalcite \cite
+\newcommand{\supercite}[2][]{
+	\unskip
+	\def\HGP@temp{#1}
+	\ifx\HGP@temp\empty{\unskip\textsuperscript{\normalcite{#2}}}
+	\else{\unskip\textsuperscript{\normalcite[#1]{#2}}}\fi
+}
+\IfStrEqCase{\HGP@citestyle}{
+	{normal}{}
+	{super}{\let \cite \supercite}
+}
+
+%设置参考文献样式
+\IfStrEqCase{\HGP@citebst}{
+	{gbt7714-2005}{\bibliographystyle{gbt7714-2005}}
+	{thuthesis}{
+		\bibliographystyle{thuthesis}
+		\def\thudot{\unskip.}
+	}
+}
+
+%设置新的参考文献
 \let \oldbibliography \bibliography
 \renewcommand{\bibliography}[1]{
 	%添加到目录
