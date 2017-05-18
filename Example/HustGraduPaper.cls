@@ -315,8 +315,8 @@
 	\IfStrEqCase{#1}{
 		{logo color}{
 			\IfStrEqCase{#2}{
-				{green}{\def\HGP@titlecolor{HUSTGreen.png}}
-				{black}{\def\HGP@titlecolor{HUSTBlack.png}}
+				{green}{\def\HGP@titlecolor{HUSTGreen.eps}}
+				{black}{\def\HGP@titlecolor{HUSTBlack.eps}}
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (maketitle)}]
 		}
 		{line length}{\def\HGP@titlelength{#2}}
@@ -342,7 +342,7 @@
 }
 %重置命令maketitle
 \renewcommand{\maketitle}[1][12em]{
-	\def\HGP@titlecolor{HUSTGreen.png}
+	\def\HGP@titlecolor{HUSTGreen.eps}
 	\def\HGP@titlelength{12em}
 	\def\HGP@titlelinefont{}
 	\maketitlearg{#1}
