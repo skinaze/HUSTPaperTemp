@@ -553,6 +553,13 @@
 					\def\l@paragraph{\@dottedtocline{5}{11em}{5em}}
 					\def\l@subparagraph{\@dottedtocline{5}{13em}{5em}}
 				}
+				{hustnoindent}{
+					\def\l@section{\songti \bfseries\@dottedtocline{1}{0em}{3em}}
+					\def\l@subsection{\normalfont\@dottedtocline{2}{0em}{3em}}
+					\def\l@subsubsection{\normalfont\@dottedtocline{3}{0em}{4em}}
+					\def\l@subsubsubsection{\normalfont\@dottedtocline{4}{0em}{5em}}
+					\def\l@paragraph{\normalfont\@dottedtocline{5}{0em}{6em}}
+				}
 				{noindent}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{0em}
