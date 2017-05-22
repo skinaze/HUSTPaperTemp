@@ -45,3 +45,4 @@
 
 ## 未发布的更新内容
 * 封面logo使用效果更好的矢量图；
+* 提供更加接近官方模板的目录缩进样式hustnoindent；——感谢[shiliang-hust](https://github.com/shiliang-hust)

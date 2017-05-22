@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板、
 %	@author skinaze
-% 	@date 2017/05/16
-%	@version v2.1.3
+% 	@date 2017/05/22
+%	@version v2.1.4
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/05/16}
-\def\HGP@version{v2.1.3}
+\def\HGP@date{2017/05/22}
+\def\HGP@version{v2.1.4}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -59,6 +59,8 @@
 \def\HGP@citebst{gbt7714-2005}
 \DeclareOption{gbtcite}{\def\HGP@citebst{gbt7714-2005}}%使用GBT7714-2005样式
 \DeclareOption{tsinghuacite}{\def\HGP@citebst{thuthesis}}%使用清华样式
+%查重协助（临时功能）
+\DeclareOption{chachong}{\AtBeginDocument{\chachong}}%使用查重协助
 \ProcessOptions
 \ExecuteOptions{autofont,normalcites,gbtcite}
 \relax
@@ -69,7 +71,7 @@
 %
 \LoadClass[a4paper]{article}
 %页面基本设置
-\RequirePackage[boldfont,slantfont]{xeCJK}
+\RequirePackage[AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
 \RequirePackage[zihao=-4,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
 
 %
@@ -553,13 +555,6 @@
 					\def\l@paragraph{\@dottedtocline{5}{11em}{5em}}
 					\def\l@subparagraph{\@dottedtocline{5}{13em}{5em}}
 				}
-				{hustnoindent}{
-					\def\l@section{\songti \bfseries\@dottedtocline{1}{0em}{3em}}
-					\def\l@subsection{\normalfont\@dottedtocline{2}{0em}{3em}}
-					\def\l@subsubsection{\normalfont\@dottedtocline{3}{0em}{4em}}
-					\def\l@subsubsubsection{\normalfont\@dottedtocline{4}{0em}{5em}}
-					\def\l@paragraph{\normalfont\@dottedtocline{5}{0em}{6em}}
-				}
 				{noindent}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{0em}
@@ -567,6 +562,13 @@
 					\def\l@subsubsubsection{\@dottedtocline{4}{0em}{4em}}
 					\def\l@paragraph{\@dottedtocline{5}{0em}{5em}}
 					\def\l@subparagraph{\@dottedtocline{5}{0em}{5em}}
+				}
+				{hustnoindent}{
+					\def\l@section{\songti \bfseries\@dottedtocline{1}{0em}{3em}}
+					\def\l@subsection{\normalfont\@dottedtocline{2}{0em}{3em}}
+					\def\l@subsubsection{\normalfont\@dottedtocline{3}{0em}{4em}}
+					\def\l@subsubsubsection{\normalfont\@dottedtocline{4}{0em}{5em}}
+					\def\l@paragraph{\normalfont\@dottedtocline{5}{0em}{6em}}
 				}
 				{sameforsubandsubsub}{
 					\renewcommand{\cftsecindent}{0em}
@@ -677,6 +679,25 @@
 	}
 }
 
-
+%查重识别问题
+\def\HGP@Otherbold{}
+\newcommand{\Otherbold}[1]{\def\HGP@Otherbold{#1}}
+\newcommand{\chachong}{
+	\clearpage
+	
+	{\heiti\zihao{1}\noindent 这部分用于支持加粗的复制，便于查重。请从这里开始删除！}
+	
+	{\huawenzhongsong 华中科技大学毕业设计（论文）}
+	{\huawenzhongsong 本科生毕业设计[论文]}
+	{\heiti \@title 院系 专业班级 姓名 学号 指导教师}
+	{\heiti \@school \@classnum \@author \@stunum \@instructor}
+	{\heiti 学位论文原创性声明 学位论文版权使用授权书 摘要 关键词 目录 参考文献 附录}
+	
+	{\heiti\zihao{1}\noindent 一直删除到这里！}
+	
+	\HGP@Otherbold
+	
+	\clearpage
+}
 
 
