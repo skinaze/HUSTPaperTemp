@@ -36,16 +36,14 @@
 如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)，亦可在[Issues](https://github.com/skinaze/HUSTPaperTemp/issues)中留言。
 
 ## 关于查重
-**请注意，如果期望使用PDF查重，请务必等待下一个版本更新！问题详见[Issues#5](https://github.com/skinaze/HUSTPaperTemp/issues/5)**
+我们学校目前使用知网系统进行查重，提交格式支持WORD和PDF。但因为XeLaTeX底层原因，PDF中部分伪加粗的字不能被识别，这个问题目前没有很好的解决方案，所以本模板提供了一个样式选项chachong（详见[使用说明](Instruction/HGP.pdf)），这个会在文章开头添加一页（或多页）包含比较重要的加粗字符，使XeLaTeX提前编码他们，但使用过程中需要**使用其他PDF工具删除开头多余的一页（或多页）**，推荐使用Adobe Acrobat和[smallpdf.com](https://smallpdf.com/split-pdf)。
 
-据我目前了解到的情况我们学校使用的是知网查重，硕博论文提交窗口要求的提交的格式也是PDF。本科论文似乎是通过各院系教务科统一提交，通常是提交PDF文档，部分院系可能要求提交WORD文档，对于这个问题，我目前找到两种解决方案：
+如果期望使用WORD，由于上述原因，我目前找到两种比较好的WORD的生成方案：
 
-1. 通过Adobe Acrobat导出到Microsoft Word，这是我目前找到的唯一一个可以比较完美识别PDF格式并转换为WORD格式的工具，导出格式中的公式图片可能存在问题，但是查重不查公式图片，所以问题不大，但缺点是这个工具是收费的；
+1. 通过Adobe Acrobat导出到Microsoft Word，这是我目前找到的唯一一个可以比较完美识别加粗字符并转换为WORD格式的工具，导出格式中的公式图片可能存在问题，但是查重不查公式图片，所以问题不大，但缺点是这个工具是收费的；
 2. 通过[Pandoc](http://pandoc.org/)直接从LaTeX转换为Microsoft Word，这需要一个已经设置好各级标题样式的WORD文档作为格式参考，好处是转换结果中公式都能完整展现，坏处是需要已经设定好格式的WORD文档而且直接生成PDF脚本的命令（如各种绘图宏包）不能正常工作。
 
 个人认为提交的WORD文档仅作为查重使用，并不需要格式完全准确，所以虽然转换得到的WORD存在各种问题，但并不会有太大影响。当然，如果对最终提交的WORD格式有近乎完美的追求，建议使用WORD直接进行论文排版。关于这个问题如果您有更好的建议也请[联系我](mailto:me@stringblog.com)。
 
 ## 未发布的更新内容
-* 封面logo使用效果更好的矢量图；
-* 提供更加接近官方模板的目录缩进样式hustnoindent；——感谢[shiliang-hust](https://github.com/shiliang-hust)
-* 提供宏包选项chachong用于临时解决查重无法识别伪加粗字体问题；
+无
