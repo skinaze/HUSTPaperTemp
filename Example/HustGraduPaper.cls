@@ -691,7 +691,8 @@
 	{\huawenzhongsong 本科生毕业设计[论文]}
 	{\heiti \@title 院系 专业班级 姓名 学号 指导教师}
 	{\heiti \@school \@classnum \@author \@stunum \@instructor}
-	{\heiti 学位论文原创性声明 学位论文版权使用授权书 摘要 关键词 目录 参考文献 附录}
+	{\heiti 学位论文原创性声明 学位论文版权使用授权书 摘要 关键词 目录 致谢 参考文献 附录}
+	{\songti 宋体}
 	
 	{\heiti\zihao{1}\noindent 一直删除到这里！}
 	
