@@ -296,7 +296,7 @@
 % \par 因为该问题涉及其他宏包，暂未找到比较好的解决办法。建议不要暂时不要在标题后使用在此处（h）的图片。
 % 
 % \section{关于查重}\label{sec:dcheck}
-% \par 我们学校目前使用知网系统进行查重，提交格式支持WORD和PDF。但因为\XeLaTeX 底层原因，PDF中部分伪加粗的字不能被识别\footnote{伪加粗的文字往往有重要意义，比如“目录”和“参考文献”是不查重的，如果无法识别这些字会导致查重率偏高}，这个问题目前没有很好的解决方案，所以本模板提供了一个样式选项|chachong|（详见\nameref{subsec:dcheck}），这个会在文章开头添加一页（或多页）包含比较重要的加粗字符，使\XeLaTeX 提前编码他们\footnote{更多这个问题的相关内容可以参考\href{https://www.zhihu.com/question/59597144}{知乎}和\href{http://bbs.ctex.org/forum.php?mod=viewthread&tid=77725&page=1}{\CTeX 论坛}}，但使用过程中需要\textbf{使用其他PDF工具删除开头多余的一页（或多页）}，推荐使用Adobe Acrobat和~\href{https://smallpdf.com/split-pdf}{smallpdf.com}。
+% \par 我们学校目前使用知网系统进行查重，提交格式支持WORD和PDF。但因为\XeLaTeX 底层原因，PDF中部分伪加粗的字不能被识别\footnote{伪加粗的文字往往有重要意义，比如“目录”和“参考文献”是不查重的，如果无法识别这些字会导致查重率偏高}，这个问题目前没有很好的解决方案，所以本模板提供了一个样式选项|chachong|（详见\nameref{subsec:dcheck}），这个会在文章开头添加一页（或多页）包含比较重要的加粗字符，使\XeLaTeX 提前编码他们\footnote{更多这个问题的相关内容可以参考\href{https://www.zhihu.com/question/59597144}{知乎}和\href{http://bbs.ctex.org/forum.php?mod=viewthread&tid=77725&page=1}{\CTeX 论坛}}，但使用过程中需要\textbf{使用其他PDF工具删除开头多余的一页（或多页）}，推荐使用Adobe Acrobat和~\href{https://smallpdf.com/split-pdf}{smallpdf.com}。也建议在上传知网查重前使用WORD打开PDF文件，确保"目录"、"参考文献"和声明部分WORD能够识别。
 % \par 如果期望使用WORD，由于上述原因，我目前找到两种比较好的WORD的生成方案：
 % \begin{enumerate}
 %	\item 通过Adobe Acrobat导出到Microsoft Word，这是我目前找到的唯一一个可以比较完美识别加粗字符并转换为WORD格式的工具，导出格式中的公式图片可能存在问题，但是查重不查公式图片，所以问题不大，但缺点是这个工具是收费的；
