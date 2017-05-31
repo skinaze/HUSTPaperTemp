@@ -36,7 +36,7 @@
 如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)，亦可在[Issues](https://github.com/skinaze/HUSTPaperTemp/issues)中留言。
 
 ## 关于查重
-我们学校目前使用知网系统进行查重，提交格式支持WORD和PDF。但因为XeLaTeX底层原因，PDF中部分伪加粗的字不能被识别，这个问题目前没有很好的解决方案，所以本模板提供了一个样式选项chachong（详见[使用说明](Instruction/HGP.pdf)），这个会在文章开头添加一页（或多页）包含比较重要的加粗字符，使XeLaTeX提前编码他们，但使用过程中需要**使用其他PDF工具删除开头多余的一页（或多页）**，推荐使用Adobe Acrobat和[smallpdf.com](https://smallpdf.com/split-pdf)。也建议在上传知网查重前使用WORD打开PDF文件，确保"目录"、"参考文献"和声明部分WORD能够识别。
+我们学校目前使用知网系统进行查重，提交格式支持WORD和PDF。但因为XeLaTeX底层原因，PDF中部分伪加粗的字不能被识别，这个问题最好的解决方案是设置使用本身带有粗体的OpenType字体，比如Fandol字体；如果期望使用没有粗体的字体或者TrueType字体，本模板也提供了一个样式选项chachong（详见[使用说明](Instruction/HGP.pdf)），这个会在文章开头添加一页（或多页）包含比较重要的加粗字符，使XeLaTeX提前编码他们，但使用过程中需要**使用其他PDF工具删除开头多余的一页（或多页）**，推荐使用Adobe Acrobat和[smallpdf.com](https://smallpdf.com/split-pdf)。另外建议在上传知网查重前使用WORD打开PDF文件，确保"目录"、"参考文献"和声明部分WORD能够识别。
 
 如果期望使用WORD，由于上述原因，我目前找到两种比较好的WORD的生成方案：
 
@@ -46,4 +46,4 @@
 个人认为提交的WORD文档仅作为查重使用，并不需要格式完全准确，所以虽然转换得到的WORD存在各种问题，但并不会有太大影响。当然，如果对最终提交的WORD格式有近乎完美的追求，建议使用WORD直接进行论文排版。关于这个问题如果您有更好的建议也请[联系我](mailto:me@stringblog.com)。
 
 ## 未发布的更新内容
-无
+* 一个新的查重字体不识别问题解决方案；
