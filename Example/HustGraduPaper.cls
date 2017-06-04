@@ -87,6 +87,7 @@
 %	---	定义字体
 %
 %用于设置非常用字体
+\setmainfont{Times New Roman}
 \RequirePackage{fontspec}
 %论文封面使用华文中宋
 \setCJKfamilyfont{hwzs}{STZhongsong}
