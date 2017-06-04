@@ -203,8 +203,9 @@
 
 %设置标题的样式
 \RequirePackage{caption}
+\DeclareCaptionFont{hust}{\normalsize \heiti}
 \captionsetup{labelsep=quad}
-\captionsetup{font={normalsize,bf,singlespacing}}
+\captionsetup{font={hust,singlespacing}}
 \captionsetup[figure]{position=bottom,skip={0pt}}
 \captionsetup[table]{position=top,skip={0pt}}
 \setlength{\textfloatsep}{0pt}
