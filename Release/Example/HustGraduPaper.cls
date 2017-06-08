@@ -1,9 +1,9 @@
 %
 %	HustGraduPaper.sty
-%	本文件是华中科技大学本科生毕业论文模板、
+%	本文件是华中科技大学本科生毕业论文模板
 %	@author skinaze
-% 	@date 2017/05/23
-%	@version v2.1.4
+% 	@date 2017/06/08
+%	@version v2.1.5
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/05/23}
-\def\HGP@version{v2.1.4}
+\def\HGP@date{2017/06/08}
+\def\HGP@version{v2.1.5}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -87,6 +87,7 @@
 %	---	定义字体
 %
 %用于设置非常用字体
+\setmainfont{Times New Roman}
 \RequirePackage{fontspec}
 %论文封面使用华文中宋
 \setCJKfamilyfont{hwzs}{STZhongsong}
@@ -203,8 +204,9 @@
 
 %设置标题的样式
 \RequirePackage{caption}
+\DeclareCaptionFont{hust}{\normalsize \heiti}
 \captionsetup{labelsep=quad}
-\captionsetup{font={normalsize,bf,singlespacing}}
+\captionsetup{font={hust,singlespacing}}
 \captionsetup[figure]{position=bottom,skip={0pt}}
 \captionsetup[table]{position=top,skip={0pt}}
 \setlength{\textfloatsep}{0pt}
