@@ -56,8 +56,8 @@
 \def\HGP@citestyle{normal}
 \DeclareOption{normalcite}{\def\HGP@citestyle{normal}}%使用正文式引用样式
 \DeclareOption{supercite}{\def\HGP@citestyle{super}}%使用上标型引用样式
-\def\HGP@citebst{gbt7714-2005}
-\DeclareOption{gbtcite}{\def\HGP@citebst{gbt7714-2005}}%使用GBT7714-2005样式
+\def\HGP@citebst{gbt7714-2015}
+\DeclareOption{gbtcite}{\def\HGP@citebst{gbt7714-2015}}%使用gbt7714-2015样式
 \DeclareOption{tsinghuacite}{\def\HGP@citebst{thuthesis}}%使用清华样式
 %查重协助（临时功能）
 \DeclareOption{chachong}{\AtBeginDocument{\chachong}}%使用查重协助
@@ -109,9 +109,7 @@
 	\fancyhead[C]{\huawenzhongsong \zihao{5} 华 \space 中 \space 科 \space 技 \space 大 \space 学 \space 毕 \space 业 \space 设 \space 计（论  \space 文）}
 }
 %设置页脚样式
-\newcommand{\footstyle}{\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}
-	\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(6.7cm,1pt);}}
-	\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-6.7cm,1pt);}}}
+\newcommand{\footstyle}{\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}}
 \pagestyle{fancy}
 \fancyhf{} %清空原有样式
 \headstyle
@@ -133,10 +131,10 @@
 
 %设置各个标题样式
 %不需要使用part和chapter层级
-\ctexset{section={format={\centering \heiti \bfseries \zihao{-2}}}} %节
+\ctexset{section={format={\centering \heiti  \zihao{-2}}}} %节
 \newcommand{\sectionbreak}{\clearpage} %小节从新的一页开始
-\ctexset{subsection={format={\raggedright \heiti \bfseries \zihao{4}}}} %小节
-\ctexset{subsubsection={format={\raggedright \heiti \bfseries \zihao{-4}}}} %小小节
+\ctexset{subsection={format={\raggedright \heiti  \zihao{4}}}} %小节
+\ctexset{subsubsection={format={\raggedright \heiti  \zihao{-4}}}} %小小节
 \renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
 	{0ex \@plus1ex \@minus.2ex}%
 	{1em}%
@@ -153,7 +151,7 @@
 \newcounter{subsubsubsection}[subsubsection]
 \renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
 %设置标题样式
-\titleformat{\subsubsubsection}{\raggedright \heiti \bfseries \zihao{-4}}{\thesubsubsubsection}{1em}{}[]
+\titleformat{\subsubsubsection}{\raggedright \heiti  \zihao{-4}}{\thesubsubsubsection}{1em}{}[]
 \titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 %重新设置段落等级
 \AtBeginDocument{
@@ -174,10 +172,10 @@
 
 %设置标题的引用
 \def\sectionautorefname~#1\null{%
-	第~#1~节\null
+	第~#1~章\null
 }
 \def\subsectionautorefname~#1\null{%
-	第~#1~小节\null
+	第~#1~节\null
 }
 \def\subsubsectionautorefname~#1\null{%
 	第~#1~小节\null
@@ -471,11 +469,11 @@
 	\clearpage 
 	\phantomsection
 	\addcontentsline{toc}{section}{摘要}
-	\begin{center} \heiti \bfseries \zihao{-2} 摘 \hspace{2em} 要 \end{center}
+	\begin{center} \heiti  \zihao{-2} 摘 \hspace{2em} 要 \end{center}
 	
 }{
 	\vspace{1em}
-	\par\noindent {\heiti\zihao{4}\bfseries 关键词：} \cnkeyword
+	\par\noindent {\heiti\zihao{4} 关键词：} \cnkeyword
 	\clearpage
 }
 
@@ -505,15 +503,15 @@
 	pdfborder = 000,%去掉链接红框
 	pdfstartview=FitH%打开页面以窗口宽度显示
 } 
-\renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} \bfseries}
+\renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} }
 \renewcommand{\contentsname}{目\hspace{2em}录}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftbeforeloftitleskip}{0.5em}
 \renewcommand{\cftafterloftitleskip}{0.5em}
 \renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
 \renewcommand{\cftbeforesecskip}{0em} %设置段间距
-\renewcommand{\cftpartfont}{\songti \bfseries} %设置Part字体
-\renewcommand{\cftsecfont}{\songti \bfseries} %设置Section字体
+\renewcommand{\cftpartfont}{\songti } %设置Part字体
+\renewcommand{\cftsecfont}{\songti } %设置Section字体
 
 %设置tableofcontents参数解析
 \newcommand{\arg@tableofcontents}[2]{
@@ -650,7 +648,7 @@
 
 %设置参考文献样式
 \IfStrEqCase{\HGP@citebst}{
-	{gbt7714-2005}{\bibliographystyle{gbt7714-2005}}
+	{gbt7714-2015}{\bibliographystyle{gbt7714-2015}}
 	{thuthesis}{
 		\bibliographystyle{thuthesis}
 		\def\thudot{\unskip.}
