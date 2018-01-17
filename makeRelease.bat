@@ -8,6 +8,7 @@ copy "Example\Bibs\*.bib" "Release\Example\Bibs\"
 copy "Example\Figures\*" "Release\Example\Figures\"
 copy "Example\HustGraduPaper.cls" "Release\Example\"
 copy "Example\gbt7714-2005.bst" "Release\Example\"
+copy "Example\gbt7714-2015.bst" "Release\Example\"
 copy "Example\HUSTBlack.eps" "Release\Example\"
 copy "Example\HUSTGreen.eps" "Release\Example\"
 echo Example Copied! 
@@ -15,6 +16,7 @@ echo.
 echo Start to Copy the Template......
 copy "Example\HustGraduPaper.cls" "Release\Template\"
 copy "Example\gbt7714-2005.bst" "Release\Template\"
+copy "Example\gbt7714-2015.bst" "Release\Template\"
 copy "Example\HUSTBlack.eps" "Release\Template\"
 copy "Example\HUSTGreen.eps" "Release\Template\"
 echo Template Copied!
