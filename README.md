@@ -35,6 +35,8 @@
 ## 问题反馈
 如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)，亦可在[Issues](https://github.com/skinaze/HUSTPaperTemp/issues)中留言。
 
+若提交Pull Requests，除非修复Bug，否则请以新的宏包选项或者命令及命令选项的方式为项目添加新的功能，以保证宏包的向下兼容性。
+
 ## 关于查重
 我们学校目前使用知网系统进行查重，提交格式支持WORD和PDF。但因为XeLaTeX底层原因，PDF中部分伪加粗的字不能被识别，这个问题最好的解决方案是设置使用本身带有粗体的OpenType字体，比如Fandol字体；如果期望使用没有粗体的字体或者TrueType字体，本模板也提供了一个样式选项chachong（详见[使用说明](Instruction/HGP.pdf)），这个会在文章开头添加一页（或多页）包含比较重要的加粗字符，使XeLaTeX提前编码他们，但使用过程中需要**使用其他PDF工具删除开头多余的一页（或多页）**，推荐使用Adobe Acrobat和[smallpdf.com](https://smallpdf.com/split-pdf)。另外建议在上传知网查重前使用WORD打开PDF文件，确保"目录"、"参考文献"和声明部分WORD能够识别。
 

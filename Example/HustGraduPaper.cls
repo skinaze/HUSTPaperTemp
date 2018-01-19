@@ -76,7 +76,7 @@
 %
 \LoadClass[a4paper]{article}
 %页面基本设置
-\RequirePackage[AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\RequirePackage[AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}[2017/08/08]
 \RequirePackage[zihao=-4,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
 
 %
