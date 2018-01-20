@@ -47,7 +47,7 @@
 % 其中样式选项可以包含如下下内容：
 % 
 % \subsection{字体组设置}\label{subsec:setupfont}
-% \par 本样式基于\CTeX 宏包，因此可以在Windows系统下和Mac OS X系统下自动识别并使用中易字体和华文字体，关于字体问题更多请见“~\nameref{subsec:font}”，如果需要在其他系统下或者希望选用其他字体请只用这个样式选项.
+% \par 本样式基于\CTeX 宏包，因此可以在Windows系统下和Mac OS X系统下自动识别并使用中易字体和华文字体，关于字体问题更多请见“~\nameref{subsec:font}”，如果需要在其他系统下或者希望选用其他字体请使用这个样式选项.
 % \par\noindent\DescribeMacro{autofont} 使用\CTeX 宏包自动设置字体，针对Windows和Mac OS X，详见“~\nameref{subsec:font}”（默认）。
 % \par\noindent\DescribeMacro{adobefont} 使用Adobe公司的四款中文字体。\cite[\S 4.3]{ctexdoc}
 % \par\noindent\DescribeMacro{fandolfont} 使用Fandol中文字体。\cite[\S 4.3]{ctexdoc}
@@ -156,7 +156,7 @@
 % \par 本模板提供了三种参考文献样式：第一种是南京大学胡海星的《符合国家标准《GB/T 7714-2005 文后参考文献著录规则》的BibTeX样式文件》，虽然官方模板给出的样式与国标并不完全一致，但两者样式基本相同，其bib文件具体标签说明请参照他写的\href{https://raw.github.com/Haixing-Hu/nju-thesis/master/manual/njuthesis-manual.pdf}{使用手册}\cite{nanda}，考虑其内容较多，不在此列举。第二种是Zeping Lee的《GB/T 7714-2015 BibTeX Style》，该格式是最新国标，具体使用说明请参照其\href{https://github.com/zepinglee/gbt7714-bibtex-style}{项目说明}。第三种是清华大学论文使用的参考文献样式，来自项目\href{https://github.com/xueruini/thuthesis}{ThuThesis}，关于这个样式的相关说明也请参照其\href{http://mirrors.opencas.org/ctan/macros/latex/contrib/thuthesis/thuthesis.pdf}{官方文档}。这三种样式通过宏包选项进行设置，详见\nameref{subsec:setupbibstyle}。本人推荐使用GB/T7714-2005的样式，也就是第一种。
 % \par 文献数据库可以手工逐条录入，也可以从互联网上直接下载现成的文献数据库，很多电子期刊数据库网站会提供相应的\BibTeX 数据库文件或者\BibTeX 条目导出，\href{https://scholar.google.com/}{Google\textsuperscript{\textregistered}  Scholar}和\href{https://xueshu.baidu.com/}{百度\textsuperscript{\textregistered}学术}也免费提供此服务。\cite[\S 3.3]{9787121202087}这对于中英文文献都十分有效。
 % \par 如果希望手工录入，推荐安装JabRef管理参考文献，该系统可以直接搜索论文的DOI编号、书目的ISBN编号，甚至论文的名称，从而直接获得其相关信息，极大地方便了参考文献的录入。
-% \par 若要在本模板中使用参考文献，请这样使用：首先参考\nameref{sec:packageoption}选择引用样式（文中引用或者上标式引用）和参考文献样式（GB/T7714-2005或者清华样式），在此之后在文章末尾参考文献的地方使用\DescribeMacro{\bibliography}|\bibliography{<bib文件名>}|，Bib文件名中不需要加扩展名。之后可以通过命令\DescribeMacro{\cite}|\cite{<bib id>}|按照设定好的引用样式引用一个参考文献，或通过\DescribeMacro{\normalcite}|\normalcite{<bib id>}|和\DescribeMacro{\supercite}|\supercite{<bib id>}|分别以文中样式（“[1]”）和上标样式（“\textsuperscript{[1]}”）引用参考文献\footnote{推荐通过宏包选项设定默认引用样式，这两个命令建议只临时使用}，被引用的参考文献会自动出现在文章末尾的参考文献中。也可以使用命令\DescribeMacro{\nocite}|\nocite{<bib id>}|隐式引用一个参考文献，这样引用不会在文中标出参考文献号。当然如果你使用的是自己录入的Bib文件，你也可以通过命令|\nocite{*}|直接将所有Bib文件中的参考文献列出。
+% \par 若要在本模板中使用参考文献，请这样使用：首先参考\nameref{sec:packageoption}选择引用样式（文中引用或者上标式引用）和参考文献样式（GB/T7714或者清华样式），在此之后在文章末尾参考文献的地方使用\DescribeMacro{\bibliography}|\bibliography{<bib文件名>}|，Bib文件名中不需要加扩展名。之后可以通过命令\DescribeMacro{\cite}|\cite{<bib id>}|按照设定好的引用样式引用一个参考文献，或通过\DescribeMacro{\normalcite}|\normalcite{<bib id>}|和\DescribeMacro{\supercite}|\supercite{<bib id>}|分别以文中样式（“[1]”）和上标样式（“\textsuperscript{[1]}”）引用参考文献\footnote{推荐通过宏包选项设定默认引用样式，这两个命令建议只临时使用}，被引用的参考文献会自动出现在文章末尾的参考文献中。也可以使用命令\DescribeMacro{\nocite}|\nocite{<bib id>}|隐式引用一个参考文献，这样引用不会在文中标出参考文献号。当然如果你使用的是自己录入的Bib文件，你也可以通过命令|\nocite{*}|直接将所有Bib文件中的参考文献列出。
 % 
 % \subsection{附录}\label{subsec:appendix}
 % \par 本附录使用了Appendix宏包，附录使用首先需要开启附录环境，之后可以用|\section|、|\subsection|、|\subsubsection|和|\subsubsubsection|来构建附录的具体内容。附录的三级标签会在目录中显示，且一级标签会添加上附录二字。理论上可以在文章任意位置加入附录，但是推荐将所有附录放在文末。具体使用方式如下：\DescribeEnv{appendices}
@@ -177,7 +177,7 @@
 % 
 % \subsection{交叉引用}
 % \par 本模板重写了章节、公式和图表的\DescribeMacro{\autoref}|\autoref|命令使之格式美观且符合一般引用方法，因此推荐使用该命令对章节、公式和图表进行引用。使用方法：在引用之前需要在对应的位置使用\DescribeMacro{\label}|\label{<引用标签>}|添加一个新的标签，然后使用|\autoref{<引用标签>}|引用该标签所在的章节、公式和图表。
-% \par 因为|\autoref|引用序号，但是段落并没有序号，所以不建议使用|\autoref|来引用段落。因为|\autoref|无法识别|appendices|环境，其在附录中的引用样式与正文中相同，所以也不建议使用|\autoref|来引用附录。
+% \par 因为|\autoref|引用序号，但是段落并没有序号，所以不建议使用|\autoref|来引用段落。因为|\autoref|无法识别|appendices|环境，其在附录中的引用样式与正文中相同，所以也不建议使用|\autoref|来引用附录。这两种情况可以使用|\nameref|和|\ref|进行引用。
 % 
 % \subsection{图片环境}
 % \par 本模板保留了原来的图片环境|figure|的同时，添加了一个\DescribeEnv{generalfig}|generalfig|环境，方便添加居中的，带有标题的图片。其使用方法如下：
