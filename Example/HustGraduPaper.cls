@@ -2,7 +2,7 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板
 %	@author skinaze
-% 	@date 2018/01/16
+% 	@date 2018/01/20
 %	@version v2.1.6
 %
 %	本模板遵循MIT License
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/06/08}
-\def\HGP@version{v2.1.5}
+\def\HGP@date{2018/01/20}
+\def\HGP@version{v2.1.6}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}

@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板
 %	@author skinaze
-% 	@date 2017/06/08
-%	@version v2.1.5
+% 	@date 2018/01/20
+%	@version v2.1.6
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2017/06/08}
-\def\HGP@version{v2.1.5}
+\def\HGP@date{2018/01/20}
+\def\HGP@version{v2.1.6}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -52,12 +52,17 @@
 \DeclareOption{nofont} {
 	\def\HGP@fontset{,fontset=none}
 }%不配置中文字体，需要用户自己配置
+%页脚样式
+\def\HGP@footlinelength{6.7cm}
+\DeclareOption{footline}{\def\HGP@footlinelength{6.7cm}}%有页脚线
+\DeclareOption{nofootline}{\def\HGP@footlinelength{0cm}}%无页脚线
 %引用样式
 \def\HGP@citestyle{normal}
 \DeclareOption{normalcite}{\def\HGP@citestyle{normal}}%使用正文式引用样式
 \DeclareOption{supercite}{\def\HGP@citestyle{super}}%使用上标型引用样式
 \def\HGP@citebst{gbt7714-2005}
 \DeclareOption{gbtcite}{\def\HGP@citebst{gbt7714-2005}}%使用GBT7714-2005样式
+\DeclareOption{gbt15cite}{\def\HGP@citebst{gbt7714-2015}}%使用GBT7714-2015样式
 \DeclareOption{tsinghuacite}{\def\HGP@citebst{thuthesis}}%使用清华样式
 %查重协助（临时功能）
 \DeclareOption{chachong}{\AtBeginDocument{\chachong}}%使用查重协助
@@ -71,7 +76,7 @@
 %
 \LoadClass[a4paper]{article}
 %页面基本设置
-\RequirePackage[AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}
+\RequirePackage[AutoFakeBold=true,AutoFakeSlant=true]{xeCJK}[2017/08/08]
 \RequirePackage[zihao=-4,UTF8,heading=true\HGP@fontset]{ctex}[2016/12/27]
 
 %
@@ -110,8 +115,8 @@
 }
 %设置页脚样式
 \newcommand{\footstyle}{\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}
-	\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(6.7cm,1pt);}}
-	\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-6.7cm,1pt);}}}
+	\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(\HGP@footlinelength,1pt);}}
+	\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-\HGP@footlinelength,1pt);}}}
 \pagestyle{fancy}
 \fancyhf{} %清空原有样式
 \headstyle
@@ -191,6 +196,13 @@
 \def\subparagraphautorefname~#1\null{%
 	段落~#1~\null
 }
+
+
+%
+%	---	设置脚注格式
+%
+%脚注每页重新计数
+\@addtoreset{footnote}{page}
 
 
 %
@@ -651,6 +663,7 @@
 %设置参考文献样式
 \IfStrEqCase{\HGP@citebst}{
 	{gbt7714-2005}{\bibliographystyle{gbt7714-2005}}
+	{gbt7714-2015}{\bibliographystyle{gbt7714-2015}}
 	{thuthesis}{
 		\bibliographystyle{thuthesis}
 		\def\thudot{\unskip.}
