@@ -10,6 +10,8 @@
 
 ## 使用方法
 
+请注意，本模板需要操作系统中已安装**华文中宋字体**，详情请参考[使用说明](Instruction/HGP.pdf)5.2节内容。
+
 ### 在Windows系统中
 * 下载本模板[最新Release版本](https://github.com/skinaze/HUSTPaperTemp/releases)
 * 下载并安装最新版本的MiKTeX 或者TeX Live
