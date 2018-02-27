@@ -1,6 +1,8 @@
-# 华中科技大学毕业论文LaTeX模板2017
+# 华中科技大学本科毕业论文LaTeX模板 2017
 
-本项目为非官方的华中科技大学本科生毕业论文LaTeX模板，考虑到目前网络上可以找到的本校模板已经严重过时，本人重新制作了该模板，符合2017年华中科技大学本科生毕业论文官方模板格式。
+本项目为非官方的华中科技大学**本科生**毕业论文LaTeX模板，考虑到目前网络上可以找到的本校模板已经严重过时，本人重新制作了该模板，符合2017年华中科技大学本科生毕业论文官方模板格式。
+
+研究生毕业论文模板请移步[hustthesis](https://ctan.org/pkg/hustthesis)。
 
 ## 模板样例
 ![样例](Example/example.png)
@@ -33,7 +35,7 @@
 详细说明请参考[使用说明](Instruction/HGP.pdf)，或者查看[Example文件夹](Example)下的例子。
 
 ## 问题反馈
-如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)，亦可在[Issues](https://github.com/skinaze/HUSTPaperTemp/issues)中留言。
+本模板仍在维护，如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)，亦可在[Issues](https://github.com/skinaze/HUSTPaperTemp/issues)中留言。
 
 若提交Pull Requests，除非修复Bug，否则请以新的宏包选项或者命令及命令选项的方式为项目添加新的功能，以保证宏包的向下兼容性。
 
