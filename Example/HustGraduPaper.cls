@@ -673,13 +673,13 @@
 				}
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
 		}
-%		{dotsep}{\renewcommand{\cftdotsep}{#2}\renewcommand{\@dotsep}{#2}}
-%		{secdotsep}{\renewcommand{\cftsecdotsep}{#2}}
-%		{subsecdotsep}{\renewcommand{\cftsubsecdotsep}{#2}}
-%		{subsubsecdotsep}{\renewcommand{\cftsubsubsecdotsep}{#2}}
-%		{subsubsubsecdotsep}{\renewcommand{\@dotsep}{#2}} %subsubsubsec是自定义格式，不能使用tocloft修改
-%		{paradotsep}{\renewcommand{\cftparadotsep}{#2}}
-%		{subparadotsep}{\renewcommand{\cftsubparadotsep}{#2}}
+		{dot sep}{\renewcommand{\cftdotsep}{#2}}
+		{section dot sep}{\renewcommand{\cftsecdotsep}{#2}}
+		{subsection dot sep}{\renewcommand{\cftsubsecdotsep}{#2}}
+		{subsubsection dot sep}{\renewcommand{\cftsubsubsecdotsep}{#2}}
+		{subsubsubsection dot sep}{\renewcommand{\cftsubsubsubsecdotsep}{#2}}
+		{paragraph dot sep}{\renewcommand{\cftparadotsep}{#2}}
+		{subparagraph dot sep}{\renewcommand{\cftsubparadotsep}{#2}}
 	}[\ClassWarning{\HGP@name}{There's no such argument for tableofcontents}]
 }
 \AtBeginDocument{
