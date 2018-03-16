@@ -108,15 +108,15 @@
 %
 %使用fancyhdr库
 \RequirePackage{fancyhdr}
-\RequirePackage{tikz}%用于绘制页脚横线
 %设置页眉样式
 \newcommand{\headstyle}{
 	\fancyhead[C]{\huawenzhongsong \zihao{5} 华 \space 中 \space 科 \space 技 \space 大 \space 学 \space 毕 \space 业 \space 设 \space 计（论  \space 文）}
 }
 %设置页脚样式
 \newcommand{\footstyle}{\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}
-	\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(\HGP@footlinelength,1pt);}}
-	\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-\HGP@footlinelength,1pt);}}}
+	\fancyfoot[L]{\rule[5pt]{\HGP@footlinelength}{0.4pt}}
+	\fancyfoot[R]{\rule[5pt]{\HGP@footlinelength}{0.4pt}}
+}
 \pagestyle{fancy}
 \fancyhf{} %清空原有样式
 \headstyle
