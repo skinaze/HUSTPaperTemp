@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板
 %	@author skinaze
-% 	@date 2018/01/20
-%	@version v2.1.6
+% 	@date 2018/03/19
+%	@version v2.1.7
 %
 %	本模板遵循MIT License
 %
@@ -11,8 +11,8 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2018/01/20}
-\def\HGP@version{v2.1.6}
+\def\HGP@date{2018/03/19}
+\def\HGP@version{v2.1.7}
 \def\HGP@introduction{Adapt HUST style to article}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
@@ -108,15 +108,15 @@
 %
 %使用fancyhdr库
 \RequirePackage{fancyhdr}
-\RequirePackage{tikz}%用于绘制页脚横线
 %设置页眉样式
 \newcommand{\headstyle}{
 	\fancyhead[C]{\huawenzhongsong \zihao{5} 华 \space 中 \space 科 \space 技 \space 大 \space 学 \space 毕 \space 业 \space 设 \space 计（论  \space 文）}
 }
 %设置页脚样式
 \newcommand{\footstyle}{\fancyfoot[C]{\huawenzhongsong \zihao{5} \thepage}
-	\fancyfoot[L]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(\HGP@footlinelength,1pt);}}
-	\fancyfoot[R]{\tikz{\node (A) at (0,0) {}; \draw (0,1pt)--(-\HGP@footlinelength,1pt);}}}
+	\fancyfoot[L]{\rule[5pt]{\HGP@footlinelength}{0.4pt}}
+	\fancyfoot[R]{\rule[5pt]{\HGP@footlinelength}{0.4pt}}
+}
 \pagestyle{fancy}
 \fancyhf{} %清空原有样式
 \headstyle
@@ -160,15 +160,89 @@
 %设置标题样式
 \titleformat{\subsubsubsection}{\raggedright \heiti \bfseries \zihao{-4}}{\thesubsubsubsection}{1em}{}[]
 \titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-%重新设置段落等级
-\AtBeginDocument{
-	\def\toclevel@subsubsubsection{4}
-	\def\toclevel@paragraph{5}
-	\def\toclevel@subparagraph{6}
-	\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
-	\def\l@paragraph{\@dottedtocline{5}{11em}{5em}}
-	\def\l@subparagraph{\@dottedtocline{6}{13em}{6em}}
-}
+%设置目录样式
+\RequirePackage{tocloft}
+%重新设置目录等级，支持hyperref宏包
+\RequirePackage{hyperref}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@subparagraph{6}
+%参考tocloft，定义\l@subsubsubsection
+\newcommand{\l@subsubsubsection}[2]{%
+	\ifnum \c@tocdepth > 3 \relax
+	\vskip \cftbeforesubsubsubsecskip
+	{\leftskip \cftsubsubsubsecindent\relax
+		\rightskip \@tocrmarg
+		\parfillskip -\rightskip
+		\parindent \cftsubsubsubsecindent\relax\@afterindenttrue
+		\interlinepenalty\@M
+		\leavevmode
+		\@tempdima \cftsubsubsubsecnumwidth\relax
+		\let\@cftbsnum \cftsubsubsubsecpresnum
+		\let\@cftasnum \cftsubsubsubsecaftersnum
+		\let\@cftasnumb \cftsubsubsubsecaftersnumb
+		\advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+		{\cftsubsubsubsecfont #1}\nobreak
+		\cftsubsubsubsecfillnum{#2}}%
+	\fi}
+\newlength{\cftbeforesubsubsubsecskip}
+\setlength{\cftbeforesubsubsubsecskip}{\z@ \@plus.2\p@}
+\newlength{\cftsubsubsubsecindent}
+\newlength{\cftsubsubsubsecnumwidth}
+\setlength{\cftsubsubsubsecindent}{7em}
+\setlength{\cftsubsubsubsecnumwidth}{4em}
+\newcommand{\cftsubsubsubsecfont}{\normalfont}
+\newcommand{\cftsubsubsubsecpresnum}{}
+\newcommand{\cftsubsubsubsecaftersnum}{}
+\newcommand{\cftsubsubsubsecaftersnumb}{}
+\newcommand{\cftsubsubsubsecleader}{\normalfont\cftdotfill{\cftsubsubsubsecdotsep}}
+\newcommand{\cftsubsubsubsecdotsep}{\cftdotsep}
+\newcommand{\cftsubsubsubsecpagefont}{\normalfont}
+\newcommand{\cftsubsubsubsecafterpnum}{}
+\newcommand{\cftsubsubsubsecfillnum}[1]{%
+	{\cftsubsubsubsecleader}\nobreak
+		\makebox[\@pnumwidth][\cftpnumalign]{\cftsubsubsubsecpagefont #1}\cftsubsubsubsecafterpnum\par
+	}
+%重写tocloft相关定义，解决tocloft中无法修改目录等级的问题
+\renewcommand*{\l@paragraph}[2]{%
+	\ifnum \c@tocdepth > 4 \relax
+	\vskip \cftbeforeparaskip
+	{\leftskip \cftparaindent\relax
+		\rightskip \@tocrmarg
+		\parfillskip -\rightskip
+		\parindent \cftparaindent\relax\@afterindenttrue
+		\interlinepenalty\@M
+		\leavevmode
+		\@tempdima \cftparanumwidth\relax
+		\let\@cftbsnum \cftparapresnum
+		\let\@cftasnum \cftparaaftersnum
+		\let\@cftasnumb \cftparaaftersnumb
+		\advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+		{\cftparafont #1}\nobreak
+		\cftparafillnum{#2}}%
+	\fi}
+\renewcommand*{\l@subparagraph}[2]{%
+	\ifnum \c@tocdepth > 5 \relax
+	\vskip \cftbeforesubparaskip
+	{\leftskip \cftsubparaindent\relax
+		\rightskip \@tocrmarg
+		\parfillskip -\rightskip
+		\parindent \cftsubparaindent\relax\@afterindenttrue
+		\interlinepenalty\@M
+		\leavevmode
+		\@tempdima \cftsubparanumwidth\relax
+		\let\@cftbsnum \cftsubparapresnum
+		\let\@cftasnum \cftsubparaaftersnum
+		\let\@cftasnumb \cftsubparaaftersnumb
+		\advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+		{\cftsubparafont #1}\nobreak
+		\cftsubparafillnum{#2}}%
+	\fi}
+%重新设置缩进
+\setlength{\cftparaindent}{11em}
+\setlength{\cftparanumwidth}{5em}
+\setlength{\cftsubparaindent}{13em}
+\setlength{\cftsubparanumwidth}{6em}
 %设置目录深度
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -509,8 +583,6 @@
 %
 %	---	定义新的目录页面
 %
-\RequirePackage{tocloft}
-\RequirePackage{hyperref}
 \hypersetup{
 	%colorlinks = true,
 	%linkcolor  = black,
@@ -556,44 +628,58 @@
 		{section indent}{\renewcommand{\cftsecindent}{#2}}
 		{subsection indent}{\renewcommand{\cftsubsecindent}{#2}}
 		{subsubsection indent}{\renewcommand{\cftsubsubsecindent}{#2}}
-		{subsubsubsection indent}{\def\l@subsubsubsection{\@dottedtocline{4}{#2}{4em}}}
-		{paragraph indent}{\def\l@paragraph{\@dottedtocline{5}{#2}{5em}}}
-		{subparagraph indent}{\def\l@subparagraph{\@dottedtocline{5}{#2}{5em}}}
+		{subsubsubsection indent}{\renewcommand{\cftsubsubsubsecindent}{#2}}
+		{paragraph indent}{\renewcommand{\cftparaindent}{#2}}
+		{subparagraph indent}{\renewcommand{\cftsubparaindent}{#2}}
 		{indent}{
 			\IfStrEqCase{#2}{
 				{normal}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{1.5em}
 					\renewcommand{\cftsubsubsecindent}{3.8em}
-					\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
-					\def\l@paragraph{\@dottedtocline{5}{11em}{5em}}
-					\def\l@subparagraph{\@dottedtocline{5}{13em}{5em}}
+					\renewcommand{\cftsubsubsubsecindent}{7em}
+					\renewcommand{\cftparaindent}{11em}
+					\renewcommand{\cftsubparaindent}{13em}
 				}
 				{noindent}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{0em}
 					\renewcommand{\cftsubsubsecindent}{0em}
-					\def\l@subsubsubsection{\@dottedtocline{4}{0em}{4em}}
-					\def\l@paragraph{\@dottedtocline{5}{0em}{5em}}
-					\def\l@subparagraph{\@dottedtocline{5}{0em}{5em}}
+					\renewcommand{\cftsubsubsubsecindent}{0em}
+					\renewcommand{\cftparaindent}{0em}
+					\renewcommand{\cftsubparaindent}{0em}
 				}
 				{hustnoindent}{
-					\def\l@section{\songti \bfseries\@dottedtocline{1}{0em}{3em}}
-					\def\l@subsection{\normalfont\@dottedtocline{2}{0em}{3em}}
-					\def\l@subsubsection{\normalfont\@dottedtocline{3}{0em}{4em}}
-					\def\l@subsubsubsection{\normalfont\@dottedtocline{4}{0em}{5em}}
-					\def\l@paragraph{\normalfont\@dottedtocline{5}{0em}{6em}}
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsecnumwidth}{3em}
+					\renewcommand{\cftsubsecindent}{0em}
+					\renewcommand{\cftsubsecnumwidth}{3em}
+					\renewcommand{\cftsubsubsecindent}{0em}
+					\renewcommand{\cftsubsubsecnumwidth}{4em}
+					\renewcommand{\cftsubsubsubsecindent}{0em}
+					\renewcommand{\cftsubsubsubsecnumwidth}{5em}
+					\renewcommand{\cftparaindent}{0em}
+					\renewcommand{\cftparanumwidth}{6em}
+					\renewcommand{\cftsubparaindent}{0em}
+					\renewcommand{\cftsubparanumwidth}{6em}
 				}
 				{sameforsubandsubsub}{
 					\renewcommand{\cftsecindent}{0em}
 					\renewcommand{\cftsubsecindent}{1.5em}
 					\renewcommand{\cftsubsubsecindent}{1.5em}
-					\def\l@subsubsubsection{\@dottedtocline{4}{1.5em}{4em}}
-					\def\l@paragraph{\@dottedtocline{5}{1.5em}{5em}}
-					\def\l@subparagraph{\@dottedtocline{5}{1.5em}{5em}}
+					\renewcommand{\cftsubsubsubsecindent}{1.5em}
+					\renewcommand{\cftparaindent}{1.5em}
+					\renewcommand{\cftsubparaindent}{1.5em}
 				}
 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
 		}
+		{dot sep}{\renewcommand{\cftdotsep}{#2}}
+		{section dot sep}{\renewcommand{\cftsecdotsep}{#2}}
+		{subsection dot sep}{\renewcommand{\cftsubsecdotsep}{#2}}
+		{subsubsection dot sep}{\renewcommand{\cftsubsubsecdotsep}{#2}}
+		{subsubsubsection dot sep}{\renewcommand{\cftsubsubsubsecdotsep}{#2}}
+		{paragraph dot sep}{\renewcommand{\cftparadotsep}{#2}}
+		{subparagraph dot sep}{\renewcommand{\cftsubparadotsep}{#2}}
 	}[\ClassWarning{\HGP@name}{There's no such argument for tableofcontents}]
 }
 \AtBeginDocument{
@@ -643,7 +729,7 @@
 %	---	重新定义参考文献页
 %
 %设置参考文献
-\usepackage{natbib}
+\RequirePackage{natbib}
 \setcitestyle{numbers,square,comma}
 \ctexset{bibname={参考文献}}
 
