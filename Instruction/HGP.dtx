@@ -15,7 +15,7 @@
 % \par 请注意，本模板需要使用xeCJK宏包，因此只能在\XeLaTeX 下进行编译。本模板需要华文中宋字体，详见“\nameref{subsec:font}”。
 % \subsection{在Windows系统中}
 % \begin{enumerate}[itemsep=0pt,parsep=0pt]
-% 	\item 下载\footnote{\label{fn:mirror}校园网用户可以前往\href{http://mirror.hust.edu.cn/CTAN/}{华中科技大学开源镜像站}快速下载}并安装最新版本的MiK\TeX （推荐）或者\TeX\space Live；
+% 	\item 下载\footnote{\label{fn:mirror}校园网用户可以前往\href{http://mirror.hust.edu.cn/CTAN/}{华中科技大学开源镜像站}快速下载}并安装最新版本的MiK\TeX （推荐，以下步骤针对MiK\TeX）或者\TeX\space Live；
 % 	\item 打开\TeX works，并设置默认编译工具(Edit->Preference->Typesetting->Processing Tools->Default)为\XeLaTeX+MakeIndex+\BibTeX ；
 % 	\item 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
 % 	\item 在新的tex文档中使用|\documentclass{HustGraduPaper}|使用模板定义的样式；
@@ -31,7 +31,7 @@
 % 
 % \subsection{在Ubuntu系统中}
 % \begin{enumerate}[itemsep=0pt,parsep=0pt]
-% 	\item 使用命令|apt-get install texlive texlive-full|安装最新版\TeX~Live\footnote{校园网用户可以将\href{http://mirrors.hust.edu.cn/help.html\#ubuntu}{华中科技大学开源镜像站}添加到apt-get源中加速下载}；
+% 	\item 使用命令|sudo apt-get install texlive texlive-full|安装最新版\TeX~Live\footnote{校园网用户可以将\href{http://mirrors.hust.edu.cn/help.html\#ubuntu}{华中科技大学开源镜像站}添加到apt-get源中加速下载}；
 % 	\item 新建一个.tex文件并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下；
 % 	\item 在新的tex文档中使用|\documentclass[ubuntufont]{HustGraduPaper}|使用模板定义的样式，并设置使用Ubuntu自带的文泉驿和文鼎字体；
 % 	\item 编写完成论文后，使用\XeLaTeX ->MakeIndex->\BibTeX ->\XeLaTeX 的顺序进行编译；
@@ -248,10 +248,17 @@
 % \par 考虑到学校官方模板并未对宋体、黑体的具体字体做以要求，如果您使用Windows或者Mac OS X您无需进行其他设置，否则请您参考“~\nameref{subsec:setupfont}”选择期望使用的字体。
 % \par 但问题在于，学校官方模板标题页中会使用到华文中宋（STZhongsong）字体，该字体是微软\textsuperscript{\textregistered}公司出品的Office产品中的字体\footnote{该字体实为中国常州华文印刷新技术有限公司\textsuperscript{\texttrademark}开发，官网:\url{http://sinotype.com.cn/}。}，为了避免版权纠纷，本模板未包含该字体。鉴于本人未在互联网上找到该字体的正版购买渠道，因此{\bfseries 如果需要使用本模板请安装Office软件。因下载安装使用盗版字体造成的版权纠纷与本人无关。}如果您是华中科技大学校园网用户，您可以前往\href{http://software.hust.edu.cn/}{智慧华中大~正版软件服务平台}下载安装正版Microsoft Office。请注意：对于Mac OS X用户，由于Office各版本情况不同，您可能需要在安装Office后手动将华文中宋字体导入系统字体册。\footnote{以Office 2016为例，拷贝“/应用程序/Microsoft Word/Contents/Resources/DFonts/STZHONGS.ttf”至非系统位置（如桌面），打开并点击右下角“安装字体”。}
 % 
+% \subsection{宏包依赖}
+% 本模板为设置相关宏包，涉及到使用如下宏包：\\
+% xstring; xeCJK; ctex; geometry; fontspec; fancyhdr; titlesec; tocloft; hyperref; appendix; caption; tabularx; makecell; booktabs; graphicx; amsmath; enumitem; kvsetkeys; amssymb; natbib；\\
+% 以及这些宏包所需要的其他依赖宏包。
+% \par
+% 如果需要在引言中为这些宏包设置宏包选项，请在|\documentclass|命令前使用\DescribeMacro{\PassOptionsToPackage}|\PassOptionsToPackage{<宏包选项>}{<宏包名称>}|进行设置。
+% 
 % \section{一个小例子}\label{sec:example}
 % 为了方便使用，在这里提供一个简单的使用范例，范例中只有少量注释，请参考前文查看。本模板还包含了一个相对详细的例子，在“Example”文件夹下，如果需要也可参考该样例。
 %    \begin{macrocode}
-\documentclass{HustGraduPaper}
+\documentclass{HustGraduPaper}[supercite]
 
 \title{论文题目} %论文题目
 \author{作者姓名} %作者姓名

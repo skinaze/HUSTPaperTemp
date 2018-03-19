@@ -14,7 +14,7 @@
 
 ### 在Windows系统中
 * 下载本模板[最新Release版本](https://github.com/skinaze/HUSTPaperTemp/releases)
-* 下载并安装最新版本的MiKTeX 或者TeX Live
+* 下载并安装最新版本的MiKTeX(推荐，以下步骤针对MiKTeX)或者TeX Live
 * 打开TeX works，并设置默认编译工具(Edit->Preference->Typesetting->Processing Tools->Default)为XeLaTeX+MakeIndex+BibTeX
 * 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
 * 在新的tex文档中使用\documentclass{HustGraduPaper}使用模板定义的样式
@@ -28,7 +28,7 @@
 
 ### 在Ubuntu系统中
 * 下载本模板[最新Release版本](https://github.com/skinaze/HUSTPaperTemp/releases)
-* 使用命令apt-get install texlive 安装最新版TEX Live
+* 使用命令sudo apt-get install texlive 安装最新版TEX Live
 * 新建一个.tex 文件并保存在一个文件夹下，将Template 文件夹下所有文件拷贝到该文件夹下
 * 在新的tex 文档中使用\documentclass[ubuntufont]{HustGraduPaper}使用模板定义的样式，并设置使用Ubuntu 自带的文泉驿和文鼎字体
 * 编写完成论文后，使用XeLaTeX->MakeIndex->BibTeX->XeLaTeX 的顺序进行编译
@@ -55,3 +55,4 @@
 * 重写subsubsubsection定义部分，兼容tocloft宏包；
 * 添加修改目录引导点间距的可选参数；
 * 重写页脚线，删除使用tikz宏包的需求；
+* 添加关于宏包依赖的说明；
