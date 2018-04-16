@@ -6,7 +6,7 @@
 % 
 % \begin{abstract}
 % \par 这是华中科技大学的{\bfseries 非官方}本科生毕业论文模板的说明，在该模板中我重新定义各个环境、页眉页脚、参考文献等等，因此可以基本上使用原来\LaTeX 自带的命令就能完美制作出华中科技大学的毕业论文。
-% \par 在本文中我将首先讲述模板基本使用方法，然后讲解重新定义和新定义个各个命令与环境的使用方法，并且我将提供一个简单的使用例子以供参考，最后我会给出我本人在各个系统下测试结果和模板已知暂时未解决的问题，以及查重个人的建议。
+% \par 在本文中我将首先讲述模板基本使用方法，然后讲解重新定义和新定义个各个命令与环境的使用方法，并且我将提供一个简单的使用例子以供参考，最后我会提供一些常见问题的解决方案，给出我本人在各个系统下测试结果和模板已知暂时未解决的问题，以及查重个人的建议。
 % \end{abstract}
 % 
 % \tableofcontents
@@ -15,16 +15,16 @@
 % \par 请注意，本模板需要使用xeCJK宏包，因此只能在\XeLaTeX 下进行编译。本模板需要华文中宋字体，详见“\nameref{subsec:font}”。
 % \subsection{在Windows系统中}
 % \begin{enumerate}[itemsep=0pt,parsep=0pt]
-% 	\item 下载\footnote{\label{fn:mirror}校园网用户可以前往\href{http://mirror.hust.edu.cn/CTAN/}{华中科技大学开源镜像站}快速下载}并安装最新版本的MiK\TeX （推荐，以下步骤针对MiK\TeX）或者\TeX\space Live；
+% 	\item 下载\footnote{\label{fn:mirror}校园网用户可以前往\href{http://mirror.hust.edu.cn/CTAN/}{华中科技大学开源镜像站}快速下载}并安装最新版本的MiK\TeX （推荐，以下步骤针对MiK\TeX）或者\TeX~Live（参考“\nameref{subsec:macos}”说明）；
 % 	\item 打开\TeX works，并设置默认编译工具(Edit->Preference->Typesetting->Processing Tools->Default)为\XeLaTeX+MakeIndex+\BibTeX ；
 % 	\item 新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下
 % 	\item 在新的tex文档中使用|\documentclass{HustGraduPaper}|使用模板定义的样式；
 % \end{enumerate}
 % 
-% \subsection{在Mac OS X系统中}
+% \subsection{在Mac OS X系统中}\label{subsec:macos}
 % \begin{enumerate}[itemsep=0pt,parsep=0pt]
 % 	\item 下载\footref{fn:mirror}并安装最新版本的Mac\TeX ；
-% 	\item 打开\TeX shop，新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下；
+% 	\item 打开\TeX~shop，新建一个tex文档并保存在一个文件夹下，将Template文件夹下所有文件拷贝到该文件夹下；
 % 	\item 在新的tex文档中使用|\documentclass{HustGraduPaper}|使用模板定义的样式；
 % 	\item 编写完成论文后，使用\XeLaTeX ->MakeIndex->\BibTeX ->\XeLaTeX 的顺序进行编译；
 % \end{enumerate}
@@ -305,6 +305,14 @@
   \end{appendices}
 \end{document}
 %    \end{macrocode}
+% 
+% \section{常见问题}
+% \subsection{MiK\TeX 中“File "xxx.sty" not found”}
+% \par 这个问题是指缺少相关宏包。MiK\TeX 需要从网络上下载需要的宏包，国内有时连接外网不稳定，这造成MiK\TeX 连接不到相应的镜像服务器。这种情况下建议前往MiKTeX Package Manager(Windows 系统在开始菜单中可以找到)，找到缺失的宏包xxx，右键手动安装。如果手动安装仍然失败，可以尝试前往setting中手动设置package are installed from一个服务器（推荐先试台湾和日本的服务器）。
+% \par 如果这样仍然无法解决问题，可以尝试使用虚拟个人网络或者安装\TeX~Live，\TeX~Live本身会将所有宏包安装在本地。
+% 
+% \subsection{fontspec error: "font-not-found" The font "STZhongsong" cannot be found.}
+% \par 这个问题是由于系统缺少缺少华文中宋字体造成，具体请参考“\nameref{subsec:font}”部分相关说明。
 % 
 % \section{模板测试}
 % \par 本模板在Windows 10和Mac OS X中进行了测试，测试环境分别为MiK\TeX 和Mac\TeX 。测试过程中Example文件夹下的样例文档都能够正常编译输出。Ubuntu系统下字体问题比较麻烦，我并未完成测试，不过考虑到Mac\TeX 是\TeX~Live在Mac OS X下的发行版本，理论上应该没有问题。
