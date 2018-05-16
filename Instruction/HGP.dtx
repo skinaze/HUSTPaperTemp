@@ -248,12 +248,11 @@
 % \par 考虑到学校官方模板并未对宋体、黑体的具体字体做以要求，如果您使用Windows或者Mac OS X您无需进行其他设置，否则请您参考“~\nameref{subsec:setupfont}”选择期望使用的字体。
 % \par 但问题在于，学校官方模板标题页中会使用到华文中宋（STZhongsong）字体，该字体是微软\textsuperscript{\textregistered}公司出品的Office产品中的字体\footnote{该字体实为中国常州华文印刷新技术有限公司\textsuperscript{\texttrademark}开发，官网:\url{http://sinotype.com.cn/}。}，为了避免版权纠纷，本模板未包含该字体。鉴于本人未在互联网上找到该字体的正版购买渠道，因此{\bfseries 如果需要使用本模板请安装Office软件。因下载安装使用盗版字体造成的版权纠纷与本人无关。}如果您是华中科技大学校园网用户，您可以前往\href{http://software.hust.edu.cn/}{智慧华中大~正版软件服务平台}下载安装正版Microsoft Office。请注意：对于Mac OS X用户，由于Office各版本情况不同，您可能需要在安装Office后手动将华文中宋字体导入系统字体册。\footnote{以Office 2016为例，拷贝“/应用程序/Microsoft Word/Contents/Resources/DFonts/STZHONGS.ttf”至非系统位置（如桌面），打开并点击右下角“安装字体”。}
 % 
-% \subsection{宏包依赖}
-% 本模板为设置相关宏包，涉及到使用如下宏包：\\
+% \subsection{宏包依赖}\label{subsec:packused}
+% \par 本模板为设置相关宏包，涉及到使用如下宏包：\\
 % xstring; xeCJK; ctex; geometry; fontspec; fancyhdr; titlesec; tocloft; hyperref; appendix; caption; tabularx; makecell; booktabs; graphicx; amsmath; enumitem; kvsetkeys; amssymb; natbib；\\
 % 以及这些宏包所需要的其他依赖宏包。
-% \par
-% 如果需要在引言中为这些宏包设置宏包选项，请在|\documentclass|命令前使用\DescribeMacro{\PassOptionsToPackage}|\PassOptionsToPackage{<宏包选项>}{<宏包名称>}|进行设置。
+% \par 如果需要在引言中为这些宏包设置宏包选项，请在|\documentclass|命令前使用\DescribeMacro{\PassOptionsToPackage}|\PassOptionsToPackage{<宏包选项>}{<宏包名称>}|进行设置。
 % 
 % \section{一个小例子}\label{sec:example}
 % 为了方便使用，在这里提供一个简单的使用范例，范例中只有少量注释，请参考前文查看。本模板还包含了一个相对详细的例子，在“Example”文件夹下，如果需要也可参考该样例。
@@ -309,10 +308,13 @@
 % \section{常见问题}
 % \subsection{MiK\TeX 中“File "xxx.sty" not found”}
 % \par 这个问题是指缺少相关宏包。MiK\TeX 需要从网络上下载需要的宏包，国内有时连接外网不稳定，这造成MiK\TeX 连接不到相应的镜像服务器。这种情况下建议前往MiKTeX Package Manager(Windows 系统在开始菜单中可以找到)，找到缺失的宏包xxx，右键手动安装。如果手动安装仍然失败，可以尝试前往setting中手动设置package are installed from一个服务器（推荐先试台湾和日本的服务器）。
-% \par 如果这样仍然无法解决问题，可以尝试使用虚拟个人网络或者安装\TeX~Live，\TeX~Live本身会将所有宏包安装在本地。
+% \par 如果这样仍然无法解决问题，可以尝试安装完整的\TeX~Live，完整版本的\TeX~Live本身会将所有宏包安装在本地。
 % 
 % \subsection{fontspec error: "font-not-found" The font "STZhongsong" cannot be found.}
 % \par 这个问题是由于系统缺少缺少华文中宋字体造成，具体请参考“\nameref{subsec:font}”部分相关说明。
+% 
+% \subsection{Option clash for package XXX.}
+% \par 这个问题很大概率是由于宏包XXX已经在模板中设置加载，这导致不能在引言部分提供相应的宏包参数。本模板使用了的宏包请参见“\nameref{subsec:packused}”。如果该宏包有相应的设置参数的命令(以xeCJK宏包为例，|\xeCJKsetup|命令可以代替宏包选项设置xeCJK宏包)，这样的情况下请使用这些命令进行设置。如果没有相应的命令，请在|\documentclass|命令前使用\DescribeMacro{\PassOptionsToPackage}|\PassOptionsToPackage{<宏包选项>}{<宏包名称>}|进行设置。
 % 
 % \section{模板测试}
 % \par 本模板在Windows 10和Mac OS X中进行了测试，测试环境分别为MiK\TeX 和Mac\TeX 。测试过程中Example文件夹下的样例文档都能够正常编译输出。Ubuntu系统下字体问题比较麻烦，我并未完成测试，不过考虑到Mac\TeX 是\TeX~Live在Mac OS X下的发行版本，理论上应该没有问题。
