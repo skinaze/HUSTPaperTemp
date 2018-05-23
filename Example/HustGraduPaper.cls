@@ -295,7 +295,7 @@
 \captionsetup{font={hust,singlespacing}}
 \captionsetup[figure]{position=bottom,skip={0pt}}
 \captionsetup[table]{position=top,skip={0pt}}
-\setlength{\textfloatsep}{0pt}
+\setlength{\textfloatsep}{6pt}
 \setlength{\floatsep}{0pt}
 \setlength{\intextsep}{6pt}
 \setlength{\abovecaptionskip}{0pt}
