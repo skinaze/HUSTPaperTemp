@@ -1,5 +1,7 @@
 # 华中科技大学本科毕业论文LaTeX模板 2017
 
+[English Version](README-EN.md)
+
 本项目为非官方的华中科技大学**本科生**毕业论文LaTeX模板，考虑到目前网络上可以找到的本校模板已经严重过时，本人重新制作了该模板，符合2017年华中科技大学本科生毕业论文官方模板格式。
 
 研究生毕业论文模板请移步[hustthesis](https://ctan.org/pkg/hustthesis)。
