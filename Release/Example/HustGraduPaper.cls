@@ -24,6 +24,7 @@
 \RequirePackage{xstring}%使用条件语句
 %字体组
 \def\HGP@fontset{}
+\def\HGP@noto{}
 \DeclareOption{autofont}{}%自动设置字体
 \DeclareOption{adobefont} {
 	\def\HGP@fontset{,fontset=adobe}
@@ -49,6 +50,31 @@
 \DeclareOption{winoldfont} {
 	\def\HGP@fontset{,fontset=windowsold}
 }%使用简体中文Windows XP或之前系统下的中易字体
+\DeclareOption{notofont} {
+	\def\HGP@noto{
+		\setCJKmainfont{NotoSerifCJKsc-Regular.otf}[
+			BoldFont = NotoSerifCJKsc-Bold.otf,
+			AutoFakeBold = false
+		]
+		\setCJKsansfont{NotoSansCJKsc-Regular.otf}[
+			BoldFont = NotoSansCJKsc-Bold.otf,
+			AutoFakeBold = false
+		]
+		\setCJKmonofont{NotoSansMonoCJKsc-Regular.otf}[
+			BoldFont = NotoSansMonoCJKsc-Bold.otf,
+			AutoFakeBold = false
+		]
+		\setCJKfamilyfont{zhsong}{NotoSerifCJKsc-Regular.otf}[
+			BoldFont = NotoSerifCJKsc-Bold.otf,
+			AutoFakeBold = false
+		]
+		\setCJKfamilyfont{zhhei}{NotoSansCJKsc-Regular.otf}[
+			BoldFont = NotoSansCJKsc-Bold.otf,
+			AutoFakeBold = false
+		]
+	}
+	\def\HGP@fontset{}
+}%使用思源宋体和思源黑体
 \DeclareOption{nofont} {
 	\def\HGP@fontset{,fontset=none}
 }%不配置中文字体，需要用户自己配置
@@ -101,7 +127,8 @@
 	BoldFont={STZhongsong},
 	BoldFeatures={FakeBold=4}
 ]
-
+%思源字体定义与使用
+\HGP@noto
 
 %
 %	---	定义页眉页脚
@@ -295,7 +322,7 @@
 \captionsetup{font={hust,singlespacing}}
 \captionsetup[figure]{position=bottom,skip={0pt}}
 \captionsetup[table]{position=top,skip={0pt}}
-\setlength{\textfloatsep}{0pt}
+\setlength{\textfloatsep}{6pt}
 \setlength{\floatsep}{0pt}
 \setlength{\intextsep}{6pt}
 \setlength{\abovecaptionskip}{0pt}
@@ -751,7 +778,7 @@
 	{gbt7714-2005}{\bibliographystyle{gbt7714-2005}}
 	{gbt7714-2015}{\bibliographystyle{gbt7714-2015}}
 	{thuthesis}{
-		\bibliographystyle{thuthesis}
+		\bibliographystyle{thuthesis-numeric}
 		\def\thudot{\unskip.}
 	}
 }
