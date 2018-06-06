@@ -751,7 +751,7 @@
 	{gbt7714-2005}{\bibliographystyle{gbt7714-2005}}
 	{gbt7714-2015}{\bibliographystyle{gbt7714-2015}}
 	{thuthesis}{
-		\bibliographystyle{thuthesis}
+		\bibliographystyle{thuthesis-numeric}
 		\def\thudot{\unskip.}
 	}
 }
