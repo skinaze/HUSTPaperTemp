@@ -1,4 +1,4 @@
-文献翻译模板基于HustGraduPaper(v2.1.7), 根据教务处17年发布的[模板]修改得到.(http://jwc.hust.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1320803545&wbfileid=2356941)
+文献翻译模板基于HustGraduPaper(v2.1.7), 根据教务处17年发布的[模板](http://jwc.hust.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1320803545&wbfileid=2356941)修改得到.
 
 对cls模板文件的修改包括:
 * 修改`\maketitle`命令
