@@ -790,7 +790,7 @@
 \let \oldbibliography \bibliography
 \renewcommand{\bibliography}[1]{
 	%添加到目录
-	\clearpage
+	% \clearpage
 	\phantomsection
 	\addcontentsline{toc}{section}{参考文献}
 	\oldbibliography{#1}
