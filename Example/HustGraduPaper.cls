@@ -2,8 +2,8 @@
 %	HustGraduPaper.sty
 %	本文件是华中科技大学本科生毕业论文模板
 %	@author skinaze
-% 	@date 2018/03/19
-%	@version v2.1.7
+% 	@date 2019/03/10
+%	@version v2.1.9
 %
 %	本模板遵循MIT License
 %
@@ -11,9 +11,9 @@
 
 %	---	定义的新的类
 \def\HGP@name{HustGraduPaper}
-\def\HGP@date{2018/03/19}
-\def\HGP@version{v2.1.7}
-\def\HGP@introduction{Adapt HUST style to article}
+\def\HGP@date{2019/03/10}
+\def\HGP@version{v2.1.9}
+\def\HGP@introduction{Provide HUST graduation thesis template}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
 
@@ -343,7 +343,7 @@
 \RequirePackage{makecell}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
 %添加复杂的表格需求库
 \RequirePackage{booktabs}

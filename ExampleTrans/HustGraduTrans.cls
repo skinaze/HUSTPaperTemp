@@ -1,19 +1,19 @@
 %
 %	HustGraduTrans.sty
 %	本文件是华中科技大学本科生毕业论文文献翻译模板
-%	@author skinaze
-% 	@date 2019/02/25
-%	@version 基于HustGraduPaper v2.1.7
+%	@author skinaze rawfh
+% 	@date 2019/03/10
+%	@version 基于HustGraduPaper v2.1.8
 %
 %	本模板遵循MIT License
 %
 
 
 %	---	定义的新的类
-\def\HGP@name{HustGraduPaper}
-\def\HGP@date{2018/03/19}
-\def\HGP@version{v2.1.7}
-\def\HGP@introduction{Adapt HUST style to article}
+\def\HGP@name{HustGraduTrans}
+\def\HGP@date{2019/03/10}
+\def\HGP@version{v2.1.8}
+\def\HGP@introduction{Provide HUST graduation translation template}
 \ProvidesClass{\HGP@name}[\HGP@date~\HGP@version~\HGP@introduction]
 \NeedsTeXFormat{LaTeX2e}
 
@@ -171,11 +171,11 @@
 \renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
 	{0ex \@plus1ex \@minus.2ex}%
 	{1em}%
-	{\songti\normalsize\bfseries}}
+	{\normalfont\normalsize\bfseries}}
 \renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
 	{0ex \@plus1ex \@minus .2ex}%
 	{1em}%
-	{\songti\normalsize\bfseries}}
+	{\normalfont\normalsize\bfseries}}
 
 \RequirePackage[indentafter]{titlesec}
 %设置新的标题层级subsubsubsection
@@ -342,7 +342,7 @@
 \RequirePackage{makecell}
 \newcolumntype{L}{X}
 \newcolumntype{C}{>{\centering \arraybackslash}X}
-\newcolumntype{R}{>{\raggedright \arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
 
 %添加复杂的表格需求库
 \RequirePackage{booktabs}
@@ -417,10 +417,12 @@
 %用于解析参数
 \RequirePackage{kvsetkeys}
 %添加几个新的文档属性
+\def \@origin {}
 \def \@school {}
 \def \@classnum {}
 \def \@stunum {}
 \def \@instructor {}
+\newcommand{\origin}[1]{\def \@origin {#1}}
 \newcommand{\school}[1]{\def \@school {#1}}
 \newcommand{\classnum}[1]{\def \@classnum {#1}}
 \newcommand{\stunum}[1]{\def \@stunum {#1}}
@@ -469,7 +471,9 @@
 			\vspace*{2em}
 			{\zihao{2} \huawenzhongsong \bfseries 本科生毕业设计（论文）参考文献译文本}\\
 			\vspace{6em}
-			{\zihao{-3} \songti \bfseries 译文出处：\@title}\\
+			{\zihao{-3} \songti \bfseries 
+				译文出处：\@origin
+			}\\
 			\vspace{6em}
 			{\zihao{3} \huawenzhongsong 
 				\renewcommand\arraystretch{1.5}
@@ -491,11 +495,12 @@
 	\end{titlepage}
 }
 
-%设置makehead的参数解析
-\newcommand{\makehead}[1]{
-	\centerline{\zihao{-4} \songti \bfseries {#1}}
-	~\\ %空一行
-	}
+%translatedtitle命令用于生成正文中翻译的标题
+\newcommand{\translatedtitle}{
+	\centerline{\zihao{-4} \songti \bfseries \@title}
+}
+
+
 %
 %	---	定义新的声明页面
 %
@@ -503,109 +508,83 @@
 \RequirePackage{amssymb}
 
 %设置statement的参数解析
-% \def\HGP@checkedbox{$\text{\rlap{\checkmark}}\square$}
-% \def\HGP@box{$\square$}
-% \newcommand{\arg@statement}[2]{
-% 	\IfStrEqCase{#1}{
-% 		{confidentiality}{
-% 			\IfStrEqCase{#2}{
-% 				{yes}{
-% 					\def\HGP@confidential{\HGP@checkedbox}
-% 					\def\HGP@notconfidential{\HGP@box}
-% 				}
-% 				{true}{
-% 					\def\HGP@confidential{\HGP@checkedbox}
-% 					\def\HGP@notconfidential{\HGP@box}
-% 				}
-% 				{no}{
-% 					\def\HGP@confidential{\HGP@box}
-% 					\def\HGP@notconfidential{\HGP@checkedbox}
-% 				}
-% 				{false}{
-% 					\def\HGP@confidential{\HGP@box}
-% 					\def\HGP@notconfidential{\HGP@checkedbox}
-% 				}
-% 				{empty}{
-% 					\def\HGP@confidential{\HGP@box}
-% 					\def\HGP@notconfidential{\HGP@box}
-% 				}
-% 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (statement)}]
-% 		}
-% 		{year}{\def\HGP@yearofconfidentiality{#2}}
-% 	}[\ClassWarning{\HGP@name}{There's no such argument for statement}]
-% }
-%设置命令
-% \newcommand{\statement}[1][confidentiality=empty]{
-% 	\def\HGP@confidential{\HGP@box}
-% 	\def\HGP@notconfidential{\HGP@checkedbox}
-% 	\def\HGP@yearofconfidentiality{}
-% 	\kv@parse{#1}{\arg@statement}
-% 	\clearpage
-% 	\thispagestyle{empty}
-% 	\vspace*{1em}
-% 	\begin{center}
-% 		\heiti \zihao{-2} \bfseries
-% 		学位论文原创性声明
-% 	\end{center}
-	
-% 	本人郑重声明：所呈交的论文是本人在导师的指导下独立进行研究所取得的研究成果。除了文中特别加以标注引用的内容外，本论文不包括任何其他个人或集体已经发表或撰写的成果作品。本人完全意识到本声明的法律后果由本人承担。
-	
-% 	\rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-% 	\vspace{4em}
-	
-% 	\begin{center}
-% 		\heiti \zihao{-2} \bfseries
-% 		学位论文版权使用授权书
-% 	\end{center}
-	
-% 	本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权省级优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
-	
-% 	\begin{tabbing}
-% 		\hspace{2em}本学位论文属于 \= 1、保密\hspace{1em} \=\HGP@confidential
-% 		，在\makebox[2em][c]{\HGP@yearofconfidentiality}年解密后适用本授权书。\\
-% 		\>2、不保密\>\HGP@notconfidential
-% 		。\\
-% 		\>（请在以上相应方框内打“$\checkmark$”）
-% 	\end{tabbing}
-	
-% 	\rightline{作者签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-	
-% 	\rightline{导师签名：\hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日}
-	
-% 	\clearpage
-% }
-%旧的命令
-% \newcommand{\makestatement}[2][]{\statement[confidentiality=#2,year=#1]}
-
-
-%
-%	---	定义新的中英文摘要环境
-%
-%中文摘要环境
-\newenvironment{cnabstract}[1]{
-	\def \cnkeyword {#1}
-	\clearpage 
-	\phantomsection
-	\addcontentsline{toc}{section}{摘要}
-	\begin{center} \songti \bfseries \zihao{-2} 摘 \hspace{2em} 要 \end{center}
-	
-}{
-	\vspace{1em}
-	\par\noindent {\songti\zihao{4}\bfseries 关键词：} \cnkeyword
-	\clearpage
+\def\HGP@checkedbox{$\text{\rlap{\checkmark}}\square$}
+\def\HGP@box{$\square$}
+\newcommand{\arg@statement}[2]{
+	\IfStrEqCase{#1}{
+		{confidentiality}{
+			\IfStrEqCase{#2}{
+				{yes}{
+					\def\HGP@confidential{\HGP@checkedbox}
+					\def\HGP@notconfidential{\HGP@box}
+				}
+				{true}{
+					\def\HGP@confidential{\HGP@checkedbox}
+					\def\HGP@notconfidential{\HGP@box}
+				}
+				{no}{
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@checkedbox}
+				}
+				{false}{
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@checkedbox}
+				}
+				{empty}{
+					\def\HGP@confidential{\HGP@box}
+					\def\HGP@notconfidential{\HGP@box}
+				}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (statement)}]
+		}
+		{year}{\def\HGP@yearofconfidentiality{#2}}
+	}[\ClassWarning{\HGP@name}{There's no such argument for statement}]
 }
-
-%英文摘要环境
-\newenvironment{enabstract}[1]{
-	\def \enkeyword {#1}
-	\clearpage 
-	\phantomsection
-	\addcontentsline{toc}{section}{Abstract}
-	\begin{center} \bfseries \zihao{-2} Abstract \end{center}
+%设置命令
+\newcommand{\statement}[1][confidentiality=empty]{
+	\def\HGP@confidential{\HGP@box}
+	\def\HGP@notconfidential{\HGP@checkedbox}
+	\def\HGP@yearofconfidentiality{}
+	\kv@parse{#1}{\arg@statement}
+	\clearpage
+	\thispagestyle{empty}
+	\vspace*{1em}
 	
-}{
-	\vspace{1em}
-	\par\noindent {\zihao{4}\bfseries Key Words: } \enkeyword
+	
+	\begin{center}
+		\huawenzhongsong \zihao{3} \bfseries
+		译文要求
+	\end{center}
+	
+	\begin{enumerate}[label=\chinese*、]
+		\zihao{4} \songti
+		\item 译文内容须与课题（或专业内容）联系，并需在封面注明详细出处。
+		\item 出处格式为 \\
+		图书：作者.书名.版本（第×版）.译者.出版地：出版者，出版年.起页～止页 \\
+		期刊：作者.文章名称.期刊名称，年号，卷号（期号）：起页～止页
+		\item 译文不少于5000汉字（或2万印刷符）。
+		\item 翻译内容用五号宋体字编辑，采用A4号纸双面打印，封面与封底采用浅蓝色封面纸（卡纸）打印。要求内容明确，语句通顺。
+		\item 译文及其相应参考文献一起装订，顺序依次为封面、译文、文献。
+		\item 翻译应在第七学期完成。
+	\end{enumerate}
+	
+	\begin{center}
+		\huawenzhongsong \zihao{3} \bfseries
+		译文评阅
+		\hrule
+	\end{center}
+	
+	{\zihao{4} \songti \bfseries \noindent 导师评语}
+	
+	{\zihao{4} \songti \noindent 应根据学校“译文要求”，对学生译文翻译的准确性、翻译数量以及译文的文字表述情况等做具体的评价后，再评分。}
+	
+	\vspace{12em}
+	
+	{\noindent\begin{tabularx}{\textwidth}{LR}
+		\noindent
+		评分：\underline{\makebox[8em]{}}（百分制） & 指导教师（签名）：\underline{\makebox[8em]{}}\\
+		& \hspace{6em} 年 \hspace{2em} 月 \hspace{2em} 日
+	\end{tabularx}}
+	
 	\clearpage
 }
 
@@ -619,140 +598,128 @@
 	pdfborder = 000,%去掉链接红框
 	pdfstartview=FitH%打开页面以窗口宽度显示
 } 
-% \renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} \bfseries}
-% \renewcommand{\contentsname}{目\hspace{2em}录}
-% \renewcommand{\cftaftertoctitle}{\hfill}
-% \renewcommand{\cftbeforeloftitleskip}{0.5em}
-% \renewcommand{\cftafterloftitleskip}{0.5em}
-% \renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
-% \renewcommand{\cftbeforesecskip}{0em} %设置段间距
-% \renewcommand{\cftpartfont}{\songti \bfseries} %设置Part字体
-% \renewcommand{\cftsecfont}{\songti \bfseries} %设置Section字体
+\renewcommand{\cfttoctitlefont}{\hfill \heiti \zihao{-2} \bfseries}
+\renewcommand{\contentsname}{目\hspace{2em}录}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftbeforeloftitleskip}{0.5em}
+\renewcommand{\cftafterloftitleskip}{0.5em}
+\renewcommand{\cftsecdotsep}{\cftdotsep} %设置Section引导点
+\renewcommand{\cftbeforesecskip}{0em} %设置段间距
+\renewcommand{\cftpartfont}{\songti \bfseries} %设置Part字体
+\renewcommand{\cftsecfont}{\songti \bfseries} %设置Section字体
 
-% %设置tableofcontents参数解析
-% \newcommand{\arg@tableofcontents}[2]{
-% 	\IfStrEqCase{#1}{
-% 		{pagenum}{
-% 			\IfStrEqCase{#2}{
-% 				{yes}{\def\HGP@plainfooterstyle{\footstyle}}
-% 				{true}{\def\HGP@plainfooterstyle{\footstyle}}
-% 				{no}{\def\HGP@plainfooterstyle{}}
-% 				{false}{\def\HGP@plainfooterstyle{}}
-% 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
-% 		}
-% 		{toc in toc}{
-% 			\IfStrEqCase{#2}{
-% 				{yes}{\def\HGP@addtoctotoc{
-% 					\phantomsection
-% 					\addcontentsline{toc}{section}{目录}
-% 				}}
-% 				{true}{\def\HGP@addtoctotoc{
-% 					\phantomsection
-% 					\addcontentsline{toc}{section}{目录}
-% 				}}
-% 				{no}{\def\HGP@addtoctotoc{}}
-% 				{false}{\def\HGP@addtoctotoc{}}
-% 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
-% 		}
-% 		{level}{\setcounter{tocdepth}{#2}}
-% 		{section indent}{\renewcommand{\cftsecindent}{#2}}
-% 		{subsection indent}{\renewcommand{\cftsubsecindent}{#2}}
-% 		{subsubsection indent}{\renewcommand{\cftsubsubsecindent}{#2}}
-% 		{subsubsubsection indent}{\renewcommand{\cftsubsubsubsecindent}{#2}}
-% 		{paragraph indent}{\renewcommand{\cftparaindent}{#2}}
-% 		{subparagraph indent}{\renewcommand{\cftsubparaindent}{#2}}
-% 		{indent}{
-% 			\IfStrEqCase{#2}{
-% 				{normal}{
-% 					\renewcommand{\cftsecindent}{0em}
-% 					\renewcommand{\cftsubsecindent}{1.5em}
-% 					\renewcommand{\cftsubsubsecindent}{3.8em}
-% 					\renewcommand{\cftsubsubsubsecindent}{7em}
-% 					\renewcommand{\cftparaindent}{11em}
-% 					\renewcommand{\cftsubparaindent}{13em}
-% 				}
-% 				{noindent}{
-% 					\renewcommand{\cftsecindent}{0em}
-% 					\renewcommand{\cftsubsecindent}{0em}
-% 					\renewcommand{\cftsubsubsecindent}{0em}
-% 					\renewcommand{\cftsubsubsubsecindent}{0em}
-% 					\renewcommand{\cftparaindent}{0em}
-% 					\renewcommand{\cftsubparaindent}{0em}
-% 				}
-% 				{hustnoindent}{
-% 					\renewcommand{\cftsecindent}{0em}
-% 					\renewcommand{\cftsecnumwidth}{3em}
-% 					\renewcommand{\cftsubsecindent}{0em}
-% 					\renewcommand{\cftsubsecnumwidth}{3em}
-% 					\renewcommand{\cftsubsubsecindent}{0em}
-% 					\renewcommand{\cftsubsubsecnumwidth}{4em}
-% 					\renewcommand{\cftsubsubsubsecindent}{0em}
-% 					\renewcommand{\cftsubsubsubsecnumwidth}{5em}
-% 					\renewcommand{\cftparaindent}{0em}
-% 					\renewcommand{\cftparanumwidth}{6em}
-% 					\renewcommand{\cftsubparaindent}{0em}
-% 					\renewcommand{\cftsubparanumwidth}{6em}
-% 				}
-% 				{sameforsubandsubsub}{
-% 					\renewcommand{\cftsecindent}{0em}
-% 					\renewcommand{\cftsubsecindent}{1.5em}
-% 					\renewcommand{\cftsubsubsecindent}{1.5em}
-% 					\renewcommand{\cftsubsubsubsecindent}{1.5em}
-% 					\renewcommand{\cftparaindent}{1.5em}
-% 					\renewcommand{\cftsubparaindent}{1.5em}
-% 				}
-% 			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
-% 		}
-% 		{dot sep}{\renewcommand{\cftdotsep}{#2}}
-% 		{section dot sep}{\renewcommand{\cftsecdotsep}{#2}}
-% 		{subsection dot sep}{\renewcommand{\cftsubsecdotsep}{#2}}
-% 		{subsubsection dot sep}{\renewcommand{\cftsubsubsecdotsep}{#2}}
-% 		{subsubsubsection dot sep}{\renewcommand{\cftsubsubsubsecdotsep}{#2}}
-% 		{paragraph dot sep}{\renewcommand{\cftparadotsep}{#2}}
-% 		{subparagraph dot sep}{\renewcommand{\cftsubparadotsep}{#2}}
-% 	}[\ClassWarning{\HGP@name}{There's no such argument for tableofcontents}]
-% }
-% \AtBeginDocument{
-% 	%设置新的生成目录命令
-% 	\let \oldtableofcontents \tableofcontents
-% 	\renewcommand{\tableofcontents}[1][pagenum=false,toc in toc=false]{
-% 		\def\HGP@plainfooterstyle{}
-% 		\def\HGP@addtoctotoc{}
-% 		\kv@parse{#1}{\arg@tableofcontents}
-% 		%修改hdr原plain格式
-% 		\fancypagestyle{plain}{%
-% 			\fancyhf{} %清空原有样式
-% 			\headstyle
-% 			\HGP@plainfooterstyle
-% 		}
-% 		%设置目录hdr和页码选项
-% 		\clearpage
-% 		\pagestyle{plain}
-% 		\HGP@addtoctotoc
-% 		\oldtableofcontents
-% 		\clearpage
-% 		\pagestyle{main}
-% 	}
-% 	%旧的命令
-% 	\newcommand{\maketoc}[1][nopagenum]{
-% 		\IfStrEqCase{#1}{{nopagenum}{\tableofcontents[pagenum=false,toc in toc=false]}
-% 			{pagenum}{\tableofcontents[pagenum=true,toc in toc=false]}
-% 			{pagenumtoc}{\tableofcontents[pagenum=true,toc in toc=true]}
-% 		}
-% 	}
-% }
-
-%
-%	---	定义新的致谢环境
-%
-% \newenvironment{thankpage}{
-% 	\clearpage
-% 	\phantomsection
-% 	\addcontentsline{toc}{section}{致谢}
-% 	\section*{致谢}
-% }{
-% 	\clearpage
-% }
+%设置tableofcontents参数解析
+\newcommand{\arg@tableofcontents}[2]{
+	\IfStrEqCase{#1}{
+		{pagenum}{
+			\IfStrEqCase{#2}{
+				{yes}{\def\HGP@plainfooterstyle{\footstyle}}
+				{true}{\def\HGP@plainfooterstyle{\footstyle}}
+				{no}{\def\HGP@plainfooterstyle{}}
+				{false}{\def\HGP@plainfooterstyle{}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+		{toc in toc}{
+			\IfStrEqCase{#2}{
+				{yes}{\def\HGP@addtoctotoc{
+						\phantomsection
+						\addcontentsline{toc}{section}{目录}
+				}}
+				{true}{\def\HGP@addtoctotoc{
+						\phantomsection
+						\addcontentsline{toc}{section}{目录}
+				}}
+				{no}{\def\HGP@addtoctotoc{}}
+				{false}{\def\HGP@addtoctotoc{}}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+		{level}{\setcounter{tocdepth}{#2}}
+		{section indent}{\renewcommand{\cftsecindent}{#2}}
+		{subsection indent}{\renewcommand{\cftsubsecindent}{#2}}
+		{subsubsection indent}{\renewcommand{\cftsubsubsecindent}{#2}}
+		{subsubsubsection indent}{\renewcommand{\cftsubsubsubsecindent}{#2}}
+		{paragraph indent}{\renewcommand{\cftparaindent}{#2}}
+		{subparagraph indent}{\renewcommand{\cftsubparaindent}{#2}}
+		{indent}{
+			\IfStrEqCase{#2}{
+				{normal}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{1.5em}
+					\renewcommand{\cftsubsubsecindent}{3.8em}
+					\renewcommand{\cftsubsubsubsecindent}{7em}
+					\renewcommand{\cftparaindent}{11em}
+					\renewcommand{\cftsubparaindent}{13em}
+				}
+				{noindent}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{0em}
+					\renewcommand{\cftsubsubsecindent}{0em}
+					\renewcommand{\cftsubsubsubsecindent}{0em}
+					\renewcommand{\cftparaindent}{0em}
+					\renewcommand{\cftsubparaindent}{0em}
+				}
+				{hustnoindent}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsecnumwidth}{3em}
+					\renewcommand{\cftsubsecindent}{0em}
+					\renewcommand{\cftsubsecnumwidth}{3em}
+					\renewcommand{\cftsubsubsecindent}{0em}
+					\renewcommand{\cftsubsubsecnumwidth}{4em}
+					\renewcommand{\cftsubsubsubsecindent}{0em}
+					\renewcommand{\cftsubsubsubsecnumwidth}{5em}
+					\renewcommand{\cftparaindent}{0em}
+					\renewcommand{\cftparanumwidth}{6em}
+					\renewcommand{\cftsubparaindent}{0em}
+					\renewcommand{\cftsubparanumwidth}{6em}
+				}
+				{sameforsubandsubsub}{
+					\renewcommand{\cftsecindent}{0em}
+					\renewcommand{\cftsubsecindent}{1.5em}
+					\renewcommand{\cftsubsubsecindent}{1.5em}
+					\renewcommand{\cftsubsubsubsecindent}{1.5em}
+					\renewcommand{\cftparaindent}{1.5em}
+					\renewcommand{\cftsubparaindent}{1.5em}
+				}
+			}[\ClassWarning{\HGP@name}{There's no such value for #1 (tableofcontents)}]
+		}
+		{dot sep}{\renewcommand{\cftdotsep}{#2}}
+		{section dot sep}{\renewcommand{\cftsecdotsep}{#2}}
+		{subsection dot sep}{\renewcommand{\cftsubsecdotsep}{#2}}
+		{subsubsection dot sep}{\renewcommand{\cftsubsubsecdotsep}{#2}}
+		{subsubsubsection dot sep}{\renewcommand{\cftsubsubsubsecdotsep}{#2}}
+		{paragraph dot sep}{\renewcommand{\cftparadotsep}{#2}}
+		{subparagraph dot sep}{\renewcommand{\cftsubparadotsep}{#2}}
+	}[\ClassWarning{\HGP@name}{There's no such argument for tableofcontents}]
+}
+\AtBeginDocument{
+	%设置新的生成目录命令
+	\let \oldtableofcontents \tableofcontents
+	\renewcommand{\tableofcontents}[1][pagenum=false,toc in toc=false]{
+		\def\HGP@plainfooterstyle{}
+		\def\HGP@addtoctotoc{}
+		\kv@parse{#1}{\arg@tableofcontents}
+		%修改hdr原plain格式
+		\fancypagestyle{plain}{%
+			\fancyhf{} %清空原有样式
+			\headstyle
+			\HGP@plainfooterstyle
+		}
+		%设置目录hdr和页码选项
+		\clearpage
+		\pagestyle{plain}
+		\HGP@addtoctotoc
+		\oldtableofcontents
+		\clearpage
+		\pagestyle{main}
+	}
+	%旧的命令
+	\newcommand{\maketoc}[1][nopagenum]{
+		\IfStrEqCase{#1}{{nopagenum}{\tableofcontents[pagenum=false,toc in toc=false]}
+			{pagenum}{\tableofcontents[pagenum=true,toc in toc=false]}
+			{pagenumtoc}{\tableofcontents[pagenum=true,toc in toc=true]}
+		}
+	}
+}
 
 
 %
@@ -796,6 +763,18 @@
 	\oldbibliography{#1}
 }
 
+
+%
+%	---	定义原文添加
+%
+\usepackage{pdfpages}
+\newcommand{\origindoc}[1]{
+	\clearpage
+	\thispagestyle{empty}
+	{\zihao{3} \huawenzhongsong \bfseries \centering \vspace*{4em} 参考文献原文 \clearpage}
+	\includepdf[pages=-]{#1}
+}
+
 %
 %	---	其他设置
 %
@@ -809,26 +788,4 @@
 		}
 	}
 }
-
-%查重识别问题
-% \def\HGP@Otherbold{}
-% \newcommand{\Otherbold}[1]{\def\HGP@Otherbold{#1}}
-% \newcommand{\chachong}{
-% 	\clearpage
-	
-% 	{\heiti\zihao{1}\noindent 这部分用于支持加粗的复制，便于查重。请从这里开始删除！}
-	
-% 	{\huawenzhongsong 华中科技大学毕业设计（论文）}
-% 	{\huawenzhongsong 本科生毕业设计[论文]}
-% 	{\heiti \@title 院系 专业班级 姓名 学号 指导教师}
-% 	{\heiti \@school \@classnum \@author \@stunum \@instructor}
-% 	{\heiti 学位论文原创性声明 学位论文版权使用授权书 摘要 关键词 目录 致谢 参考文献 附录}
-% 	{\songti 宋体}
-	
-% 	{\heiti\zihao{1}\noindent 一直删除到这里！}
-	
-% 	\HGP@Otherbold
-	
-% 	\clearpage
-% }
 

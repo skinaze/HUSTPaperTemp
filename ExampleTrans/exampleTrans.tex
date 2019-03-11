@@ -1,7 +1,8 @@
 \documentclass[supercite]{HustGraduTrans}
 %进行个人信息设置
-\title{论文出处} %论文出处
-\author{作者姓名} %作者姓名
+\origin{Lamport, Leslie. LATEX: a document preparation system: user's guide and reference manual. Addison-wesley, 1994.} %论文出处
+\title{论文翻译题目} %论文翻译题目
+\author{翻译者姓名} %翻译者姓名
 \date{\number\year 年 \number\month 月} %日期，默认当月
 \school{院系名称} %院系名称
 \classnum{专业班级} %专业班级
@@ -11,7 +12,6 @@
 %添加自己要用的其他宏包
 \usepackage{xltxtra}
 \usepackage{bm}
-\usepackage{pdfpages}
 \begin{document}
     %生成标题页 \maketitle[可选参数]
     %可选参数：
@@ -19,32 +19,15 @@
     %line length=12em 填写信息处横线的长度，默认12em
     %line font=huawenzhongsong 填写信息的字体，默认huawenzhongsong
     \maketitle
-    \includepdf{page2.pdf}
+   	
     %生成声明与授权书页 \statement[可选参数]
     %可选参数：
     %confidentiality=yes/no/true/false/empty 是否保密，yes/true为保密；no/false为不保密，empty为不填，默认为empty
     %year=5 保密年数，默认为空
-    % \statement
+    \statement
     
     % \clearpage %结束上一页
     \pagenumbering{Roman} %摘要页码为大写罗马数字
-    
-    %填写中文摘要内容和关键字
-    \begin{cnabstract}{关键词1；关键词2；关键词3}
-        请注意使用中文分号“；”分割关键词！
-        
-        摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-        
-        摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容
-    \end{cnabstract}
-    %填写英文摘要内容和关键字
-    \begin{enabstract}{Key1; Key2; Key3}
-        Please Use English Semicolon and a Space "; " to Separate  Keys! 
-        
-        This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
-        
-        This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. This is abstract. 
-    \end{enabstract}
 
     %生成目录 \tableofcontents[可选参数]
     %可选参数：
@@ -70,7 +53,7 @@
     
     % \clearpage%结束上一页
     \pagenumbering{arabic} %正文页码为阿拉伯数字
-    \makehead{论文题目}
+    \translatedtitle
 
     % 如果不希望为摘要单列一页, 可使用\paragraph代替
     % \paragraph{摘要}
@@ -234,8 +217,7 @@
         \verb|\autoref|无法识别Appendices环境，引用效果和正文一样，如\autoref{apxsubsubsec:appendix}。所以如果引用附录的话，建议直接使用附录~\ref{apxsubsubsec:appendix}~。
     \end{appendices}
     
-    % 可插入翻译文献原文
-    % \clearpage
-    % \includepdf{xx.pdf}
+    % 插入翻译文献原文
+   	\origindoc{Lamport1994.pdf}
 
 \end{document}
