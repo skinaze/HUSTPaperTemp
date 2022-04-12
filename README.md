@@ -39,7 +39,7 @@
 详细说明请参考[使用说明](Instruction/HGP.pdf)，或者查看[Example文件夹](Example)下的例子。
 
 ## 问题反馈
-本模板仍在维护，如果在使用本模板遇到任何问题，可以[发邮件给我](mailto:me@stringblog.com)，或者前往[我的博客](https://stringblog.com/hustgradupaperlatex/)，亦可在[Issues](https://github.com/skinaze/HUSTPaperTemp/issues)中留言。
+本人因为精力原因已经无法继续维护，尤其是已经多年没有使用latex，已经有些生疏。如果有问题，可以[发邮件给我](mailto:me@stringblog.com)，我会能力之内尽量解答。
 
 若提交Pull Requests，除非修复Bug，否则请以新的宏包选项或者命令及命令选项的方式为项目添加新的功能，以保证宏包的向下兼容性。
 

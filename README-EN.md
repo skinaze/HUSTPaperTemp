@@ -25,4 +25,4 @@ Please be aware that this template request font "ST Zhongsong". For more informa
 For more information, please refer to [Instruction](Instruction/HGP.pdf)，or check the example under [Example Folder](Example).
 
 ## Feedback
-If you are experiencing any problems with this template, you can [email me](mailto:me@stringblog.com), or leave a comment in the [Issues](https://github.com/skinaze/HUSTPaperTemp/issues) section.
+I am not actively maintain this project. If you are experiencing any problems with this template, you can [email me](mailto:me@stringblog.com), I will try my best to answer them. 
